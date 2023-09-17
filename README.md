@@ -62,7 +62,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [5.1. Code snippets](#51-code-snippets)
   - [5.2. Technologies Used](#52-technologies-used)
   - [5.3. Libraries Used](#53-libraries-used)
-  - [Initial Research](#initial-research)
+  - [Initial Resources Research](#initial-resources-research)
   - [5.4. Acknowledgements](#54-acknowledgements)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
@@ -352,17 +352,64 @@ They can be summarised here:
 
 ***
 
-## Initial Research
+## Initial Resources Research
 
-In early stages of development, the following python projects were tested and researched to gain an understanding of Python.
+In early stages of development, the following python projects were tested and researched to gain an understanding of Python, as well as for inspiration.
 
-Python Projects:
+**Python Projects:**
 - “Tomdu3/Millionaire-Kindof: CI Project 3 - Who Wants to Be a Millionaire. Kind Of.” GitHub, 18 Mar. 2023, github.com/tomdu3/millionaire-kindof. Accessed 17 Sept. 2023.
+  - username with validation check
+  - decorated with title displays constantly, ASCII art, fast animations
+  - navigation menu including how to play, high scores
+  - points guaranteed constantly displays and updates
+  - connects to a Google Sheet and updates the high scores
+  - uses the Trivia API “The Trivia API | the Internet’s Largest Database of Multiple Choice Quiz Questions.” The-Trivia-Api.com, 2023, the-trivia-api.com/. Accessed 17 Sept. 2023.
+
+- “Rockroman/PP3_The_Coach.” GitHub, 7 Oct. 2022, github.com/rockroman/PP3_The_Coach. Accessed 17 Sept. 2023.
+  - presents data as a table after collecting user data
+  - calculates a % score based on data
+
 - “Beratzorlu/Python-Quiz: Code Institute Prof. Dip. Full Stack Software Development Portfolio Project 3: A CLI-Based Quiz Game.” GitHub, 2023, github.com/beratzorlu/python-quiz. Accessed 17 Sept. 2023.
+  - quiz logic with validation check and a database
+  - score logic
+  - science question
+  - user name with validation check
+  - decorated with colors and ASCII art
 
-Walkthroughs.
+- “Alexkisielewicz/Home-Library-App: Home Library App Was Created as Portfolio Project #3 (Python Essentials) for Diploma in Full Stack Software Development at Code Institute.” GitHub, 20 Nov. 2022, github.com/alexkisielewicz/home-library-app. Accessed 17 Sept. 2023.
+  - advanced CRUD logic 
+  - 
+
+- “Jkingportfolio/CI_PP3_Taco_Trailer: Code Institute Full Stack Developer Course - Portfolio Project 3 - Python Essentials.” GitHub, 15 Sept. 2022, github.com/jkingportfolio/CI_PP3_Taco_Trailer. Accessed 17 Sept. 2023.
+
+‌
+‌
+
+**Walkthroughs:**
 - “Code-Institute-Solutions/Love-Sandwiches-P5-Sourcecode.” GitHub, 25 Mar. 2021, github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode. Accessed 17 Sept. 2023. 
+  - Shows how to connect to a Google Sheet
+  - Creates a formula for calculating the data on different sheets
+  - Shows how to deny invalid input
+  - How to structure code with Main() function and other functions
+- Run That. “Quiz App Using API Data - Python Project 💥 Make a Python Quiz App.” YouTube, YouTube Video, 16 May 2023, www.youtube.com/watch?v=kW2f1Hwgals. Accessed 17 Sept. 2023.
+  - how to use OpenTriviaDB API
 
+
+**Databases**
+- “Open Trivia DB.” Opentdb.com, 2023, opentdb.com/. Accessed 17 Sept. 2023.
+  - this is the API used in the walkthrough above
+  - it has a lot of categories and questions
+- “The Trivia API | the Internet’s Largest Database of Multiple Choice Quiz Questions.” The-Trivia-Api.com, 2023, the-trivia-api.com/. Accessed 17 Sept. 2023.
+
+
+**Surface Design**
+- “Create ASCII Text Banners Online.” Manytools.org - Your Online Toolshed, 2022, manytools.org/hacker-tools/ascii-banner/. Accessed 17 Sept. 2023.
+
+‌
+
+‌
+
+‌
 
 
 ## 5.4. Acknowledgements
