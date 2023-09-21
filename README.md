@@ -1,7 +1,6 @@
 <div align="center">
-![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python&color=172416) 
 
-<br>
+![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python&color=172416) ![Excel](https://img.shields.io/badge/excel-14354C?style=for-the-badge&logo=microsoftexcel&color=172416&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=172416&logoColor=darkgreen)
 
 # Python Project <!-- omit in toc -->
 
@@ -59,11 +58,11 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [3.4. Deployment](#34-deployment)
 - [4. Issues and Bugs](#4-issues-and-bugs)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
-  - [5.1. Code snippets](#51-code-snippets)
-  - [5.2. Technologies Used](#52-technologies-used)
-  - [5.3. Libraries Used](#53-libraries-used)
-  - [Initial Resources Research](#initial-resources-research)
-  - [5.4. Acknowledgements](#54-acknowledgements)
+  - [5.1. Initial Resources Research](#51-initial-resources-research)
+  - [5.2. Code snippets](#52-code-snippets)
+  - [5.3. Technologies Used](#53-technologies-used)
+  - [5.4. Libraries Used](#54-libraries-used)
+  - [5.5. Acknowledgements](#55-acknowledgements)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 <div align="center">
@@ -107,7 +106,7 @@ The Strategy plane set the intention of $$$$$$$$$$$$$$$$$$$$$$$$ that would be d
 ***
 
 ### 2.1.2. Initial Product Research
-Initial Product research is credited in the Credits and Acknowledgements section.
+Initial Product research is credited in the [Credits and Acknowledgements section](#5-credits--acknowledgements).
 
 [↑ Back to top](#Portfolio-Project-2-with-Javascript)
 
@@ -115,13 +114,7 @@ Initial Product research is credited in the Credits and Acknowledgements section
 
 ### 2.1.3. Project Timeline
 
-The 6 week timeline for the project was as follows: 
-
-
-**Iteration 1: 11th to 17th August 2023** 
-
-- [x] research a walkthrough with Python3 and Flask
-- [ ] 
+The 6 week timeline used the Agile method of interations and priorities. Todoist was chosen as the project management tool for it's simplicity and efficiency.
 
 [↑ Back to top](#Portfolio-Project-2-with-Javascript)
 
@@ -313,48 +306,12 @@ They can be summarised here:
 
 </div>
 
-## 5.1. Code snippets
+## 5.1. Initial Resources Research
 
+In early stages of development, the following python projects were tested and researched to gain an understanding of Python and find inspiration for an original project.
 
-
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
-
-
-## 5.2. Technologies Used
-
-**Languages**
-- [Python](https://www.python.org/) was used as the backend programming language
-
-**Programming Software**
-- [VSCode](https://code.visualstudio.com/) was used as my code editor
-- [Gitpod](https://www.gitpod.io/) was used as my secondary code editor
-- [Github](https://www.github.com/) was used for Version control
-
-**General Software**
-
-
-**Tools**
-
-
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
-
-***
-
-## 5.3. Libraries Used
-
-**Programming Libraries**
-
-
-**Media libraries**
-
-**Fonts**
-
-
-***
-
-## Initial Resources Research
-
-In early stages of development, the following python projects were tested and researched to gain an understanding of Python, as well as for inspiration.
+<details><summary><b> click here to view initial research and inspiration </b></summary>
+<br><br>
 
 **Python Projects:**
 - “Tomdu3/Millionaire-Kindof: CI Project 3 - Who Wants to Be a Millionaire. Kind Of.” GitHub, 18 Mar. 2023, github.com/tomdu3/millionaire-kindof. Accessed 17 Sept. 2023.
@@ -378,12 +335,10 @@ In early stages of development, the following python projects were tested and re
 
 - “Alexkisielewicz/Home-Library-App: Home Library App Was Created as Portfolio Project #3 (Python Essentials) for Diploma in Full Stack Software Development at Code Institute.” GitHub, 20 Nov. 2022, github.com/alexkisielewicz/home-library-app. Accessed 17 Sept. 2023.
   - advanced CRUD logic 
-  - 
+  - displays tables
+  - changes sorting method
 
 - “Jkingportfolio/CI_PP3_Taco_Trailer: Code Institute Full Stack Developer Course - Portfolio Project 3 - Python Essentials.” GitHub, 15 Sept. 2022, github.com/jkingportfolio/CI_PP3_Taco_Trailer. Accessed 17 Sept. 2023.
-
-‌
-‌
 
 **Walkthroughs:**
 - “Code-Institute-Solutions/Love-Sandwiches-P5-Sourcecode.” GitHub, 25 Mar. 2021, github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode. Accessed 17 Sept. 2023. 
@@ -391,28 +346,105 @@ In early stages of development, the following python projects were tested and re
   - Creates a formula for calculating the data on different sheets
   - Shows how to deny invalid input
   - How to structure code with Main() function and other functions
+  - Experimented with the code to see how python could recognise the data in the Google Sheet, regardless of whether it was a calculated formula or not.
+  
+  <details><summary>Tested some basic CSS decorations, click here to view</summary>
+  
+  ```css
+    body {
+    background-image: url(https://i.ibb.co/fSD71Nb/endless-constellation.png);/*Todo: try hosting the image locally on github*/
+    background-size: 300px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    }
+  ```
+
+  </details>
 - Run That. “Quiz App Using API Data - Python Project 💥 Make a Python Quiz App.” YouTube, YouTube Video, 16 May 2023, www.youtube.com/watch?v=kW2f1Hwgals. Accessed 17 Sept. 2023.
   - how to use OpenTriviaDB API
 
+**Python Libraries**
+
+- “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 21 Sept. 2023.
+- “Colorama.” PyPI, 25 Oct. 2022, pypi.org/project/colorama/. Accessed 21 Sept. 2023.
+
+‌
+**Automatic Testing Resources**
+- “CI Python Linter.” Herokuapp.com, 2023, pep8ci.herokuapp.com/. Accessed 21 Sept. 2023.
 
 **Databases**
 - “Open Trivia DB.” Opentdb.com, 2023, opentdb.com/. Accessed 17 Sept. 2023.
   - this is the API used in the walkthrough above
   - it has a lot of categories and questions
 - “The Trivia API | the Internet’s Largest Database of Multiple Choice Quiz Questions.” The-Trivia-Api.com, 2023, the-trivia-api.com/. Accessed 17 Sept. 2023.
+- Personal Marksheet Database. Accessed 21 Sept 2023.
+  - this is a database that I created at a previous school to calculate student data. The feedback updates according to the data entered, assuming and identifying the most urgent areas to improve.
+  - if I were to use this I would resummarise as an English test?
 
 
 **Surface Design**
 - “Create ASCII Text Banners Online.” Manytools.org - Your Online Toolshed, 2022, manytools.org/hacker-tools/ascii-banner/. Accessed 17 Sept. 2023.
 
+**Other**
+- nevsky.programming. “Top 5 Most Useful Python Libraries #Shorts.” YouTube, YouTube Video, 29 July 2021, www.youtube.com/shorts/1hFq8EdQpqM. Accessed 21 Sept. 2023.
+- “Code Institute Curriculum.” Codeinstitute.net, 2023, learn.codeinstitute.net/ci_program/diplomainfullstacksoftwarecommoncurriculum. Accessed 21 Sept. 2023. Available to students only.
+
+‌
+
+‌</details>
+
+## 5.2. Code snippets
+
+
+
+[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+
+
+## 5.3. Technologies Used
+
+**Languages**
+- [Python](https://www.python.org/) was used as the backend programming language
+
+**Programming Software**
+- [VSCode](https://code.visualstudio.com/) was used as my code editor
+- [Gitpod](https://www.gitpod.io/) was used as my secondary code editor
+- [Github](https://www.github.com/) was used for Version control
+
+**General Software**
+
+
+**Tools**
+
+
+[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+
+***
+
+## 5.4. Libraries Used
+
+**Programming Libraries**
+
+
+**Media libraries**
+
+**Fonts**
+
+
+***
+
+
+
 ‌
 
 ‌
 
-‌
 
-
-## 5.4. Acknowledgements
+## 5.5. Acknowledgements
 
 
 [↑ Back to top](#Portfolio-Project-2-with-Javascript)
