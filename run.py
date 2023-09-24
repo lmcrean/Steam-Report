@@ -2,6 +2,9 @@
 
 import json 
 import gspread
+import requests
+import html
+import random
 from google.oauth2.service_account import Credentials
 
 from pprint import pprint
@@ -31,7 +34,7 @@ def mainMenu():
 
 def main():
     """
-    run all program functions, starting with the main menu.
+    run all program functions, starting with the main menu. Plays the game.
     """
     mainMenu()
     while True:
@@ -56,6 +59,20 @@ def main():
                 print("Please enter a number between 1 and 5.")
         except ValueError:
             print("Please enter a number between 1 and 5.")
-    
+
+def getTriviaQuestions(amount: int, category: int) -> list:
+    """
+    Get trivia questions from the json file
+    """
+    url = f"https://opentdb.com/api.php?amount=50&category={category}&difficulty=easy&type=multiple"
+    response = requests.get(url)
+    response_json = response.json()
+    return response_json["results"]
+
+def printAnswerChoice
+
+def getUserAnswer
+
+def playScienceTrivia
 
 main()
