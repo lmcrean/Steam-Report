@@ -2,7 +2,11 @@
 
 ![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python&color=172416) ![Excel](https://img.shields.io/badge/excel-14354C?style=for-the-badge&logo=microsoftexcel&color=172416&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=172416&logoColor=darkgreen)
 
-# Python Project <!-- omit in toc -->
+
+
+![](assets/media/issues/2023-09-24-10-24-31.png)
+
+# Steam Test: a fun cross-curricular quiz for students <!-- omit in toc -->
 
 </div>
 
@@ -44,7 +48,6 @@ Full Table of Contents: <!-- omit in toc --></div>
     - [2.1.3. Project Timeline](#213-project-timeline)
     - [2.1.4. User Stories \& business goals](#214-user-stories--business-goals)
   - [2.2. Scope plane](#22-scope-plane)
-    - [2.2.1. Scope Strategy](#221-scope-strategy)
     - [2.2.2. Mininum Viable Product features](#222-mininum-viable-product-features)
     - [2.2.3. Unique Selling Point features](#223-unique-selling-point-features)
     - [2.2.4. Scope of Features](#224-scope-of-features)
@@ -116,6 +119,8 @@ Initial Product research is credited in the [Credits and Acknowledgements sectio
 
 The 6 week timeline used the Agile method of interations and priorities. Todoist was chosen as the project management tool for it's simplicity and efficiency.
 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$screen shot of todoist 
+
 [↑ Back to top](#Portfolio-Project-2-with-Javascript)
 
 ***
@@ -126,29 +131,58 @@ The business goals were xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 <div align="center"><h3> User Stories testing</h3>
 
-<img  src="assets/media/documentation/userimage.svg" width="300px" >
+<img  src="assets/media/documentation/userimage.svg" width="900px" >
  </div>
+
+**Business stories**
+I need to promote Careers in STEAM
+
+I need CRUD logic
+
+I need footers at the bottom
+
+User stories
+
+**Scope**
+I need a quiz that tests me on STEAM subjects
+
+I need to check my high score
+
+I want option to update my high score and username
+
+I want to be able to delete my high score
+
+**Structure**
+I need all the controls to navigate the quiz successfully
+
+I need the quiz to show me my overall high score and assess my high score on individual sections.
+
+I need to see my rank in the leaderboard. (If I completed the quiz faster than a user of the same rank, I deserve to be a higher rank)
+
+I need each section to select 10 random MCQs from a large database
+
+I need a time limit of 5 minutes for each section
+
+**Skeleton needs**
+I need to see the logo consistently throughout the game
+
+I need to track my high score throughout the game
+
+I need the all the text to fit in the 80 by 80 box
+
+**Surface needs**
+I would like to see a ASCII decorated logo
+
+I would like to have my terminal centered with a background
 
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
 ## 2.2. Scope plane
 
-For the scope plane, the developer drafted a mininum viable product that informed a scope of features designed to meet the needs of new players.
-
-
-
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
-
-<div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
-
-
-### 2.2.1. Scope Strategy
-
 It was important to choose a project that was achievable in the time frame, and that had a lot of resources available.
 
 The project was researched, conceived and designed in 6 weeks. Important limitations of the project had to be set from the outset such as
-- **choosing a "well-trodden" path that had lots of tutorials and resources available.** This was to ensure that the project was achievable in the time frame, and that the developer could learn from the resources available.
 - **Developing the Mininum Viable Product and Unique Selling Point simultaeneously.** This way, the essential product would be met in time with the deadline, and the unique features would keep me motivated.
 
 [↑ Back to top](#Portfolio-Project-2-with-Javascript)
@@ -162,10 +196,11 @@ A mininum viable product is a product with just enough features to satisfy early
 <i>
 The minumum viable product was
 
-- xxxxxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxxx
+- a navigation menu with START, HIGH SCORES and HOW TO PLAY
+- a quiz with 10 questions per section
+- 5 sections of questions on Science, Technology, Engineering, Arts and Mathematics
+- a high score with a username, score, timestamp and rank. 
+- option to restart the quiz
 </i>
 
 ***
@@ -176,11 +211,11 @@ The minumum viable product was
 The unique selling point features were designed to meet the needs of new players, and to make the game more engaging and fun.
 
 <i>
-
-- xxxxxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxxx
-- xxxxxxxxxxxxxxxx
+- consistent header display in terminal
+- if players have the same rank, the player who completed the quiz faster will be ranked higher
+- incorperation of extension challenges e.g. unique games
+- ASCII header
+- custom feedback for each section
 </i>
 
 [↑ Back to top](#Portfolio-Project-2-with-Javascript)
@@ -384,7 +419,10 @@ In early stages of development, the following python projects were tested and re
 - “The Trivia API | the Internet’s Largest Database of Multiple Choice Quiz Questions.” The-Trivia-Api.com, 2023, the-trivia-api.com/. Accessed 17 Sept. 2023.
 - Personal Marksheet Database. Accessed 21 Sept 2023.
   - this is a database that I created at a previous school to calculate student data. The feedback updates according to the data entered, assuming and identifying the most urgent areas to improve.
-  - if I were to use this I would resummarise as an English test?
+  - The subject matter of an Art Test is a little problematic undermines cultural enrichment aspect of the subject. 
+  - Contains "Free School Meals", Special Needs and English as an Additional Language Data which is useful.
+  - Could it be resummarised as a more objective test?
+  - Could it be an essential prompt that the success criteria is defined by the user with 6 criteria? Then use the existing data as dummy data. Then allow the user to create their own data.
 
 
 **Surface Design**
