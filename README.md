@@ -139,9 +139,7 @@ I need to promote Careers in STEAM
 
 I need CRUD logic
 
-I need footers at the bottom
-
-User stories
+I need footers at the bottom to promote my brand
 
 **Scope**
 I need a quiz that tests me on STEAM subjects
@@ -198,9 +196,11 @@ The minumum viable product was
 
 - a navigation menu with START, HIGH SCORES and HOW TO PLAY
 - a quiz with 10 questions per section
-- 5 sections of questions on Science, Technology, Engineering, Arts and Mathematics
+- 5 sections of questions on Science, Technology, Engineering, Arts and Mathematics. From a database of 50 questions per section.
 - a high score with a username, score, timestamp and rank. 
 - option to restart the quiz
+- open-close information about careers in STEAM
+
 </i>
 
 ***
