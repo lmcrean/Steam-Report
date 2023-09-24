@@ -18,8 +18,9 @@ An [issues.md](https://github.com/lmcrean/Crocodile-Kingdom/blob/main/issues.md)
 
 <div align=center>
 
-***Navigation Links:***
-
+***Navigation Links:***<b>
+[🌐click here to view Deployed Site ](https://steam-test-e65e4d52d763.herokuapp.com/)
+</b>
 </div>
 
 ## Table of Contents: <!-- omit in toc -->
