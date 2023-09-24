@@ -42,6 +42,10 @@ def main():
             choice = int(input("Please enter your choice: "))
             if choice == 1:
                 print("You have chosen to begin the test.")
+                if __name__ == "__main__": #
+                    amount = 10
+                    category = 17
+                    playQuiz(amount,category)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -86,21 +90,23 @@ def getUserAnswer() -> int:
             print("Invalid input. Enter a number between 1 and 4")
 
 def playQuiz (amount: int, category: int) -> None:
-    question_pool = get_question_pool(amount, category)
+    question_pool = getTriviaQuestions(amount, category)
     for question in question_pool:
         question_text = html.unescape(question["question"])
         print(question_text)
         choices = question ["incorrect_answers"]
         choices.extend([question["correct_answer"]])
-        shuffled_choices = shuffle_choices(choices)
-        print_choices(shuffled_choices)
-        user_choice_index = get_user_choice()
+        shuffled_choices = shuffleAnswerChoices(choices)
+        printAnswerChoices(shuffled_choices)
+        user_choice_index = getUserAnswer()
         user_choice_text = shuffled_choices[user_choice_index]
         correct_choice_text = html.unescape(question["correct_answer"])
 
-        if user_choice_text == correct_choice_text
+        if user_choice_text == correct_choice_text:
             print(f"Correct! You answered: {correct_choice_text}\n")
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
+
+
 
 main()
