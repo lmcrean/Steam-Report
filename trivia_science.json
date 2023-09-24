@@ -1,0 +1,605 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which Apollo mission was the first one to land on the Moon?",
+            "correct_answer": "Apollo 11",
+            "incorrect_answers": [
+                "Apollo 10",
+                "Apollo 9",
+                "Apollo 13"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which of the following bones is not in the leg?",
+            "correct_answer": "Radius",
+            "incorrect_answers": [
+                "Patella",
+                "Tibia",
+                "Fibula "
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which of these bones is hardest to break?",
+            "correct_answer": "Femur",
+            "incorrect_answers": [
+                "Cranium",
+                "Humerus",
+                "Tibia"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the largest animal currently on Earth?",
+            "correct_answer": "Blue Whale",
+            "incorrect_answers": [
+                "Orca",
+                "Colossal Squid",
+                "Giraffe"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What does the letter &#039;S&#039; stand for in &#039;NASA&#039;?",
+            "correct_answer": "Space",
+            "incorrect_answers": [
+                "Science",
+                "Society",
+                "Star"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which element has the chemical symbol &#039;Fe&#039;?",
+            "correct_answer": "Iron",
+            "incorrect_answers": [
+                "Gold",
+                "Silver",
+                "Tin"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What name is given to all baby marsupials?",
+            "correct_answer": "Joey",
+            "incorrect_answers": [
+                "Calf",
+                "Pup",
+                "Cub"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Rhinoplasty is a surgical procedure on what part of the human body?",
+            "correct_answer": "Nose",
+            "incorrect_answers": [
+                "Ears",
+                "Chin",
+                "Neck"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which is the longest bone in the human body? ",
+            "correct_answer": "Femur",
+            "incorrect_answers": [
+                "Scapula",
+                "Fibula",
+                "Ulna"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which type of rock is created by intense heat AND pressure?",
+            "correct_answer": "Metamorphic",
+            "incorrect_answers": [
+                "Sedimentary",
+                "Igneous",
+                "Diamond"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the &quot;powerhouse&quot; of the Eukaryotic animal cell?",
+            "correct_answer": "Mitochondria",
+            "incorrect_answers": [
+                "Nucleus",
+                "Chloroplast",
+                "Endoplasmic Reticulum"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "This element, when overcome with extreme heat and pressure, creates diamonds.",
+            "correct_answer": "Carbon",
+            "incorrect_answers": [
+                "Nitrogen",
+                "Oxygen",
+                "Hydrogen"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the elemental symbol for mercury?",
+            "correct_answer": "Hg",
+            "incorrect_answers": [
+                "Me",
+                "Mc",
+                "Hy"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "How many planets are in our Solar System?",
+            "correct_answer": "Eight",
+            "incorrect_answers": [
+                "Nine",
+                "Seven",
+                "Ten"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the hottest planet in the Solar System?",
+            "correct_answer": "Venus",
+            "incorrect_answers": [
+                "Mars",
+                "Mercury",
+                "Jupiter"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the first element on the periodic table?",
+            "correct_answer": "Hydrogen",
+            "incorrect_answers": [
+                "Helium",
+                "Oxygen",
+                "Lithium"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which gas forms about 78% of the Earth&rsquo;s atmosphere?",
+            "correct_answer": "Nitrogen",
+            "incorrect_answers": [
+                "Oxygen",
+                "Argon",
+                "Carbon Dioxide"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the powerhouse of the cell?",
+            "correct_answer": "Mitochondria",
+            "incorrect_answers": [
+                "Ribosome",
+                "Redbull",
+                "Nucleus"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the standard SI unit for temperature?",
+            "correct_answer": "Kelvin",
+            "incorrect_answers": [
+                "Fahrenheit",
+                "Celsius",
+                "Rankine"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "How many planets make up our Solar System?",
+            "correct_answer": "8",
+            "incorrect_answers": [
+                "7",
+                "9",
+                "6"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which of the following blood vessels carries deoxygenated blood?",
+            "correct_answer": "Pulmonary Artery",
+            "incorrect_answers": [
+                "Pulmonary Vein",
+                "Aorta",
+                "Coronary Artery"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the chemical makeup of water?",
+            "correct_answer": "H20",
+            "incorrect_answers": [
+                "C12H6O2",
+                "CO2",
+                "H"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the primary addictive substance found in tobacco?",
+            "correct_answer": "Nicotine",
+            "incorrect_answers": [
+                "Cathinone",
+                "Ephedrine",
+                "Glaucine"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Alzheimer&#039;s disease primarily affects which part of the human body?",
+            "correct_answer": "Brain",
+            "incorrect_answers": [
+                "Lungs",
+                "Skin",
+                "Heart"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What was the name of the first artificial Earth satellite, launched by the Soviet Union in 1957?",
+            "correct_answer": "Sputnik 1",
+            "incorrect_answers": [
+                "Soyuz 7K-OK",
+                "Zenit-2",
+                "Voskhod 3KV"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "How many bones are in the human body?",
+            "correct_answer": "206",
+            "incorrect_answers": [
+                "203",
+                "209",
+                "200"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What does DNA stand for?",
+            "correct_answer": "Deoxyribonucleic Acid",
+            "incorrect_answers": [
+                "Deoxyribogenetic Acid",
+                "Deoxyribogenetic Atoms",
+                "Detoxic Acid"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who is the chemical element Curium named after?",
+            "correct_answer": "Marie &amp; Pierre Curie",
+            "incorrect_answers": [
+                "The Curiosity Rover",
+                "Curious George",
+                "Stephen Curry"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The human heart has how many chambers?",
+            "correct_answer": "4",
+            "incorrect_answers": [
+                "2",
+                "6",
+                "3"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The element involved in making human blood red is which of the following?",
+            "correct_answer": "Iron",
+            "incorrect_answers": [
+                "Copper",
+                "Iridium",
+                "Cobalt"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The asteroid belt is located between which two planets?",
+            "correct_answer": "Mars and Jupiter",
+            "incorrect_answers": [
+                "Jupiter and Saturn",
+                "Mercury and Venus",
+                "Earth and Mars"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Human cells typically have how many copies of each gene?",
+            "correct_answer": "2",
+            "incorrect_answers": [
+                "1",
+                "4",
+                "3"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which is the most abundant element in the universe?",
+            "correct_answer": "Hydrogen",
+            "incorrect_answers": [
+                "Helium",
+                "Lithium",
+                "Oxygen"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The medical term for the belly button is which of the following?",
+            "correct_answer": "Umbilicus",
+            "incorrect_answers": [
+                "Nevus",
+                "Nares",
+                "Paxillus"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The biggest distinction between a eukaryotic cell and a prokaryotic cell is:",
+            "correct_answer": "The presence or absence of a nucleus",
+            "incorrect_answers": [
+                "The overall size",
+                "The presence or absence of certain organelles",
+                "The mode of reproduction"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which element has the highest melting point?",
+            "correct_answer": "Carbon",
+            "incorrect_answers": [
+                "Tungsten",
+                "Platinum",
+                "Osmium"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "How many chromosomes are in your body cells?",
+            "correct_answer": "23",
+            "incorrect_answers": [
+                "21",
+                "22",
+                "24"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the standard atomic weight of a Plutonium nucleus?",
+            "correct_answer": "244",
+            "incorrect_answers": [
+                "94",
+                "481",
+                "128"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "71% of the Earth&#039;s surface is made up of",
+            "correct_answer": "Water",
+            "incorrect_answers": [
+                "Deserts",
+                "Continents",
+                "Forests"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What does LASER stand for?",
+            "correct_answer": "Light amplification by stimulated emission of radiation",
+            "incorrect_answers": [
+                "Lite analysing by stereo ecorazer",
+                "Light amplifier by standby energy of radio",
+                "Life antimatter by standing entry of range"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the unit of electrical resistance?",
+            "correct_answer": "Ohm",
+            "incorrect_answers": [
+                "Mho",
+                "Tesla",
+                "Joule"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What animal takes part in Schr&ouml;dinger&#039;s most famous thought experiment?",
+            "correct_answer": "Cat",
+            "incorrect_answers": [
+                "Dog",
+                "Bat",
+                "Butterfly"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the speed of light in a vacuum?",
+            "correct_answer": "299,792,458 m/s",
+            "incorrect_answers": [
+                "50,461 m/s",
+                "308,215,043 m/s",
+                "751,665,014,151 m/s"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which noble gas has the lowest atomic number?",
+            "correct_answer": "Helium",
+            "incorrect_answers": [
+                "Neon",
+                "Argon",
+                "Krypton"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the official name of the star located closest to the North Celestial Pole?",
+            "correct_answer": "Polaris",
+            "incorrect_answers": [
+                "Eridanus",
+                "Gamma Cephei",
+                "Iota Cephei"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What lies at the center of our galaxy?",
+            "correct_answer": "A black hole",
+            "incorrect_answers": [
+                "A wormhole",
+                "A supernova",
+                "A quasar"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Dry ice is the solid form of what substance?",
+            "correct_answer": "Carbon dioxide",
+            "incorrect_answers": [
+                "Nitrogen",
+                "Ammonia",
+                "Oxygen"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which of these Elements is a metalloid?",
+            "correct_answer": "Antimony",
+            "incorrect_answers": [
+                "Tin",
+                "Bromine",
+                "Rubidium"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the atomic mass of Carbon?",
+            "correct_answer": "12",
+            "incorrect_answers": [
+                "14",
+                "16",
+                "10"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who discovered the Law of Gravity?",
+            "correct_answer": "Sir Isaac Newton",
+            "incorrect_answers": [
+                "Galileo Galilei",
+                "Charles Darwin",
+                "Albert Einstein"
+            ]
+        }
+    ]
+}

@@ -46,6 +46,22 @@ def main():
                     amount = 10
                     category = 17
                     playQuiz(amount,category)
+                if __name__ == "__main__": #
+                    amount = 10
+                    category = 30
+                    playQuiz(amount,category)
+                if __name__ == "__main__": #
+                    amount = 10
+                    category = 10
+                    playQuiz(amount,category)
+                if __name__ == "__main__": #
+                    amount = 10
+                    category = 25
+                    playQuiz(amount,category)
+                if __name__ == "__main__": #
+                    amount = 10
+                    category = 19
+                    playQuiz(amount,category)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -68,7 +84,7 @@ def getTriviaQuestions(amount: int, category: int) -> list:
     """
     Get trivia questions from the json file
     """
-    url = f"https://opentdb.com/api.php?amount=50&category={category}&difficulty=easy&type=multiple"
+    url = f"https://opentdb.com/api.php?amount=10&category={category}&difficulty=easy&type=multiple"
     response = requests.get(url)
     response_json = response.json()
     return response_json["results"]
