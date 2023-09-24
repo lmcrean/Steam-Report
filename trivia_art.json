@@ -1,4 +1,125 @@
 {
-    "response_code": 1,
-    "results": []
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Painter Piet Mondrian (1872 - 1944) was a part of what movement?",
+            "correct_answer": "Neoplasticism",
+            "incorrect_answers": [
+                "Precisionism",
+                "Cubism",
+                "Impressionism"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which time signature is commonly known as &ldquo;Cut Time?&rdquo;",
+            "correct_answer": "2/2",
+            "incorrect_answers": [
+                "4/4",
+                "6/8",
+                "3/4"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who painted the Sistine Chapel?",
+            "correct_answer": "Michelangelo",
+            "incorrect_answers": [
+                "Leonardo da Vinci",
+                "Pablo Picasso",
+                "Raphael"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who painted &quot;Swans Reflecting Elephants&quot;, &quot;Sleep&quot;, and &quot;The Persistence of Memory&quot;?",
+            "correct_answer": "Salvador Dali",
+            "incorrect_answers": [
+                "Jackson Pollock",
+                "Vincent van Gogh",
+                "Edgar Degas"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which of these are the name of a famous marker brand?",
+            "correct_answer": "Copic",
+            "incorrect_answers": [
+                "Dopix",
+                "Cofix",
+                "Marx"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which artist&#039;s style was to use small different colored dots to create a picture?",
+            "correct_answer": "Georges Seurat",
+            "incorrect_answers": [
+                "Paul C&eacute;zanne",
+                "Vincent Van Gogh",
+                "Henri Rousseau"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who painted The Starry Night?",
+            "correct_answer": "Vincent van Gogh",
+            "incorrect_answers": [
+                "Pablo Picasso",
+                "Leonardo da Vinci",
+                "Michelangelo"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which painting was not made by Vincent Van Gogh?",
+            "correct_answer": "The Ninth Wave",
+            "incorrect_answers": [
+                "Caf&eacute; Terrace at Night",
+                "Bedroom In Arles",
+                "Starry Night"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "The painting &quot;The Starry Night&quot; by Vincent van Gogh was part of which art movement?",
+            "correct_answer": "Post-Impressionism",
+            "incorrect_answers": [
+                "Romanticism",
+                "Neoclassical",
+                "Impressionism"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who painted the biblical fresco The Creation of Adam?",
+            "correct_answer": "Michelangelo",
+            "incorrect_answers": [
+                "Leonardo da Vinci",
+                "Caravaggio",
+                "Rembrandt"
+            ]
+        }
+    ]
 }

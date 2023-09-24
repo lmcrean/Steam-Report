@@ -1,4 +1,125 @@
 {
-    "response_code": 1,
-    "results": []
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who wrote &quot;Harry Potter&quot;?",
+            "correct_answer": "J.K. Rowling",
+            "incorrect_answers": [
+                "J.R.R. Tolkien",
+                "Terry Pratchett",
+                "Daniel Radcliffe"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "George Orwell wrote this book, which is often considered a statement on government oversight.",
+            "correct_answer": "1984",
+            "incorrect_answers": [
+                "The Old Man and the Sea",
+                "Catcher and the Rye",
+                "To Kill a Mockingbird"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which famous book is sub-titled &#039;The Modern Prometheus&#039;?",
+            "correct_answer": "Frankenstein",
+            "incorrect_answers": [
+                "Dracula",
+                "The Strange Case of Dr. Jekyll and Mr. Hyde ",
+                "The Legend of Sleepy Hollow"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which famous spy novelist wrote the childrens&#039; story &quot;Chitty-Chitty-Bang-Bang&quot;?",
+            "correct_answer": "Ian Fleming",
+            "incorrect_answers": [
+                "Joseph Conrad",
+                "John Buchan",
+                "Graham Greene"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who was the author of the 1954 novel, &quot;Lord of the Flies&quot;?",
+            "correct_answer": "William Golding",
+            "incorrect_answers": [
+                "Stephen King",
+                "F. Scott Fitzgerald",
+                "Hunter Fox"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the name of the three headed dog in Harry Potter and the Sorcerer&#039;s Stone?",
+            "correct_answer": "Fluffy",
+            "incorrect_answers": [
+                "Spike",
+                "Poofy",
+                "Spot"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the title of the first Sherlock Holmes book by Arthur Conan Doyle?",
+            "correct_answer": "A Study in Scarlet",
+            "incorrect_answers": [
+                "The Sign of the Four",
+                "A Case of Identity",
+                "The Doings of Raffles Haw"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What was the first ever entry written for the SCP Foundation collaborative writing project?",
+            "correct_answer": "SCP-173",
+            "incorrect_answers": [
+                "SCP-001",
+                "SCP-999",
+                "SCP-1459"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Which is NOT a book in the Harry Potter Series?",
+            "correct_answer": "The House Elf",
+            "incorrect_answers": [
+                "The Chamber of Secrets",
+                "The Prisoner of Azkaban",
+                "The Deathly Hallows"
+            ]
+        },
+        {
+            "category": "Entertainment: Books",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In the novel 1984, written by George Orwell, what is the name of the totalitarian regime that controls Oceania?",
+            "correct_answer": "INGSOC",
+            "incorrect_answers": [
+                "Neo-Bolshevism",
+                "Obliteration of the Self",
+                "Earth Alliance"
+            ]
+        }
+    ]
 }

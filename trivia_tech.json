@@ -1,4 +1,365 @@
 {
-    "response_code": 1,
-    "results": []
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "The Harvard architecture for micro-controllers added which additional bus?",
+            "correct_answer": "Instruction",
+            "incorrect_answers": [
+                "Address",
+                "Data",
+                "Control"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What does CPU stand for?",
+            "correct_answer": "Central Processing Unit",
+            "incorrect_answers": [
+                "Central Process Unit",
+                "Computer Personal Unit",
+                "Central Processor Unit"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
+            "correct_answer": "1000",
+            "incorrect_answers": [
+                "512",
+                "1024",
+                "500"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "When Gmail first launched, how much storage did it provide for your email?",
+            "correct_answer": "1GB",
+            "incorrect_answers": [
+                "512MB",
+                "5GB",
+                "Unlimited"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Whistler was the codename of this Microsoft Operating System.",
+            "correct_answer": "Windows XP",
+            "incorrect_answers": [
+                "Windows 2000",
+                "Windows 7",
+                "Windows 95"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What does GHz stand for?",
+            "correct_answer": "Gigahertz",
+            "incorrect_answers": [
+                "Gigahotz",
+                "Gigahetz",
+                "Gigahatz"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+            "correct_answer": "Final",
+            "incorrect_answers": [
+                "Static",
+                "Private",
+                "Public"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "If you were to code software in this language you&#039;d only be able to type 0&#039;s and 1&#039;s.",
+            "correct_answer": "Binary",
+            "incorrect_answers": [
+                "JavaScript",
+                "C++",
+                "Python"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "How many kilobytes in one gigabyte (in decimal)?",
+            "correct_answer": "1000000",
+            "incorrect_answers": [
+                "1024",
+                "1000",
+                "1048576"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which coding language was the #1 programming language in terms of usage on GitHub in 2015?",
+            "correct_answer": "JavaScript",
+            "incorrect_answers": [
+                "C#",
+                "Python",
+                "PHP"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which of these names was an actual codename for a cancelled Microsoft project?",
+            "correct_answer": "Neptune",
+            "incorrect_answers": [
+                "Enceladus",
+                "Pollux",
+                "Saturn"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?",
+            "correct_answer": "Heat Sink",
+            "incorrect_answers": [
+                "CPU Vent",
+                "Temperature Decipator",
+                "Heat Vent"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What does LTS stand for in the software market?",
+            "correct_answer": "Long Term Support",
+            "incorrect_answers": [
+                "Long Taco Service",
+                "Ludicrous Transfer Speed",
+                "Ludicrous Turbo Speed"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "In computing terms, typically what does CLI stand for?",
+            "correct_answer": "Command Line Interface",
+            "incorrect_answers": [
+                "Common Language Input",
+                "Control Line Interface",
+                "Common Language Interface"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The numbering system with a radix of 16 is more commonly referred to as ",
+            "correct_answer": "Hexidecimal",
+            "incorrect_answers": [
+                "Binary",
+                "Duodecimal",
+                "Octal"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which data structure does FILO apply to?",
+            "correct_answer": "Stack",
+            "incorrect_answers": [
+                "Queue",
+                "Heap",
+                "Tree"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which of these is not a key value of Agile software development?",
+            "correct_answer": "Comprehensive documentation",
+            "incorrect_answers": [
+                "Individuals and interactions",
+                "Customer collaboration",
+                "Responding to change"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which of these people was NOT a founder of Apple Inc?",
+            "correct_answer": "Jonathan Ive",
+            "incorrect_answers": [
+                "Steve Jobs",
+                "Ronald Wayne",
+                "Steve Wozniak"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which RAID array type is associated with data mirroring?",
+            "correct_answer": "RAID 1",
+            "incorrect_answers": [
+                "RAID 0",
+                "RAID 10",
+                "RAID 5"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "When did the online streaming service &quot;Mixer&quot; launch?",
+            "correct_answer": "2016",
+            "incorrect_answers": [
+                "2013",
+                "2009",
+                "2011"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What was the first company to use the term &quot;Golden Master&quot;?",
+            "correct_answer": "Apple",
+            "incorrect_answers": [
+                "IBM",
+                "Microsoft",
+                "Google"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "How many values can a single byte represent?",
+            "correct_answer": "256",
+            "incorrect_answers": [
+                "8",
+                "1",
+                "1024"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "The C programming language was created by this American computer scientist. ",
+            "correct_answer": "Dennis Ritchie",
+            "incorrect_answers": [
+                "Tim Berners Lee",
+                "al-Khw\u0101rizm\u012b",
+                "Willis Ware"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which programming language was developed by Sun Microsystems in 1995?",
+            "correct_answer": "Java",
+            "incorrect_answers": [
+                "Python",
+                "Solaris OS",
+                "C++"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What is the name given to layer 4 of the Open Systems Interconnection (ISO) model?",
+            "correct_answer": "Transport",
+            "incorrect_answers": [
+                "Session",
+                "Data link",
+                "Network"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In computing, what does MIDI stand for?",
+            "correct_answer": "Musical Instrument Digital Interface",
+            "incorrect_answers": [
+                "Musical Interface of Digital Instruments",
+                "Modular Interface of Digital Instruments",
+                "Musical Instrument Data Interface"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In computing, what does LAN stand for?",
+            "correct_answer": "Local Area Network",
+            "incorrect_answers": [
+                "Long Antenna Node",
+                "Light Access Node",
+                "Land Address Navigation"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What type of sound chip does the Super Nintendo Entertainment System (SNES) have?",
+            "correct_answer": "ADPCM Sampler",
+            "incorrect_answers": [
+                "FM Synthesizer",
+                "Programmable Sound Generator (PSG)",
+                "PCM Sampler"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Lenovo acquired IBM&#039;s personal computer division, including the ThinkPad line of laptops and tablets, in what year?",
+            "correct_answer": "2005",
+            "incorrect_answers": [
+                "1999",
+                "2002",
+                "2008"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which of these Cherry MX mechanical keyboard switches is both tactile and clicky?",
+            "correct_answer": "Cherry MX Blue",
+            "incorrect_answers": [
+                "Cherry MX Black",
+                "Cherry MX Red",
+                "Cherry MX Brown"
+            ]
+        }
+    ]
 }

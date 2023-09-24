@@ -1,4 +1,125 @@
 {
-    "response_code": 1,
-    "results": []
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "How many zeros are there in a googol?",
+            "correct_answer": "100",
+            "incorrect_answers": [
+                "10",
+                "1,000",
+                "1,000,000"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In Roman Numerals, what does XL equate to?",
+            "correct_answer": "40",
+            "incorrect_answers": [
+                "60",
+                "15",
+                "90"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the Roman numeral for 500?",
+            "correct_answer": "D",
+            "incorrect_answers": [
+                "L",
+                "C",
+                "X"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the first Mersenne prime exponent over 1000?",
+            "correct_answer": "1279",
+            "incorrect_answers": [
+                "2203",
+                "1009",
+                "1069"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What prime number comes next after 19?",
+            "correct_answer": "23",
+            "incorrect_answers": [
+                "25",
+                "21",
+                "27"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "The decimal number 31 in hexadecimal would be what?",
+            "correct_answer": "1F",
+            "incorrect_answers": [
+                "3D",
+                "2E",
+                "1B"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "The French mathematician &Eacute;variste Galois is primarily known for his work in which?",
+            "correct_answer": "Galois Theory",
+            "incorrect_answers": [
+                "Galois&#039; Continued Fractions",
+                "Galois&#039; Method for PDE&#039;s ",
+                "Abelian Integration"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What is the correct order of operations for solving equations?",
+            "correct_answer": "Parentheses, Exponents, Multiplication, Division, Addition, Subtraction",
+            "incorrect_answers": [
+                "Addition, Multiplication, Division, Subtraction, Addition, Parentheses",
+                "Parentheses, Exponents, Addition, Substraction, Multiplication, Division",
+                "The order in which the operations are written."
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "How many books are in Euclid&#039;s Elements of Geometry?",
+            "correct_answer": "13",
+            "incorrect_answers": [
+                "8",
+                "10",
+                "17"
+            ]
+        },
+        {
+            "category": "Science: Mathematics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "In the complex plane, multiplying a given function by i rotates it anti-clockwise by how many degrees?",
+            "correct_answer": "90",
+            "incorrect_answers": [
+                "180",
+                "270",
+                "0"
+            ]
+        }
+    ]
 }

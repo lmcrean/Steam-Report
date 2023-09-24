@@ -5,6 +5,7 @@ import gspread
 import requests
 import html
 import random
+import os #https://docs.python.org/3/library/os.html
 from google.oauth2.service_account import Credentials
 
 from pprint import pprint
@@ -43,25 +44,33 @@ def main():
             if choice == 1:
                 print("You have chosen to begin the test.")
                 if __name__ == "__main__": #
+                    print("Now on to Science!\n")
                     amount = 10
                     category = 17
                     playQuiz(amount,category)
                 if __name__ == "__main__": #
+                    print("Now on to Technology!\n")
                     amount = 10
                     category = 30
                     playQuiz(amount,category)
                 if __name__ == "__main__": #
+                    print("Now on to English!\n")
                     amount = 10
                     category = 10
                     playQuiz(amount,category)
                 if __name__ == "__main__": #
+                    print("Now on to Art!\n")
                     amount = 10
                     category = 25
                     playQuiz(amount,category)
                 if __name__ == "__main__": #
+                    print("Now on to Math!\n")
                     amount = 10
                     category = 19
                     playQuiz(amount,category)
+                if __name__ == "__main__": 
+                    mainMenu()
+
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -122,6 +131,9 @@ def playQuiz (amount: int, category: int) -> None:
             print(f"Correct! You answered: {correct_choice_text}\n")
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
+
+        # Clear the terminal screen
+        os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
