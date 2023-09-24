@@ -34,6 +34,28 @@ def main():
     run all program functions, starting with the main menu.
     """
     mainMenu()
+    while True:
+        try:
+            choice = int(input("Please enter your choice: "))
+            if choice == 1:
+                print("You have chosen to begin the test.")
+                
+            elif choice == 2:
+                print("You have chosen to view the leaderboard.")
+                
+            elif choice == 3:
+                print("You have chosen to view the instructions.")
+                
+            elif choice == 4:
+                print("You have chosen to view information about STEAM.")
+                
+            elif choice == 5:
+                print("You have chosen to exit the program.")
+                
+            else:
+                print("Please enter a number between 1 and 5.")
+        except ValueError:
+            print("Please enter a number between 1 and 5.")
     
 
 main()
