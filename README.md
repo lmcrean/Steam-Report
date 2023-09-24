@@ -1,6 +1,6 @@
 <div align="center">
 
-![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python&color=172416) ![Excel](https://img.shields.io/badge/excel-14354C?style=for-the-badge&logo=microsoftexcel&color=172416&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=172416&logoColor=darkgreen)
+![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python&color=140f5d) ![Excel](https://img.shields.io/badge/excel-14354C?style=for-the-badge&logo=microsoftexcel&color=140f5d&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=140f5d&logoColor=darkgreen)
 
 
 
@@ -60,7 +60,8 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [3.2. Lighthouse Report](#32-lighthouse-report)
   - [3.3. Browserstack Testing](#33-browserstack-testing)
   - [3.4. Deployment](#34-deployment)
-- [4. Issues and Bugs](#4-issues-and-bugs)
+- [4. Python Issues and Bugs](#4-python-issues-and-bugs)
+  - [Cannot access OpenTrivia DB for Tech, Art and Maths](#cannot-access-opentrivia-db-for-tech-art-and-maths)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets](#52-code-snippets)
@@ -74,7 +75,7 @@ Full Table of Contents: <!-- omit in toc --></div>
 # 1. Outline of Features
 
 ## 1.1. Feature 1
-<a src="assets/media/issues/1.1.5.mp4"><img  src="assets/media/documentation/card-flip-gameplay.gif" width="800px" ></a></div>
+</div>
 
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
@@ -105,14 +106,14 @@ The Strategy plane set the intention of $$$$$$$$$$$$$$$$$$$$$$$$ that would be d
 
 ### 2.1.1. Developer Research
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 ***
 
 ### 2.1.2. Initial Product Research
 Initial Product research is credited in the [Credits and Acknowledgements section](#5-credits--acknowledgements).
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 ***
 
@@ -122,7 +123,7 @@ The 6 week timeline used the Agile method of interations and priorities. Todoist
 
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$screen shot of todoist 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 ***
 
@@ -184,7 +185,7 @@ It was important to choose a project that was achievable in the time frame, and 
 The project was researched, conceived and designed in 6 weeks. Important limitations of the project had to be set from the outset such as
 - **Developing the Mininum Viable Product and Unique Selling Point simultaeneously.** This way, the essential product would be met in time with the deadline, and the unique features would keep me motivated.
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -217,9 +218,10 @@ The unique selling point features were designed to meet the needs of new players
 - incorperation of extension challenges e.g. unique games
 - ASCII header
 - custom feedback for each section
+- personality report with a unique personality type for each player, suggests what career the student might enjoy.
 </i>
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 ***
 
@@ -227,7 +229,7 @@ The unique selling point features were designed to meet the needs of new players
 
 The full scope and function of features is discussed in the opening [Features](#1-features) section.
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -237,7 +239,7 @@ This Structure plane summarises the structure of each feature by highlighting mo
 
 ***
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -245,14 +247,14 @@ This Structure plane summarises the structure of each feature by highlighting mo
 
 The skeleton plane covers the layout of the website, and the responsiveness to viewport width.
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
 ## 2.5. Surface Plane
 This surface plane describes the choice of typefaces, colors and style themes relevant to the project's desired tone and practical needs.
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -266,7 +268,7 @@ The Automatic Testing achieved
 - xxxxxxxxxxxxx
 - xxxx
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 ***
 
@@ -274,7 +276,7 @@ The Automatic Testing achieved
 
 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 
 ***
@@ -289,7 +291,7 @@ To check the lighthouse report on a chrome browser, right click inspect and clic
 | Desktop | ![](assets/media/issues/![](assets/media/issues/2023-08-25-16-09-54.png).png)| 
 |Timestamp| 9/9/2023 |
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 
 ***
@@ -300,7 +302,7 @@ https://www.browserstack.com/
 
 xxxxxxxxxxxxxxxx
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -318,22 +320,28 @@ The project was deployed on Heroku. The following steps were taken:
 4. Deploy the app
 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
-# 4. Issues and Bugs
+# 4. Python Issues and Bugs
 
+<img src="assets/media/documentation/issues-icon.svg" width=200>
 
 </div>
 
-***
+## Cannot access OpenTrivia DB for Tech, Art and Maths
+<div align=center><details><summary><b> click here to view the issue output</summary></b>
 
-They can be summarised here:
+![](assets/media/issues/2023-09-24-18-11-18.png)
+
+best solution would be to migrate to local JSON database, as json files are saved.
+</details>
+</div>
 
 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -441,7 +449,7 @@ In early stages of development, the following python projects were tested and re
 
 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 
 ## 5.3. Technologies Used
@@ -460,7 +468,7 @@ In early stages of development, the following python projects were tested and re
 **Tools**
 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 ***
 
@@ -470,6 +478,7 @@ In early stages of development, the following python projects were tested and re
 
 
 **Media libraries**
+- [canva](https://www.canva.com/) was used for the vector graphics in the Readme
 
 **Fonts**
 
@@ -486,7 +495,7 @@ In early stages of development, the following python projects were tested and re
 ## 5.5. Acknowledgements
 
 
-[↑ Back to top](#Portfolio-Project-2-with-Javascript)
+[↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"><br><br><img  src="assets/media/logo.svg" width="200px"></div>
 
