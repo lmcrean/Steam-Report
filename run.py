@@ -1,10 +1,11 @@
 # Google API imported with thanks to Code Institute Tutorial 'Love Sandwiches' by Anna Greaves.
 
-import json 
-import gspread
-import requests
-import html
-import random
+import msvcrt #https://docs.python.org/3/library/msvcrt.html
+import json #https://docs.python.org/3/library/json.html
+import gspread #https://docs.gspread.org/en/latest/
+import requests #https://docs.python-requests.org/en/latest/
+import html #https://docs.python.org/3/library/html.html
+import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 from google.oauth2.service_account import Credentials
 
@@ -114,13 +115,22 @@ def printAnswerChoices(choices: list) -> None:
 
 def getUserAnswer() -> int:
     """
-    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    Get user input and ensure it's a valid number between 1 and 4. 
+    
+    Adapted heavily from walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
     while True:
-        user_choice = int(input("Enter the number of your choice: "))
-        if user_choice in range(1, 5): # 1,2,3 or 4
-            return user_choice - 1
-        else:
+        key = msvcrt.getch()  # Capture a keypress
+        if key == b'\r' or key == b'\n':
+            # Ignore Enter keypress using bytes literal.
+            continue
+        try:
+            user_choice = int(key.decode())  # Convert the keypress to an integer
+            if user_choice in range(1, 5):  # 1,2,3 or 4
+                return user_choice - 1
+            else:
+                print("Invalid input. Enter a number between 1 and 4")
+        except ValueError:
             print("Invalid input. Enter a number between 1 and 4")
 
 def playQuiz (amount: int, category: int) -> None: 
