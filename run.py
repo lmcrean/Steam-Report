@@ -9,7 +9,6 @@ import os #https://docs.python.org/3/library/os.html
 import sys
 from google.oauth2.service_account import Credentials
 from pprint import pprint
-# import msvcrt #https://docs.python.org/3/library/msvcrt.html
 
 ## test code for getch() function
 class _Getch:
@@ -163,18 +162,19 @@ def getUserAnswer() -> int:
     Adapted heavily from walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
     while True:
-        key = msvcrt.getch()  # Capture a keypress
-        if key == b'\r' or key == b'\n':
-            # Ignore Enter keypress using bytes literal.
-            continue
+        user_input = input("Enter the number of your choice: ")
+        if not user_input:  # Check if the input is empty
+            print("Empty input. Enter a number between 1 and 4")
+            continue  # Continue the loop without processing further
         try:
-            user_choice = int(key.decode())  # Convert the keypress to an integer
-            if user_choice in range(1, 5):  # 1,2,3 or 4
+            user_choice = int(user_input)
+            if user_choice in range(1, 5): # 1,2,3, or 4
                 return user_choice - 1
             else:
                 print("Invalid input. Enter a number between 1 and 4")
         except ValueError:
-            print("Invalid input. Enter a number between 1 and 4")
+            print("Invalid input with Value error. Enter a number between 1 and 4")
+
 
 def playQuiz (amount: int, category: int) -> None: 
     """
