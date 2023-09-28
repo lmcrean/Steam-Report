@@ -1,6 +1,5 @@
 # Google API imported with thanks to Code Institute Tutorial 'Love Sandwiches' by Anna Greaves.
 
-import msvcrt #https://docs.python.org/3/library/msvcrt.html
 import json #https://docs.python.org/3/library/json.html
 import gspread #https://docs.gspread.org/en/latest/
 import requests #https://docs.python-requests.org/en/latest/
@@ -8,8 +7,51 @@ import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 from google.oauth2.service_account import Credentials
-
 from pprint import pprint
+import msvcrt #https://docs.python.org/3/library/msvcrt.html
+
+## test code for getch() function
+class _Getch:
+    """Gets a single character from standard input.  Does not echo to the
+screen."""
+    def __init__(self):
+        try:
+            self.impl = _GetchWindows()
+        except ImportError:
+            self.impl = _GetchUnix()
+
+    def __call__(self): return self.impl()
+
+
+class _GetchUnix:
+    def __init__(self):
+        import tty, sys
+
+    def __call__(self):
+        import sys, tty, termios
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(sys.stdin.fileno())
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return ch
+
+
+class _GetchWindows:
+    def __init__(self):
+        import msvcrt
+
+    def __call__(self):
+        import msvcrt
+        return msvcrt.getch()
+
+
+getch = _Getch()
+
+## ...test code for getch() function
+
 
 SCOPE = [
     'https://www.googleapis.com/auth/spreadsheets',
