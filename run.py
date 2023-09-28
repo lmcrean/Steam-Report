@@ -93,7 +93,7 @@ def getTriviaQuestions(amount: int, category: int) -> list:
     """
     Get trivia questions from the json file
     """
-    url = f"https://opentdb.com/api.php?amount=10&category={category}&difficulty=easy&type=multiple"
+    url = f"https://opentdb.com/api.php?amount=10&category={category}&type=multiple"
     response = requests.get(url)
     response_json = response.json()
     return response_json["results"]
@@ -146,9 +146,5 @@ def playQuiz (amount: int, category: int) -> None:
             print(f"Correct! You answered: {correct_choice_text}\n")
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
-
-        
-
-
 
 main()
