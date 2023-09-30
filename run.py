@@ -260,7 +260,24 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
 
-            
+# def getUserName():
+#     """
+#     Get the user's name
+#     """
+
+#     while True: # True
+  
+#         user_name = input("Please enter your name: ")
+
+#         new_score_data = data_str.split(",")
+
+#         if validate_data(sales_data): # if validate_data(sales_data) == True:
+#             print("User name is valid!")
+#             break # break out of the while loop if data is valid
+
+#     return sales_data
+
+# def validate_data(values):      
 
 
 main()

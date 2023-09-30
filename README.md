@@ -235,6 +235,10 @@ This Structure plane summarises the structure of each feature by highlighting mo
 
 ***
 
+Leaderboard flowchart
+
+<div align=center><img src="assets/media/documentation/leaderboard_flowchart.svg" width="1700"></div>
+
 [↑ Back to top](#Steam-Test)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
