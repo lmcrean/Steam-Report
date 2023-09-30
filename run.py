@@ -64,7 +64,8 @@ class SubjectScore:
         self.scoreEnglish = 0
         self.scoreArt = 0
         self.scoreMath = 0
-        return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath
+        self.scoreTotal = 0
+        return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath, self.scoreTotal
 
 def mainMenu():
     """
@@ -237,13 +238,23 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
                 subject_scores.updateMathScore()
             print(f"Correct! You answered: {correct_choice_text}\n")
             print("You have earned 1 point!")
-            print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print("---------Question {question_number} of 10---------\n")
+            print(f"Your Total score is {subject_scores.scoreTotal} of 50 \n")
+            print(f"your score in Science is {subject_scores.scoreScience} of 10")
+            print(f"your score in Technology is {subject_scores.scoreTechnology} of 10")
+            print(f"your score in English is {subject_scores.scoreEnglish} of 10")
+            print(f"your score in Art is {subject_scores.scoreArt} of 10")
+            print(f"your score in Math is {subject_scores.scoreMath} of 10")
+            print(f"---------Question {question_number} of 10---------\n")
             
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
             print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print("--------Question {question_number} of 10---------\n")
+            print(f"your score in Science is {subject_scores.scoreScience} of 10")
+            print(f"your score in Technology is {subject_scores.scoreTechnology} of 10")
+            print(f"your score in English is {subject_scores.scoreEnglish} of 10")
+            print(f"your score in Art is {subject_scores.scoreArt} of 10")
+            print(f"your score in Math is {subject_scores.scoreMath} of 10")
+            print(f"--------Question {question_number} of 10---------\n")
 
             
 
