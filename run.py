@@ -178,7 +178,6 @@ def printAnswerChoices(question_number: int, choices: list) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
-    print(f"Question {question_number} of 10")
     for choice_index, choice in enumerate(choices):
         print(f"{choice_index+1}. {html.unescape(choice)}")
 
@@ -209,12 +208,13 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
     question_pool = getTriviaQuestions(amount, category)
+    question_number = startQuestionNumber()  # Initialize question_number
     for question in question_pool:
         question_text = html.unescape(question["question"])
         print(question_text)
         choices = question ["incorrect_answers"]
         choices.extend([question["correct_answer"]])
-        question_number = trackQuestionNumber()
+        question_number = trackQuestionNumber(question_number)  # Pass question_number as an argument
         shuffled_choices = shuffleAnswerChoices(choices)
         printAnswerChoices(question_number, shuffled_choices)
         user_choice_index = getUserAnswer()
@@ -238,12 +238,13 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"Correct! You answered: {correct_choice_text}\n")
             print("You have earned 1 point!")
             print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print("---------Next Question---------\n")
+            print("---------Question {question_number} of 10---------\n")
             
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
             print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print("--------Next Question---------\n")
+            print("--------Question {question_number} of 10---------\n")
+
             
 
 
