@@ -71,6 +71,7 @@ def mainMenu():
     """
     The main menu of the game
     """
+    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
     print("Welcome to Steam Test!")
     print("Please select an option from the menu below:")
     print("1 - Begin Test")
@@ -93,6 +94,7 @@ def main():
                 print("You have chosen to begin the test.")
                 if __name__ == "__main__": #this expression executes when the file runs as a script but not as a module. Real Python. “What Does If __name__ == ‘__main__’ Do in Python?” Realpython.com, Real Python, 21 Sept. 2022, realpython.com/if-name-main-python/. Accessed 28 Sept. 2023.
                     print("Let's Start with Science!\n")
+                    print(f"---------Question 1 of 10---------\n")
                     amount = 10
                     category = 17 #Category 17 is Science
                     topic = "Science"
@@ -165,7 +167,7 @@ def startQuestionNumber() -> int:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
-    question_number = 0
+    question_number = 1
     return question_number
 
 def trackQuestionNumber(question_number: int) -> int:
@@ -173,6 +175,8 @@ def trackQuestionNumber(question_number: int) -> int:
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
     question_number += 1
+    if question_number > 10:
+        question_number = 1
     return question_number
 
 def printAnswerChoices(question_number: int, choices: list) -> None:
