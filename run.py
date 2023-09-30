@@ -26,12 +26,13 @@ class SubjectScore:
     Update the score in the local variable, using a class to update
     player1. updateScore += 1
     """
-    def __init__(self, scoreScience, scoreTechnology, scoreEnglish, scoreArt, scoreMath):
+    def __init__(self, scoreScience, scoreTechnology, scoreEnglish, scoreArt, scoreMath, scoreTotal):
         self.scoreScience = scoreScience
         self.scoreTechnology = scoreTechnology
         self.scoreEnglish = scoreEnglish
         self.scoreArt = scoreArt
         self.scoreMath = scoreMath
+        self.scoreTotal = scoreTotal
     
     def updateScienceScore(self):
         self.scoreScience += 1
@@ -52,6 +53,10 @@ class SubjectScore:
     def updateMathScore(self):
         self.scoreMath += 1
         return self.scoreMath
+    
+    def updateTotalScore(self):
+        self.scoreTotal += 1
+        return self.scoreTotal
     
     def resetAllScores(self):
         self.scoreScience = 0
@@ -77,38 +82,41 @@ def main():
     """
     run all program functions, starting with the main menu. Plays the game.
     """
+    subject_scores = SubjectScore(0,0,0,0,0,0)
     mainMenu()
     while True:
         try:
             choice = int(input("Please enter your choice: "))
             if choice == 1:
+                os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
                 print("You have chosen to begin the test.")
                 if __name__ == "__main__": #this expression executes when the file runs as a script but not as a module. Real Python. “What Does If __name__ == ‘__main__’ Do in Python?” Realpython.com, Real Python, 21 Sept. 2022, realpython.com/if-name-main-python/. Accessed 28 Sept. 2023.
                     print("Let's Start with Science!\n")
                     amount = 10
                     category = 17
                     topic = "Science"
-                    playQuiz(amount,category)
+                    subject_scores.resetAllScores()
+                    playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to Technology!\n")
                     amount = 10
                     category = 30
-                    playQuiz(amount,category)
+                    playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to English!\n")
                     amount = 10
                     category = 10
-                    playQuiz(amount,category)
+                    playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to Art!\n")
                     amount = 10
                     category = 25
-                    playQuiz(amount,category)
+                    playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to Math!\n")
                     amount = 10
                     category = 19
-                    playQuiz(amount,category)
+                    playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": 
                     mainMenu()
 
@@ -174,7 +182,7 @@ def getUserAnswer() -> int:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
 
-def playQuiz (amount: int, category: int) -> None: 
+def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
@@ -190,13 +198,18 @@ def playQuiz (amount: int, category: int) -> None:
         user_choice_text = shuffled_choices[user_choice_index]
         correct_choice_text = html.unescape(question["correct_answer"])
 
-        # Clear the terminal screen
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 
         if user_choice_text == correct_choice_text:
+            subject_scores.updateTotalScore()  # Update Total score
             print(f"Correct! You answered: {correct_choice_text}\n")
+            print("You have earned 1 point!")
+            print(f"Your Total score is {subject_scores.scoreTotal}\n")
+            print("---------Next Question---------\n")
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
+            print(f"Your Total score is {subject_scores.scoreTotal}\n")
+            print("--------Next Question---------\n")
             
 
 
