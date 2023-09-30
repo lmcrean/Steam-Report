@@ -93,29 +93,35 @@ def main():
                 if __name__ == "__main__": #this expression executes when the file runs as a script but not as a module. Real Python. “What Does If __name__ == ‘__main__’ Do in Python?” Realpython.com, Real Python, 21 Sept. 2022, realpython.com/if-name-main-python/. Accessed 28 Sept. 2023.
                     print("Let's Start with Science!\n")
                     amount = 10
-                    category = 17
+                    category = 17 #Category 17 is Science
                     topic = "Science"
+                    difficulty = "&difficulty=easy"
+                    startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
                     subject_scores.resetAllScores()
                     playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to Technology!\n")
                     amount = 10
-                    category = 30
+                    category = 30 #Category 30 is Technology
+                    startQuestionNumber()
                     playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to English!\n")
                     amount = 10
-                    category = 10
+                    category = 10 #Category 10 is Books
+                    startQuestionNumber()
                     playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to Art!\n")
                     amount = 10
-                    category = 25
+                    category = 25 #Category 25 is Art
+                    startQuestionNumber()
                     playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": #
                     print("Now on to Math!\n")
-                    amount = 10
-                    category = 19
+                    amount = 10 
+                    category = 19 #Category 19 is Math
+                    startQuestionNumber() 
                     playQuiz(amount, category, subject_scores)
                 if __name__ == "__main__": 
                     mainMenu()
@@ -154,12 +160,28 @@ def shuffleAnswerChoices(choices: list) -> list:
     random.shuffle(choices)
     return choices
 
-def printAnswerChoices(choices: list) -> None:
+def startQuestionNumber() -> int:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
+    question_number = 0
+    return question_number
+
+def trackQuestionNumber(question_number: int) -> int:
+    """
+    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    """
+    question_number += 1
+    return question_number
+
+def printAnswerChoices(question_number: int, choices: list) -> None:
+    """
+    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    """
+    print(f"Question {question_number} of 10")
     for choice_index, choice in enumerate(choices):
         print(f"{choice_index+1}. {html.unescape(choice)}")
+
 
 def getUserAnswer() -> int:
     """
@@ -192,8 +214,9 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
         print(question_text)
         choices = question ["incorrect_answers"]
         choices.extend([question["correct_answer"]])
+        question_number = trackQuestionNumber()
         shuffled_choices = shuffleAnswerChoices(choices)
-        printAnswerChoices(shuffled_choices)
+        printAnswerChoices(question_number, shuffled_choices)
         user_choice_index = getUserAnswer()
         user_choice_text = shuffled_choices[user_choice_index]
         correct_choice_text = html.unescape(question["correct_answer"])
@@ -202,10 +225,21 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
 
         if user_choice_text == correct_choice_text:
             subject_scores.updateTotalScore()  # Update Total score
+            if category == 17:
+                subject_scores.updateScienceScore() # Update Science score
+            elif category == 30:
+                subject_scores.updateTechnologyScore() # Update Technology score
+            elif category == 10:
+                subject_scores.updateEnglishScore() # Update English score
+            elif category == 25:
+                subject_scores.updateArtScore()
+            elif category == 19:
+                subject_scores.updateMathScore()
             print(f"Correct! You answered: {correct_choice_text}\n")
             print("You have earned 1 point!")
             print(f"Your Total score is {subject_scores.scoreTotal}\n")
             print("---------Next Question---------\n")
+            
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
             print(f"Your Total score is {subject_scores.scoreTotal}\n")
