@@ -75,7 +75,7 @@ def mainMenu():
     print("Welcome to Steam Test!")
     print("Please select an option from the menu below:")
     print("1 - Begin Test")
-    print("2 - View Leaderboard")
+    print("2 - View Leaderboard (Testing phase)")
     print("3 - How to Play")
     print("4 - About STEAM")
     print("5 - Exit") 
@@ -132,6 +132,7 @@ def main():
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
+                leaderboardMain()
                 
             elif choice == 3:
                 print("You have chosen to view the instructions.")
@@ -260,7 +261,72 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
 
-    
+def get_user_data():
+    """
+    Gets the score and username from user and returns the username.
+    """
 
+    while True: # True
+        username_str = input("Enter your username here: ") # score is an integer
+
+        user_data = username_str
+
+        if validate_name(username_str): # if validate_name(user_data) == True:
+            print("Data is valid!")
+            break # break out of the while loop if data is valid
+
+    return user_data
+  
+def validate_name(values):
+    """
+    The name cannot be more than 9 characters long.
+    """
+    try:
+        if len(values) > 9:
+            raise ValueError(
+                f"Invalid name: {values}. The name cannot be more than 9 characters long. You provided {len(values)} characters.\n"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False  # return False if errors are raised.
+    
+    return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
+
+def update_worksheet(data, worksheet):
+    """
+    Receives a list of strings and integers to be inserted into a worksheet.
+    Update the worksheet with the data provided.
+    """
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet) # access the relevant worksheet
+    worksheet_to_update.append_row(data) # append the data provided as a new row at the bottom of the relevant worksheet
+    print(f"{worksheet} worksheet updated successfully.\n")
+
+def get_high_score_leaderboard():
+    """
+    Collects columns of data from score worksheet, collecting the last 5 entries for each sandwich and returns the data as a list of lists.
+    """
+    score = SHEET.worksheet("score") # access the score worksheet
+
+    # column = score.col_values(3) # get all values from column 3 (index 2), which is the cheese sandwich column. This will return a list of all values in the column.
+    # print(column)
+
+    columns = []
+    for ind in range(1, 7): # range starts at 1 because the first column is the date column, which we don't need. range ends at 7 because there are 6 columns of data. 
+        column = score.col_values(ind) # get all values from each column
+        columns.append(column[-5:]) # append the last 5 values from each column to the columns list. -5: is the index of the last 5 items in a list. This number is chosen because the last 5 rows of data in the score worksheet are the most recent data.
+
+    # pprint(columns) # pretty print the columns list
+    return columns
+
+def leaderboardMain():
+    """
+    Run all program functions
+    """
+    data = get_user_data()  # call the get_user_data function and store the returned data in a variable called data
+    user_data = [data]  # Convert the username string to a list
+    update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
+    get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
+ 
 
 main()
