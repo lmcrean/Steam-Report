@@ -10,49 +10,6 @@ import sys
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 
-## test code for getch() function
-class _Getch:
-    """Gets a single character from standard input.  Does not echo to the
-screen."""
-    def __init__(self):
-        try:
-            self.impl = _GetchWindows()
-        except ImportError:
-            self.impl = _GetchUnix()
-
-    def __call__(self): return self.impl()
-
-
-class _GetchUnix:
-    def __init__(self):
-        import tty, sys
-
-    def __call__(self):
-        import sys, tty, termios
-        fd = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
-        try:
-            tty.setraw(sys.stdin.fileno())
-            ch = sys.stdin.read(1)
-        finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-        return ch
-
-
-class _GetchWindows:
-    def __init__(self):
-        import msvcrt
-
-    def __call__(self):
-        import msvcrt
-        return msvcrt.getch()
-
-
-getch = _Getch()
-
-## ...test code for getch() function
-
-
 SCOPE = [
     'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive.file',
@@ -64,6 +21,46 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE) #creds.with_scopes is a method that take
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) # gspread.authorize is a method that takes in the SCOPED_CREDS variable. This variable is the credentials we created to access the API's.
 SHEET = GSPREAD_CLIENT.open('Steam_Test') # name of the spreadsheet
 
+class SubjectScore:
+    """
+    Update the score in the local variable, using a class to update
+    player1. updateScore += 1
+    """
+    def __init__(self, scoreScience, scoreTechnology, scoreEnglish, scoreArt, scoreMath):
+        self.scoreScience = scoreScience
+        self.scoreTechnology = scoreTechnology
+        self.scoreEnglish = scoreEnglish
+        self.scoreArt = scoreArt
+        self.scoreMath = scoreMath
+    
+    def updateScienceScore(self):
+        self.scoreScience += 1
+        return self.scoreScience
+    
+    def updateTechnologyScore(self):
+        self.scoreTechnology += 1
+        return self.scoreTechnology
+    
+    def updateEnglishScore(self):
+        self.scoreEnglish += 1
+        return self.scoreEnglish
+    
+    def updateArtScore(self):
+        self.scoreArt += 1
+        return self.scoreArt
+    
+    def updateMathScore(self):
+        self.scoreMath += 1
+        return self.scoreMath
+    
+    def resetAllScores(self):
+        self.scoreScience = 0
+        self.scoreTechnology = 0
+        self.scoreEnglish = 0
+        self.scoreArt = 0
+        self.scoreMath = 0
+        return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath
+
 def mainMenu():
     """
     The main menu of the game
@@ -74,7 +71,7 @@ def mainMenu():
     print("2 - View Leaderboard")
     print("3 - How to Play")
     print("4 - About STEAM")
-    print("5 - Exit")
+    print("5 - Exit") 
 
 def main():
     """
@@ -90,6 +87,7 @@ def main():
                     print("Let's Start with Science!\n")
                     amount = 10
                     category = 17
+                    topic = "Science"
                     playQuiz(amount,category)
                 if __name__ == "__main__": #
                     print("Now on to Technology!\n")
@@ -199,5 +197,7 @@ def playQuiz (amount: int, category: int) -> None:
             print(f"Correct! You answered: {correct_choice_text}\n")
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
+            
+
 
 main()

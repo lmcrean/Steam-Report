@@ -12,7 +12,7 @@
 ## Table of Contents<!-- omit in toc -->
 - [1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#1-cannot-access-opentrivia-db-for-tech-art-and-maths)
 - [2. Issue with Enter key resetting game automatically](#2-issue-with-enter-key-resetting-game-automatically)
-- [3. Deployed Heroku does not recognise ```msvcrt.getch()``` function.](#3-deployed-heroku-does-not-recognise-msvcrtgetch-function)
+- [3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2.](#3-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-issue-2)
 
 
 # 1. Cannot access OpenTrivia DB for Tech, Art and Maths.
@@ -80,7 +80,7 @@ GIF:
 
 Programme ignores user pressing enter, and responds immediately to user input.
 
-# 3. Deployed Heroku does not recognise ```msvcrt.getch()``` function.
+# 3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2. 
 
 ![](assets/media/issues/2023-09-28-10-24-46.png)
 
@@ -89,4 +89,16 @@ likely
 Tried this solution:
 - “Getch()-like Unbuffered Character Reading from Stdin on Both Windows and Unix «Python Recipes «ActiveState Code.” Activestate.com, 2023, code.activestate.com/recipes/134892-getch-like-unbuffered-character-reading-from-stdin/. Accessed 28 Sept. 2023.
 
-‌
+‌still did not find getch
+
+‌Solution: Removed ```msvcrt.getch()``` and replaced with ```input()```.‌
+
+![](assets/media/issues/2023-09-28-13-39-32.png)
+
+<div align=center><details><summary><b> click here to view the solution output</b></summary>
+
+![](assets/media/issues/2023-09-28-13-37-38.png)
+
+</details></div> 
+
+The code now runs without error on Heroku, and although UX is a little unnessesary, enter key issue is resolved.

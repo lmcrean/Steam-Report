@@ -213,12 +213,8 @@ The minumum viable product was
 The unique selling point features were designed to meet the needs of new players, and to make the game more engaging and fun.
 
 <i>
-- consistent header display in terminal
-- if players have the same rank, the player who completed the quiz faster will be ranked higher
-- incorperation of extension challenges e.g. unique games
-- ASCII header
-- custom feedback for each section
-- personality report with a unique personality type for each player, suggests what career the student might enjoy.
+- Personality report with a unique personality type for each player, suggests what career the student might enjoy.
+- Gambling game that reveals student's attitude to risk
 </i>
 
 [↑ Back to top](#Steam-Test)
