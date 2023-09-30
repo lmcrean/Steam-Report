@@ -261,21 +261,38 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
 
-def get_user_data():
+def get_user_data(subject_scores):
     """
     Gets the score and username from user and returns the username.
     """
 
     while True: # True
-        username_str = input("Enter your username here: ") # score is an integer
+        username_str = input("Enter your username here: ") # ask the user for their username
 
-        user_data = username_str
+        userscore = { # create a dictionary of the user's scores. A dictionary is a data structure that stores data in key-value pairs. The key is the name of the data, and the value is the data itself. For example, "scoreTotal" is the key, and subject_scores.scoreTotal is the value. The value is the data that is stored in the dictionary.
+            "scoreTotal": subject_scores.scoreTotal,
+            "scoreScience": subject_scores.scoreScience,
+            "scoreTechnology": subject_scores.scoreTechnology,
+            "scoreEnglish": subject_scores.scoreEnglish,
+            "scoreArt": subject_scores.scoreArt,
+            "scoreMath": subject_scores.scoreMath2
+        }
+
+        user_data = [ # create a list of the user's data. A list is a data structure that stores data in a sequence. For example, the first item in the list is the username, the second item is the total score, the third item is the science score, and so on.
+            username_str,
+            userscore["scoreTotal"],
+            userscore["scoreScience"],
+            userscore["scoreTechnology"],
+            userscore["scoreEnglish"],
+            userscore["scoreArt"],
+            userscore["scoreMath"]
+        ]
 
         if validate_name(username_str): # if validate_name(user_data) == True:
             print("Data is valid!")
             break # break out of the while loop if data is valid
 
-    return user_data
+    return user_data # return the user_data list
   
 def validate_name(values):
     """
@@ -323,7 +340,8 @@ def leaderboardMain():
     """
     Run all program functions
     """
-    data = get_user_data()  # call the get_user_data function and store the returned data in a variable called data
+    subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
+    data = get_user_data(subject_scores)  # call the get_user_data function and store the returned data in a variable called data
     user_data = [data]  # Convert the username string to a list
     update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
