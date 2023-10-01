@@ -132,7 +132,7 @@ def main():
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
-                leaderboardMain()
+                leaderboardMain(subject_scores)
                 
             elif choice == 3:
                 print("You have chosen to view the instructions.")
@@ -261,7 +261,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
 
-def get_user_data():
+def get_user_data(subject_scores: SubjectScore) -> None:
     """
     Gets the score and username from user and returns the username.
     """
@@ -269,10 +269,9 @@ def get_user_data():
     while True: # True
         
         username_str = input("Enter your username here: ") # ask the user for their username
-        subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
 
         #place high score data into user_data_string variable
-        user_data_string = f"{username_str},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath},{subject_scores.scoreTotal}" 
+        user_data_string = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" 
 
         user_data = user_data_string.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
 
@@ -329,13 +328,13 @@ def get_high_score_leaderboard():
     # pprint(columns) # pretty print the columns list
     return columns
 
-def leaderboardMain():
+def leaderboardMain(subject_scores): #leaderboardmain() uses the subject_scores variable
     """
     Run all program functions
     """
     print("Welcome to the leaderboard!")
     # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
-    data = get_user_data()  # call the get_user_data function and store the returned data in a variable called data
+    data = get_user_data(subject_scores)  # call the get_user_data function and store the returned data in a variable called data
     print(f"Data provided: {data}\n")
     user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
     print(f"User Data:{user_data}") 
