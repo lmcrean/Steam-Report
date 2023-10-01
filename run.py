@@ -267,19 +267,12 @@ def get_user_data():
     """
 
     while True: # True
-        # username_str = input("Enter your username here: ") # ask the user for their username
+        
+        username_str = input("Enter your username here: ") # ask the user for their username
+        subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
 
-        # user_data = { # create a dictionary of the user's scores. A dictionary is a data structure that stores data in key-value pairs. The key is the name of the data, and the value is the data itself. For example, "scoreTotal" is the key, and subject_scores.scoreTotal is the value. The value is the data that is stored in the dictionary.
-        #     "test user",
-        #     "1",
-        #     "2",
-        #     "3",
-        #     "4",
-        #     "5",
-        #     "6"
-        # }
-
-        user_data_string = "test,1,2,3,4,5,6"
+        #place high score data into user_data_string variable
+        user_data_string = f"{username_str},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath},{subject_scores.scoreTotal}" 
 
         user_data = user_data_string.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
 
