@@ -26,6 +26,10 @@ textarea {
     resize: none;
 }
 
+#logo {
+  margin:auto;
+}
+
 .text {
   color: white;
   font-size: 20px;
@@ -100,9 +104,9 @@ textarea {
 
 
 <body>
-    <button onclick="window.location.reload()">Run Program</button>
+    <img id="logo" src="assets/media/logo.svg" alt="logo">
     <div id="terminal"></div>
-
+    <button onclick="window.location.reload()">Run Program</button>
     <script>
         var term = new Terminal({
             cols: 80,
