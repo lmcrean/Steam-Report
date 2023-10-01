@@ -9,6 +9,8 @@ import os #https://docs.python.org/3/library/os.html
 import sys
 from google.oauth2.service_account import Credentials
 from pprint import pprint
+from prettytable import PrettyTable
+x = PrettyTable()
 
 SCOPE = [
     'https://www.googleapis.com/auth/spreadsheets',
@@ -132,7 +134,17 @@ def main():
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
-                leaderboardMain(subject_scores)
+                print("This is a work in progress.")
+                print("1 - submit high score")
+                print("2 - view leaderboard")
+                choice = int(input("Please enter your choice: "))
+                if choice == 1:
+                    leaderboardMain(subject_scores)
+                elif choice == 2:
+                    get_high_score_leaderboard()
+                else:
+                    print("Please enter a number between 1 and 2.")
+                
                 
             elif choice == 3:
                 print("You have chosen to view the instructions.")
@@ -318,15 +330,25 @@ def get_high_score_leaderboard():
 
     # column = score.col_values(3) # get all values from column 3 (index 2), which is the cheese sandwich column. This will return a list of all values in the column.
     # print(column)
-    print("Retrieving data from Google Sheets...\n")
-    columns = []
-    for ind in range(1, 7): # range starts at 1 because the first column is the date column, which we don't need. range ends at 7 because there are 6 columns of data. 
-        print(f"Retrieving column {ind} of data...\n")
-        column = score.col_values(ind) # get all values from each column
-        columns.append(column[-5:]) # append the last 5 values from each column to the columns list. -5: is the index of the last 5 items in a list. This number is chosen because the last 5 rows of data in the score worksheet are the most recent data.
-    print("Data retrieved successfully.\n")
-    # pprint(columns) # pretty print the columns list
-    return columns
+    
+    worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
+    # Read data from Google Sheet
+    data = worksheet.get_all_values()
+
+    # Create a PrettyTable
+    table = PrettyTable()
+
+    # Set the field names based on the first row of data (assuming it's the header row)
+    table.field_names = data[0]
+
+    # Populate PrettyTable with data
+    for row in data[1:]:
+        table.add_row(row)
+
+    # Print the PrettyTable
+    print(table)
+
+    return 
 
 def leaderboardMain(subject_scores): #leaderboardmain() uses the subject_scores variable
     """

@@ -559,7 +559,8 @@ In early stages of development, the following python projects were tested and re
 
 
 **Media libraries**
-- [canva](https://www.canva.com/) was used for the vector graphics in the Readme
+- [canva](https://www.canva.com/) was used for the vector graphics in the Readme, the logo and favicon
+- [bgjar](https://bgjar.com/) was used for the background image in the Readme
 
 **Fonts**
 
