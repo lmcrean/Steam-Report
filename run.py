@@ -325,28 +325,25 @@ def update_worksheet(data, worksheet):
 def get_high_score_leaderboard():
     """
     Collects columns of data from score worksheet, collecting the last 5 entries for each sandwich and returns the data as a list of lists.
+
+    “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
-    score = SHEET.worksheet("score") # access the score worksheet
 
-    # column = score.col_values(3) # get all values from column 3 (index 2), which is the cheese sandwich column. This will return a list of all values in the column.
-    # print(column)
-    
     worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    # Read data from Google Sheet
-    data = worksheet.get_all_values()
+    
+    data = worksheet.get_all_values() # Read data from Google Sheet
 
-    # Create a PrettyTable
-    table = PrettyTable()
+    table = PrettyTable() # Create a PrettyTable object
 
-    # Set the field names based on the first row of data (assuming it's the header row)
-    table.field_names = data[0]
+    table.field_names = data[0] # Set the field names based on the first row of data (assuming it's the header row)
 
-    # Populate PrettyTable with data
-    for row in data[1:]:
+    for row in data[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
         table.add_row(row)
 
-    # Print the PrettyTable
-    print(table)
+    table.sortby = "Score" # Sort the table by the Total column, in ascending order
+    table.reversesort = True # Reverse the order of the sort, so it's descending
+
+    print(table) # Print the PrettyTable
 
     return 
 
