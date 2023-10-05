@@ -1,5 +1,14 @@
-import json
-import random
+import json #https://docs.python.org/3/library/json.html
+import gspread #https://docs.gspread.org/en/latest/
+import requests #https://docs.python-requests.org/en/latest/
+import html #https://docs.python.org/3/library/html.html
+import random #https://docs.python.org/3/library/random.html
+import os #https://docs.python.org/3/library/os.html
+import sys
+from google.oauth2.service_account import Credentials
+from pprint import pprint
+from prettytable import PrettyTable
+x = PrettyTable()
 
 with open("personality_statements.json", "r") as file: # Load the questions from the JSON file. R = read.
     quiz_data = json.load(file) #“Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
@@ -11,7 +20,10 @@ question_index = 0
 
 random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
 
-def ask_question(question_index): #question_index is a parameter. “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments.asp#:~:text=A%20parameter%20is%20the%20variable,function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
+def ask_question(question_index): 
+    """
+    question_index is a parameter. “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments.asp#:~:text=A%20parameter%20is%20the%20variable,function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
+    """
     question = quiz_data["questions"][question_index]
     print(f"Question {question_index + 1}:")
     print(question["statement"])
@@ -47,3 +59,21 @@ for i, answer in enumerate(user_answers): #enumerate function adds a counter to 
 print("\nTrait Scores:")
 for trait, score in trait_scores.items():
     print(f"{trait}: {score}")
+
+def convert_score_to_percentage(score):
+    """
+    Convert a personality trait score between 5 and 45 to a percentage.
+
+    The trait score should be between 5 and 45.
+    
+    Returns The percentage equivalent of the trait score.
+    """
+    if 5 <= score <= 45:
+        percentage = ((score - 5) / 40) * 100
+        return round(percentage, 1) #“Python Round() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_round.asp. Accessed 5 Oct. 2023.
+    else:
+        return "Invalid score. It should be between 5 and 45."
+    
+print("\nTrait Scores in Percentage:")
+for trait, score in trait_scores.items():
+    print(f"{trait}: {convert_score_to_percentage(score)}%")

@@ -77,7 +77,7 @@ def mainMenu():
     print("Welcome to Steam Test!")
     print("Please select an option from the menu below:")
     print("1 - Begin Test")
-    print("2 - View Leaderboard (Testing phase)")
+    print("2 - View STEAM Leaderboard (Testing phase)")
     print("3 - How to Play")
     print("4 - About STEAM")
     print("5 - Exit") 

@@ -48,6 +48,7 @@ Full Table of Contents: <!-- omit in toc --></div>
     - [2.1.2. Initial Product Research](#212-initial-product-research)
     - [2.1.3. Project Timeline](#213-project-timeline)
     - [2.1.4. User Stories \& business goals](#214-user-stories--business-goals)
+  - [I need a quiz that provides me with broader feedback that relates to other users.](#i-need-a-quiz-that-provides-me-with-broader-feedback-that-relates-to-other-users)
   - [2.2. Scope plane](#22-scope-plane)
     - [2.2.1. Mininum Viable Product features](#221-mininum-viable-product-features)
     - [2.2.2. Unique Selling Point features](#222-unique-selling-point-features)
@@ -131,7 +132,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$screen shot of todoist
 
 ### 2.1.4. User Stories & business goals
 
-The business goals were xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+The business goals were to provide users with a fun and engaging quiz that would promote careers in STEAM. The user stories were developed to meet the business goals.
 
 <div align="center"><h3> User Stories testing</h3>
 
@@ -141,29 +142,33 @@ The business goals were xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 **Business stories**
 I need to promote Careers in STEAM
 
-I need CRUD logic
+I need to use CRUD logic
 
 I need footers at the bottom to promote my brand
 
-**Scope**
-I need a quiz that tests me on STEAM subjects
+**User Stories Scope**
+I need a quiz that provides me with personal feedback on a certain holistic level.
+ - the user takes a personality quiz at the beginning of the session.
+ - the user takes a quiz on STEAM subjects.
+ - the user receives a personal report at the end of the session, summarising their personality, academic knowledge and suggesting what qualities they might have for a career in STEAM.
 
-I need to check my high score
+I need a quiz that provides me with broader feedback that relates to other users.
+  -
 
-I want option to update my high score and username
+I want option to retake the quiz or delete my results.
 
-I want to be able to delete my high score
+I need my identity to be anonymous as there is sensitive data being handled
+ - the user is asked to enter a username at the beginning of the session.
+ - the user is asked to use a Moniker, and is double checked to confirm that their input is not their real name.
 
 **Structure**
-I need all the controls to navigate the quiz successfully
+I need all the controls to navigate the test successfully
 
-I need the quiz to show me my overall high score and assess my high score on individual sections.
+I need the quiz to show me my overall STEAM high score and assess my high score on individual sections.
 
 I need to see my rank in the leaderboard. (If I completed the quiz faster than a user of the same rank, I deserve to be a higher rank)
 
 I need each section to select 10 random MCQs from a large database
-
-I need a time limit of 5 minutes for each section
 
 **Skeleton needs**
 I need to see the logo consistently throughout the game
