@@ -2,104 +2,103 @@
   "questions": [
     {
       "trait": "Openness",
-      "statement": "I eagerly explore new hobbies and interests, even if they are outside my comfort zone."
+      "statement": "I eagerly explore new hobbies and interests, even if they are outside my comfort zone. For example, I could sign up for a local cooking class specializing in exotic cuisines, feeling a sense of excitement and curiosity."
     },
     {
       "trait": "Openness",
-      "statement": "I enjoy attending art exhibitions and cultural events to broaden my horizons."
+      "statement": "I enjoy attending art exhibitions and cultural events to broaden my horizons. In the future, I could visit an art gallery featuring contemporary sculptures and abstract paintings, appreciating the opportunity to learn and experience new artistic expressions."
     },
     {
       "trait": "Openness",
-      "statement": "I often imagine innovative solutions to everyday problems."
+      "statement": "I often imagine innovative solutions to everyday problems. For instance, when faced with a challenging work project, I could come up with a creative workflow that significantly improves efficiency, feeling inspired and creative."
     },
     {
       "trait": "Openness",
-      "statement": "I actively seek out opportunities to travel and experience different cultures."
+      "statement": "I seek out opportunities to travel and experience different cultures. In the future, I could plan a solo trip to Japan to immerse myself in its rich history and traditions, feeling enriched and culturally connected."
     },
     {
       "trait": "Openness",
-      "statement": "I readily embrace new ideas and perspectives, even if they challenge my beliefs."
+      "statement": "I readily embrace new ideas and perspectives, even if they challenge my beliefs. During a debate with a friend, I could genuinely consider their viewpoint, recognizing the value of diverse perspectives."
     },
     {
       "trait": "Conscientiousness",
-      "statement": "I meticulously plan my daily schedule and stick to it."
+      "statement": "I meticulously plan my daily schedule and stick to it. For example, I could maintain a detailed to-do list and prioritize tasks efficiently, feeling organized and in control."
     },
     {
       "trait": "Conscientiousness",
-      "statement": "I take on responsibilities at work and complete tasks on time."
+      "statement": "I take on responsibilities at work and complete tasks on time. In the future, I could successfully lead a project team and meet all project milestones, feeling accomplished and reliable."
     },
     {
       "trait": "Conscientiousness",
-      "statement": "I am highly organized and keep my living space neat and tidy."
+      "statement": "I be highly organized and keep my living space neat and tidy. My friends often comment on how clean and well-organized my home is, contributing to my overall sense of well-being."
     },
     {
       "trait": "Conscientiousness",
-      "statement": "I follow through on my commitments and don't make promises lightly."
+      "statement": "I follow through on my commitments and not make promises lightly. When I volunteer to help organize a charity event, I could dedicate time and effort to ensure its success, being seen as dependable and trustworthy."
     },
     {
       "trait": "Conscientiousness",
-      "statement": "I take pride in my attention to detail and thoroughness in my work."
+      "statement": "I take pride in my attention to detail and thoroughness in my work. In the future, my attention to detail could prevent a critical error in a project report, excelling in tasks that require precision."
     },
     {
       "trait": "Extraversion",
-      "statement": "I love attending parties and social gatherings to meet new people."
+      "statement": "I love attending parties and social gatherings to meet new people. At a future party, I could strike up conversations with several strangers and make new friends, enjoying socializing and making new connections."
     },
     {
       "trait": "Extraversion",
-      "statement": "I feel energized after engaging in lively conversations with friends."
+      "statement": "I feel energized after engaging in lively conversations with friends. After a fun and animated discussion with friends, I could feel invigorated and enthusiastic, ready for more engaging interactions."
     },
     {
       "trait": "Extraversion",
-      "statement": "I often take the initiative to start conversations with strangers."
+      "statement": "I often take the initiative to start conversations with strangers. During a business trip, I could initiate a conversation with a fellow traveler and learn about their fascinating career, being outgoing and approachable."
     },
     {
       "trait": "Extraversion",
-      "statement": "I prefer working in a collaborative and interactive environment."
+      "statement": "I prefer working in a collaborative and interactive environment. In a future team project, I could actively participate in brainstorming sessions and group discussions, thriving in team-oriented settings."
     },
     {
       "trait": "Extraversion",
-      "statement": "I enjoy being the center of attention and don't mind public speaking."
+      "statement": "I enjoy being the center of attention and not mind public speaking. During a future conference presentation, I could confidently deliver a speech to a large audience, feeling comfortable in the spotlight."
     },
     {
       "trait": "Agreeableness",
-      "statement": "I frequently go out of my way to help friends and family in times of need."
+      "statement": "I frequently go out of my way to help friends and family in times of need. When a friend faces a difficult situation, I could offer my support and assistance without hesitation, being supportive and caring."
     },
     {
       "trait": "Agreeableness",
-      "statement": "I avoid arguments and prioritize maintaining peaceful relationships."
+      "statement": "I avoid arguments and prioritize maintaining peaceful relationships. In a future disagreement at work, I could choose to find common ground and resolve the issue amicably, striving for harmony and understanding."
     },
     {
       "trait": "Agreeableness",
-      "statement": "I am empathetic and can easily understand and relate to others' feelings."
+      "statement": "I be empathetic and easily understand and relate to others' feelings. When a friend shares their worries with me, I could empathize with their concerns and offer a listening ear, being sensitive to others' emotions."
     },
     {
       "trait": "Agreeableness",
-      "statement": "I believe in giving people the benefit of the doubt and trust their intentions."
+      "statement": "I believe in giving people the benefit of the doubt and trust their intentions. When a colleague makes a mistake, I could assume it was an honest error and offer assistance, having faith in others' good intentions."
     },
     {
       "trait": "Agreeableness",
-      "statement": "I value teamwork and cooperation over competition."
+      "statement": "I value teamwork and cooperation over competition. During a group project in the future, I could actively collaborate with team members, focusing on our collective success, striving for mutual achievement."
     },
     {
       "trait": "Neuroticism",
-      "statement": "I often find myself worrying about possible negative outcomes in the future."
+      "statement": "I often find myself worrying about possible negative outcomes in the future. For instance, I could sometimes worry about the implications of a career change, feeling anxious and uncertain about the unknown."
     },
     {
       "trait": "Neuroticism",
-      "statement": "I tend to react emotionally to minor inconveniences or setbacks."
+      "statement": "I tend to react emotionally to minor inconveniences or setbacks. When facing a traffic jam in the future, I might become frustrated and agitated, becoming upset or frustrated even in relatively minor stressful situations."
     },
     {
       "trait": "Neuroticism",
-      "statement": "I experience mood swings, with moments of happiness followed by anxiety."
+      "statement": "I experience mood swings, with moments of happiness followed by anxiety. There could be times when I feel elated, but shortly afterward, I might start worrying about future challenges, having emotional ups and downs and making it challenging to maintain a stable mood."
     },
     {
       "trait": "Neuroticism",
-      "statement": "I struggle to relax and often feel tense even in calm situations."
+      "statement": "I struggle to relax and often feel tense even in calm situations. When attempting to unwind after a long day in the future, I could sometimes find it difficult to fully relax, carrying stress even into relaxing moments."
     },
     {
       "trait": "Neuroticism",
-      "statement": "I frequently feel overwhelmed by stress and pressure."
+      "statement": "I frequently feel overwhelmed by stress and pressure. When juggling work and personal responsibilities in the future, I could often feel overwhelmed by the demands of daily life, feeling stressed and under pressure, which can affect my overall well-being."
     }
   ]
 }
-
