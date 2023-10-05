@@ -6,3 +6,19 @@ with open("personality_statements.json", "r") as file: # Load the questions from
 # Initialize variables including trait scores.
 user_answers = [] 
 trait_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
+
+def ask_question(question_index):
+    question = quiz_data["questions"][question_index]
+    print(f"Question {question_index + 1}:")
+    print(question["statement"])
+    response = input("Please enter a number from 1 to 9 (1 = Strongly Disagree, 5=Neutral, 9 = Strongly Agree): ")
+
+    try:
+        response = int(response) # Convert the user's response to an integer
+        if 1 <= response <= 9:
+            user_answers.append(response) # Add the response to the user's answers
+            trait_scores[question["trait"]] += response  # Add the response to the corresponding trait score
+        else:
+            print("Invalid response. Please enter a number between 1 and 9.")
+    except ValueError:
+        print("Invalid response. Please enter a number between 1 and 9.")
