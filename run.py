@@ -178,7 +178,7 @@ def shuffleAnswerChoices(choices: list) -> list:
 
 def startQuestionNumber() -> int:
     """
-    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    Starts the question number at 1
     """
     question_number = 1
     return question_number
@@ -344,6 +344,8 @@ def get_high_score_leaderboard():
     table.reversesort = True # Reverse the order of the sort, so it's descending
 
     print(table) # Print the PrettyTable
+
+    #TODO: 1 insert dummy data into the Rank column from a string
 
     return 
 

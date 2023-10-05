@@ -1,0 +1,105 @@
+{
+  "questions": [
+    {
+      "trait": "Openness",
+      "statement": "I eagerly explore new hobbies and interests, even if they are outside my comfort zone."
+    },
+    {
+      "trait": "Openness",
+      "statement": "I enjoy attending art exhibitions and cultural events to broaden my horizons."
+    },
+    {
+      "trait": "Openness",
+      "statement": "I often imagine innovative solutions to everyday problems."
+    },
+    {
+      "trait": "Openness",
+      "statement": "I actively seek out opportunities to travel and experience different cultures."
+    },
+    {
+      "trait": "Openness",
+      "statement": "I readily embrace new ideas and perspectives, even if they challenge my beliefs."
+    },
+    {
+      "trait": "Conscientiousness",
+      "statement": "I meticulously plan my daily schedule and stick to it."
+    },
+    {
+      "trait": "Conscientiousness",
+      "statement": "I take on responsibilities at work and complete tasks on time."
+    },
+    {
+      "trait": "Conscientiousness",
+      "statement": "I am highly organized and keep my living space neat and tidy."
+    },
+    {
+      "trait": "Conscientiousness",
+      "statement": "I follow through on my commitments and don't make promises lightly."
+    },
+    {
+      "trait": "Conscientiousness",
+      "statement": "I take pride in my attention to detail and thoroughness in my work."
+    },
+    {
+      "trait": "Extraversion",
+      "statement": "I love attending parties and social gatherings to meet new people."
+    },
+    {
+      "trait": "Extraversion",
+      "statement": "I feel energized after engaging in lively conversations with friends."
+    },
+    {
+      "trait": "Extraversion",
+      "statement": "I often take the initiative to start conversations with strangers."
+    },
+    {
+      "trait": "Extraversion",
+      "statement": "I prefer working in a collaborative and interactive environment."
+    },
+    {
+      "trait": "Extraversion",
+      "statement": "I enjoy being the center of attention and don't mind public speaking."
+    },
+    {
+      "trait": "Agreeableness",
+      "statement": "I frequently go out of my way to help friends and family in times of need."
+    },
+    {
+      "trait": "Agreeableness",
+      "statement": "I avoid arguments and prioritize maintaining peaceful relationships."
+    },
+    {
+      "trait": "Agreeableness",
+      "statement": "I am empathetic and can easily understand and relate to others' feelings."
+    },
+    {
+      "trait": "Agreeableness",
+      "statement": "I believe in giving people the benefit of the doubt and trust their intentions."
+    },
+    {
+      "trait": "Agreeableness",
+      "statement": "I value teamwork and cooperation over competition."
+    },
+    {
+      "trait": "Neuroticism",
+      "statement": "I often find myself worrying about possible negative outcomes in the future."
+    },
+    {
+      "trait": "Neuroticism",
+      "statement": "I tend to react emotionally to minor inconveniences or setbacks."
+    },
+    {
+      "trait": "Neuroticism",
+      "statement": "I experience mood swings, with moments of happiness followed by anxiety."
+    },
+    {
+      "trait": "Neuroticism",
+      "statement": "I struggle to relax and often feel tense even in calm situations."
+    },
+    {
+      "trait": "Neuroticism",
+      "statement": "I frequently feel overwhelmed by stress and pressure."
+    }
+  ]
+}
+
