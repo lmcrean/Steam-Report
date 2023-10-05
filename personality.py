@@ -28,3 +28,15 @@ def ask_question(question_index): #question_index is a parameter. “Python Func
 while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object.
     ask_question(question_index)
     question_index += 1
+
+
+print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
+
+for i, answer in enumerate(user_answers): #enumerate function adds a counter to an iterable. “Python Enumerate() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_enumerate.asp. Accessed 5 Oct. 2023. An iterable is an object that can return its members one at a time.
+    question = quiz_data["questions"][i]
+    print(f"Question {i + 1} (Trait: {question['trait']}): {answer}")
+
+# Display the calculated trait scores
+print("\nTrait Scores:")
+for trait, score in trait_scores.items():
+    print(f"{trait}: {score}")
