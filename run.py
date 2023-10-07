@@ -419,7 +419,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
     print("You have completed the test!")
     leaderboardMain(subject_scores)
 
-def get_user_data(subject_scores: SubjectScore) -> None:
+def get_user_data(subject_scores: SubjectScore, username_str) -> None:
     """
     Gets the score and username from user and returns the username.
     """
@@ -427,8 +427,7 @@ def get_user_data(subject_scores: SubjectScore) -> None:
     while True: # True
 
         print("gather user data")
-        username_str = username_str
-
+        
         print(f"Username: {username_str}\n") # print the username
         
         #place high score data into user_data_string variable
