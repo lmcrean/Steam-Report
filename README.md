@@ -66,6 +66,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
   - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-issue-2)
   - [4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:](#44-series-of-error-messages-on-heroku-after-seperating-into-package-files-and-using-from-import-syntax)
+  - [4.5. Issue with personality quiz functioning](#45-issue-with-personality-quiz-functioning)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets](#52-code-snippets)
@@ -487,7 +488,11 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
 ‌
 4. doesn't transition to next section
 ‌
+solution: removed package and converted to single file on run.py
 
+## 4.5. Issue with personality quiz functioning
+VSCode terminal:
+![](assets/media/issues/2023-10-07-18-32-39.png)
 
 [↑ Back to top](#Steam-Test)
 

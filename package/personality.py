@@ -5,7 +5,6 @@ import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 import sys
-import controller
 from google.oauth2.service_account import Credentials
 from run import trait_scores, user_answers, quiz_data
 from pprint import pprint
@@ -66,7 +65,7 @@ def personalityResults():
 
     if input() == "1":
         print("You have chosen to continue on to the subject quiz.")
-        controller.start_subject_quiz()
+        
     else:
         print("Invalid answer. Please enter a number between 1 and 2.")
 
