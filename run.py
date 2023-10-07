@@ -6,7 +6,10 @@ import requests #https://docs.python-requests.org/en/latest/
 import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
-import sys
+import sys; print(sys.executable)
+import subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
+os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable
@@ -29,8 +32,7 @@ with open("personality_statements.json", "r") as file: # Load the questions from
     quiz_data = json.load(file) #“Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
 user_answers = [] 
 trait_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
-question_index = 0
-random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
+
 
 # For subject test, initialize variables including subject scores.
 class SubjectScore:
@@ -101,8 +103,7 @@ def mainMenu():
     The main menu of the game
     """
     os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
-    print("Welcome to Steam Test!")
-    print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
+    
     print("Please select an option from the menu below:")
     print("1 - Begin Personality Quiz (Testing phase)")
     print("2 - View STEAM Leaderboard (Testing phase)")
@@ -114,6 +115,8 @@ def main():
     """
     run all program functions, starting with the main menu. Plays the game.
     """
+    print("Welcome to Steam Test!")
+    print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
     username_str = input("Enter your username here: ") # ask the user for their username
     if validate_name(username_str): 
             print("Data is valid!")
@@ -123,13 +126,9 @@ def main():
             choice = int(input("Please enter your choice: "))
             if choice == 1:
                 """redirects to personality quiz, which will then redirect to subject quiz"""
-                # Loop through the questions and ask them one by one
-                question_index = 0
-                while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
-                    ask_question(question_index)
-                    question_index += 1
                 start_personality_quiz()
                 print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
+                leaderboardMain()
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -166,7 +165,14 @@ def validate_name(values):
 
 
 def start_personality_quiz():
+    random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
+    question_index = 0
+    print(len(quiz_data["questions"]))
+    print(f"question_index: {question_index}")
     ask_question(question_index)
+    while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
+        ask_question(question_index)
+        question_index += 1
     personalityResults()
 
 def start_subject_quiz():
@@ -180,12 +186,14 @@ def start_subject_quiz():
 
 
 
-
+#TODO: fix error with extra question being asked
 
 
 def ask_question(question_index): 
     """
-    question_index is a parameter. “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments.asp#:~:text=A%20parameter%20is%20the%20variable,function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
+    question_index is a parameter. 
+    
+    “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments.asp#:~:text=A%20parameter%20is%20the%20variable,function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
     """
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     question = quiz_data["questions"][question_index]
@@ -250,7 +258,7 @@ def personalityResults():
 
 
 
-
+# FIX: leads back to question 1 of personality quiz
 
 def subjectQuiz():
     subject_scores = SubjectScore(0,0,0,0,0,0)
@@ -289,8 +297,9 @@ def subjectQuiz():
     category = 19 #Category 19 is Math
     startQuestionNumber() 
     playQuiz(amount, category, subject_scores)
-    # if __name__ == "__main__": 
-    print("You have completed the test!")
+    
+    #clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
 
 
 def getTriviaQuestions(amount: int, category: int) -> list:
@@ -405,6 +414,9 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Art is {subject_scores.scoreArt} of 10")
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
+        
+    print("You have completed the test!")
+    leaderboardMain(subject_scores)
 
 def get_user_data(subject_scores: SubjectScore) -> None:
     """
@@ -413,7 +425,10 @@ def get_user_data(subject_scores: SubjectScore) -> None:
 
     while True: # True
 
+        print("gather user data")
         username_str = username_str
+
+        print(f"Username: {username_str}\n") # print the username
         
         #place high score data into user_data_string variable
         user_data_string = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" 
