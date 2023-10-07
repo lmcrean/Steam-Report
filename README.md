@@ -65,7 +65,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
   - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-issue-2)
-  - [4.4. Error message on Heroku:](#44-error-message-on-heroku)
+  - [4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:](#44-series-of-error-messages-on-heroku-after-seperating-into-package-files-and-using-from-import-syntax)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets](#52-code-snippets)
@@ -426,7 +426,7 @@ Tried this solution:
 
 The code now runs without error on Heroku, and although UX is a little unnessesary, enter key issue is resolved.
 
-## 4.4. Error message on Heroku:
+## 4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:
 ![](assets/media/issues/2023-10-07-11-20-46.png)
 ```
 Running startup command: python3 run.py
@@ -478,9 +478,14 @@ Traceback (most recent call last):
     from prettytable import PrettyTable
 ModuleNotFoundError: No module named 'prettytable'
 ```
+solved initially with subprocess:
+DavidMuller. “How to Use Subprocess to Run External Programs in Python 3.” Digitalocean.com, DigitalOcean, 30 July 2020, www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3. Accessed 7 Oct. 2023.
 
-
+```‌python
+subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
+```
 ‌
+4. doesn't transition to next section
 ‌
 
 

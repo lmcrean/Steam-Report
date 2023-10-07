@@ -12,13 +12,14 @@ import sys
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable
+from run import SubjectScore
 
 x = PrettyTable()
 
 def subjectQuiz():
-    from run import subject_scores
+    subject_scores = SubjectScore(0,0,0,0,0,0)
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
-    print("You have chosen to begin the test.")
+    print("We are now beginning the multiple choice test.")
     print("Let's Start with Science!\n")
     print(f"---------Question 1 of 10---------\n")
     amount = 10
@@ -116,12 +117,11 @@ def getUserAnswer() -> int:
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
-from run import SubjectScore
-
 def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
+    print("You have chosen to begin the multiple choice quiz.")
     question_pool = getTriviaQuestions(amount, category)
     question_number = startQuestionNumber()  # Initialize question_number
     for question in question_pool:
@@ -176,9 +176,9 @@ def get_user_data(subject_scores: SubjectScore) -> None:
     """
 
     while True: # True
-        
-        username_str = input("Enter your username here: ") # ask the user for their username
 
+        username_str = username_str
+        
         #place high score data into user_data_string variable
         user_data_string = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" 
 
