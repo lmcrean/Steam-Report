@@ -1,6 +1,6 @@
-from package_python import finalreport
-from package_python import personality
-from package_python import subjectquiz
+from package import finalreport
+from package import personality
+from package import subjectquiz
 import run
 # Google API imported with thanks to Code Institute Tutorial 'Love Sandwiches' by Anna Greaves.
 
@@ -11,10 +11,6 @@ import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 import sys
-from package_python import subjectquiz
-from package_python import quizleaderboard
-from package_python import personality
-from package_python import finalreport
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable
@@ -31,7 +27,51 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE) #creds.with_scopes is a method that take
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) # gspread.authorize is a method that takes in the SCOPED_CREDS variable. This variable is the credentials we created to access the API's.
 SHEET = GSPREAD_CLIENT.open('Steam_Test') # name of the spreadsheet
 
-SubjectScore = run.SubjectScore
+class SubjectScore:
+    """
+    Update the score in the local variable, using a class to update
+    player1. updateScore += 1
+    """
+    def __init__(self, scoreScience, scoreTechnology, scoreEnglish, scoreArt, scoreMath, scoreTotal):
+        self.scoreScience = scoreScience
+        self.scoreTechnology = scoreTechnology
+        self.scoreEnglish = scoreEnglish
+        self.scoreArt = scoreArt
+        self.scoreMath = scoreMath
+        self.scoreTotal = scoreTotal
+    
+    def updateScienceScore(self):
+        self.scoreScience += 1
+        return self.scoreScience
+    
+    def updateTechnologyScore(self):
+        self.scoreTechnology += 1
+        return self.scoreTechnology
+    
+    def updateEnglishScore(self):
+        self.scoreEnglish += 1
+        return self.scoreEnglish
+    
+    def updateArtScore(self):
+        self.scoreArt += 1
+        return self.scoreArt
+    
+    def updateMathScore(self):
+        self.scoreMath += 1
+        return self.scoreMath
+    
+    def updateTotalScore(self):
+        self.scoreTotal += 1
+        return self.scoreTotal
+    
+    def resetAllScores(self):
+        self.scoreScience = 0
+        self.scoreTechnology = 0
+        self.scoreEnglish = 0
+        self.scoreArt = 0
+        self.scoreMath = 0
+        self.scoreTotal = 0
+        return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath, self.scoreTotal
 
 subject_scores = SubjectScore(0,0,0,0,0,0)
 
@@ -120,3 +160,4 @@ def leaderboardMain(subject_scores): #leaderboardmain() uses the subject_scores 
     update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
  
+viewLeaderboard()

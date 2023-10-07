@@ -65,6 +65,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
   - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-issue-2)
+  - [4.4. Error message on Heroku:](#44-error-message-on-heroku)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets](#52-code-snippets)
@@ -425,6 +426,48 @@ Tried this solution:
 
 The code now runs without error on Heroku, and although UX is a little unnessesary, enter key issue is resolved.
 
+## 4.4. Error message on Heroku:
+![](assets/media/issues/2023-10-07-11-20-46.png)
+```
+Running startup command: python3 run.py
+
+Traceback (most recent call last):
+  File "/app/run.py", line 10, in <module>
+    from package_python import subjectquiz
+  File "/app/package_python/subjectquiz.py", line 10, in <module>
+    import run
+  File "/app/run.py", line 11, in <module>
+    from package_python import quizleaderboard
+  File "/app/package_python/quizleaderboard.py", line 1, in <module>
+    from package_python import finalreport
+  File "/app/package_python/finalreport.py", line 1, in <module>
+    from package_python import personality
+  File "/app/package_python/personality.py", line 10, in <module>
+    from prettytable import PrettyTable
+ModuleNotFoundError: No module named 'prettytable'
+```
+
+**1. used . syntax to reference correct file.**
+```python
+from package.subjectquiz import subjectQuiz
+from package.quizleaderboard import quizleaderboard
+```
+Output:
+```console
+You have chosen to begin the test.
+we have reached the final report!
+Question 1:
+I take on responsibilities at work and complete tasks on time. In the future, I could successfully lead a project team and meet all project milestones, feeling accomplished and reliable.
+Please enter a number from 1 to 9 (1 = Strongly Disagree, 5 = Neutral, 9 = Strongly Agree): 
+```
+I'm expecting the code to run the main menu, but it's running the final report. This is because the code is referencing the wrong file.
+
+Sources consulted:
+“The Import Statements in Python.” Tutorialspoint.com, 2020, www.tutorialspoint.com/the-import-statements-in-python#:~:text=Python%27s%20from%20statement%20lets%20you,from%20fib%20import%20fibonacci. Accessed 7 Oct. 2023.
+“Python Packages (with Examples).” Programiz.com, 2023, www.programiz.com/python-programming/package. Accessed 7 Oct. 2023.
+
+‌
+‌
 
 
 [↑ Back to top](#Steam-Test)

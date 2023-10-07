@@ -1,3 +1,5 @@
+#package.subjectquiz.py
+
 # Google API imported with thanks to Code Institute Tutorial 'Love Sandwiches' by Anna Greaves.
 
 import json #https://docs.python.org/3/library/json.html
@@ -7,7 +9,6 @@ import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 import sys
-import run
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable
@@ -75,42 +76,41 @@ subject_scores = SubjectScore(0,0,0,0,0,0)
 def subjectQuiz():
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     print("You have chosen to begin the test.")
-    if __name__ == "__main__": #this expression executes when the file runs as a script but not as a module. Real Python. “What Does If __name__ == ‘__main__’ Do in Python?” Realpython.com, Real Python, 21 Sept. 2022, realpython.com/if-name-main-python/. Accessed 28 Sept. 2023.
-        print("Let's Start with Science!\n")
-        print(f"---------Question 1 of 10---------\n")
-        amount = 10
-        category = 17 #Category 17 is Science
-        topic = "Science"
-        difficulty = "&difficulty=easy"
-        startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
-        subject_scores.resetAllScores()
-        playQuiz(amount, category, subject_scores)
-    if __name__ == "__main__": #
-        print("Now on to Technology!\n")
-        amount = 10
-        category = 30 #Category 30 is Technology
-        startQuestionNumber()
-        playQuiz(amount, category, subject_scores)
-    if __name__ == "__main__": #
-        print("Now on to English!\n")
-        amount = 10
-        category = 10 #Category 10 is Books
-        startQuestionNumber()
-        playQuiz(amount, category, subject_scores)
-    if __name__ == "__main__": #
-        print("Now on to Art!\n")
-        amount = 10
-        category = 25 #Category 25 is Art
-        startQuestionNumber()
-        playQuiz(amount, category, subject_scores)
-    if __name__ == "__main__": #
-        print("Now on to Math!\n")
-        amount = 10 
-        category = 19 #Category 19 is Math
-        startQuestionNumber() 
-        playQuiz(amount, category, subject_scores)
-    if __name__ == "__main__": 
-        mainMenu()
+    print("Let's Start with Science!\n")
+    print(f"---------Question 1 of 10---------\n")
+    amount = 10
+    category = 17 #Category 17 is Science
+    topic = "Science"
+    difficulty = "&difficulty=easy"
+    startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
+    subject_scores.resetAllScores()
+    playQuiz(amount, category, subject_scores)
+    
+    print("Now on to Technology!\n")
+    amount = 10
+    category = 30 #Category 30 is Technology
+    startQuestionNumber()
+    playQuiz(amount, category, subject_scores)
+    
+    print("Now on to English!\n")
+    amount = 10
+    category = 10 #Category 10 is Books
+    startQuestionNumber()
+    playQuiz(amount, category, subject_scores)
+    
+    print("Now on to Art!\n")
+    amount = 10
+    category = 25 #Category 25 is Art
+    startQuestionNumber()
+    playQuiz(amount, category, subject_scores)
+    
+    print("Now on to Math!\n")
+    amount = 10 
+    category = 19 #Category 19 is Math
+    startQuestionNumber() 
+    playQuiz(amount, category, subject_scores)
+    # if __name__ == "__main__": 
+    print("You have completed the test!")
 
 
 def getTriviaQuestions(amount: int, category: int) -> list:
@@ -428,3 +428,5 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Art is {subject_scores.scoreArt} of 10")
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
+
+subjectQuiz()
