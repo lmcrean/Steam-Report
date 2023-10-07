@@ -6,7 +6,9 @@ import requests #https://docs.python-requests.org/en/latest/
 import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
-import sys
+import sys; print(sys.executable)
+import subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable

@@ -470,6 +470,16 @@ Sources consulted:
 “The Import Statements in Python.” Tutorialspoint.com, 2020, www.tutorialspoint.com/the-import-statements-in-python#:~:text=Python%27s%20from%20statement%20lets%20you,from%20fib%20import%20fibonacci. Accessed 7 Oct. 2023.
 “Python Packages (with Examples).” Programiz.com, 2023, www.programiz.com/python-programming/package. Accessed 7 Oct. 2023.
 
+3. currently displaying error with Prettytable
+Heroku:
+```console
+Traceback (most recent call last):
+  File "/app/run.py", line 12, in <module>
+    from prettytable import PrettyTable
+ModuleNotFoundError: No module named 'prettytable'
+```
+
+
 ‌
 ‌
 
