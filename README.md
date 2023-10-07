@@ -462,6 +462,10 @@ Please enter a number from 1 to 9 (1 = Strongly Disagree, 5 = Neutral, 9 = Stron
 ```
 I'm expecting the code to run the main menu, but it's running the final report. This is because the code is referencing the wrong file.
 
+2. Transferred code from personality.py to run.py
+
+![Alt text](image.png)
+
 Sources consulted:
 “The Import Statements in Python.” Tutorialspoint.com, 2020, www.tutorialspoint.com/the-import-statements-in-python#:~:text=Python%27s%20from%20statement%20lets%20you,from%20fib%20import%20fibonacci. Accessed 7 Oct. 2023.
 “Python Packages (with Examples).” Programiz.com, 2023, www.programiz.com/python-programming/package. Accessed 7 Oct. 2023.

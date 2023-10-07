@@ -24,6 +24,54 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE) #creds.with_scopes is a method that take
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) # gspread.authorize is a method that takes in the SCOPED_CREDS variable. This variable is the credentials we created to access the API's.
 SHEET = GSPREAD_CLIENT.open('Steam_Test') # name of the spreadsheet
 
+class SubjectScore:
+    """
+    Update the score in the local variable, using a class to update
+    player1. updateScore += 1
+    """
+    def __init__(self, scoreScience, scoreTechnology, scoreEnglish, scoreArt, scoreMath, scoreTotal):
+        self.scoreScience = scoreScience
+        self.scoreTechnology = scoreTechnology
+        self.scoreEnglish = scoreEnglish
+        self.scoreArt = scoreArt
+        self.scoreMath = scoreMath
+        self.scoreTotal = scoreTotal
+    
+    def updateScienceScore(self):
+        self.scoreScience += 1
+        return self.scoreScience
+    
+    def updateTechnologyScore(self):
+        self.scoreTechnology += 1
+        return self.scoreTechnology
+    
+    def updateEnglishScore(self):
+        self.scoreEnglish += 1
+        return self.scoreEnglish
+    
+    def updateArtScore(self):
+        self.scoreArt += 1
+        return self.scoreArt
+    
+    def updateMathScore(self):
+        self.scoreMath += 1
+        return self.scoreMath
+    
+    def updateTotalScore(self):
+        self.scoreTotal += 1
+        return self.scoreTotal
+    
+    def resetAllScores(self):
+        self.scoreScience = 0
+        self.scoreTechnology = 0
+        self.scoreEnglish = 0
+        self.scoreArt = 0
+        self.scoreMath = 0
+        self.scoreTotal = 0
+        return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath, self.scoreTotal
+    
+subject_scores = SubjectScore(0,0,0,0,0,0)
+
 def mainMenu():
     """
     The main menu of the game

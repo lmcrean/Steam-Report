@@ -51,14 +51,8 @@ while question_index < len(quiz_data["questions"]): #“Python Len() Function.�
 
 print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
 
-for i, answer in enumerate(user_answers): #enumerate function adds a counter to an iterable. “Python Enumerate() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_enumerate.asp. Accessed 5 Oct. 2023. An iterable is an object that can return its members one at a time.
-    question = quiz_data["questions"][i]
-    print(f"Question {i + 1} (Trait: {question['trait']}): {answer}")
 
-# Display the calculated trait scores
-print("\nTrait Scores:")
-for trait, score in trait_scores.items():
-    print(f"{trait}: {score}")
+
 
 def convert_score_to_percentage(score):
     """
@@ -77,3 +71,30 @@ def convert_score_to_percentage(score):
 print("\nTrait Scores in Percentage:")
 for trait, score in trait_scores.items():
     print(f"{trait}: {convert_score_to_percentage(score)}%")
+
+print("\nPress 1 to see breakdown of test scores, press 2 to continue on to the subject quiz!:")
+
+if input() == "1":
+    """"""
+    print("\nTrait Scores:")
+
+    for trait, score in trait_scores.items():
+        print(f"{trait}: {score}") # Display the calculated trait scores
+
+    for i, answer in enumerate(user_answers): #enumerate function adds a counter to an iterable. “Python Enumerate() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_enumerate.asp. Accessed 5 Oct. 2023. An iterable is an object that can return its members one at a time.
+        question = quiz_data["questions"][i] #CURRENTLY
+        print(f"Question {i + 1} (Trait: {question['trait']}): {answer}") #ERROR doesn't print whole list only 25
+
+    print("press 1 to continue on to the subject quiz!")
+    if input() == "1":
+        print("Let's continue on to the subject quiz!")
+        from package.subjectquiz import subjectQuiz
+        subjectQuiz()
+
+    elif input() == "2":
+        print("Let's continue on to the subject quiz!")
+        from package.subjectquiz import subjectQuiz
+        subjectQuiz()
+
+    else:
+        print("Invalid answer. Please enter a number between 1 and 2.")
