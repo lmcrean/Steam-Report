@@ -128,7 +128,8 @@ def main():
                 """redirects to personality quiz, which will then redirect to subject quiz"""
                 start_personality_quiz()
                 print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
-                leaderboardMain()
+                subject_scores = SubjectScore(0,0,0,0,0,0)
+                leaderboardMain(subject_scores)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
