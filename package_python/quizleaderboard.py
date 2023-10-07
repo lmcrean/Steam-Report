@@ -1,6 +1,41 @@
+from package_python import finalreport
+from package_python import personality
+from package_python import subjectquiz
+import run
+# Google API imported with thanks to Code Institute Tutorial 'Love Sandwiches' by Anna Greaves.
 
+import json #https://docs.python.org/3/library/json.html
+import gspread #https://docs.gspread.org/en/latest/
+import requests #https://docs.python-requests.org/en/latest/
+import html #https://docs.python.org/3/library/html.html
+import random #https://docs.python.org/3/library/random.html
+import os #https://docs.python.org/3/library/os.html
+import sys
+from package_python import subjectquiz
+from package_python import quizleaderboard
+from package_python import personality
+from package_python import finalreport
+from google.oauth2.service_account import Credentials
+from pprint import pprint
+from prettytable import PrettyTable
+x = PrettyTable()
 
-def viewLeaderboard()
+SCOPE = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive.file',
+    'https://www.googleapis.com/auth/drive'
+]
+
+CREDS = Credentials.from_service_account_file('creds.json') # creds.json is a file that is not pushed to github
+SCOPED_CREDS = CREDS.with_scopes(SCOPE) #creds.with_scopes is a method that takes in the scope variable. The scope variable is a list of API's that we want to access.
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) # gspread.authorize is a method that takes in the SCOPED_CREDS variable. This variable is the credentials we created to access the API's.
+SHEET = GSPREAD_CLIENT.open('Steam_Test') # name of the spreadsheet
+
+SubjectScore = run.SubjectScore
+
+subject_scores = SubjectScore(0,0,0,0,0,0)
+
+def viewLeaderboard():
     print("You have chosen to view the leaderboard.")
     print("This is a work in progress.")
     print("1 - submit high score")

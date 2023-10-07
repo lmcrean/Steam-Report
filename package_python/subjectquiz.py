@@ -72,7 +72,7 @@ class SubjectScore:
 
 subject_scores = SubjectScore(0,0,0,0,0,0)
 
-def subjectQuiz()
+def subjectQuiz():
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     print("You have chosen to begin the test.")
     if __name__ == "__main__": #this expression executes when the file runs as a script but not as a module. Real Python. “What Does If __name__ == ‘__main__’ Do in Python?” Realpython.com, Real Python, 21 Sept. 2022, realpython.com/if-name-main-python/. Accessed 28 Sept. 2023.

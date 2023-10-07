@@ -148,7 +148,12 @@ def get_high_score_leaderboard():
     sortedByScience = sorted(all_user_info, key = lambda d: d['S'], reverse=True)
 
     print()
-    print(sortedByScience)
+    print("Sorted by Science Score")
+    #“How to Sort a List of Dictionaries by a Value of the Dictionary in Python?” Stack Overflow, 2023, stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python. Accessed 5 Oct. 2023.
+    #“Sort a List of Objects in Python | FavTutor.” FavTutor, 2022, favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
+
+
+
     # table.sortby = "Score" # Sort the table by the Total column, in ascending order
     # table.reversesort = True # Reverse the order of the sort, so it's descending
 

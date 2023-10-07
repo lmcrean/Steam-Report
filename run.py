@@ -16,6 +16,17 @@ from pprint import pprint
 from prettytable import PrettyTable
 x = PrettyTable()
 
+SCOPE = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive.file',
+    'https://www.googleapis.com/auth/drive'
+]
+
+CREDS = Credentials.from_service_account_file('creds.json') # creds.json is a file that is not pushed to github
+SCOPED_CREDS = CREDS.with_scopes(SCOPE) #creds.with_scopes is a method that takes in the scope variable. The scope variable is a list of API's that we want to access.
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) # gspread.authorize is a method that takes in the SCOPED_CREDS variable. This variable is the credentials we created to access the API's.
+SHEET = GSPREAD_CLIENT.open('Steam_Test') # name of the spreadsheet
+
 def mainMenu():
     """
     The main menu of the game
@@ -42,10 +53,10 @@ def main():
         try:
             choice = int(input("Please enter your choice: "))
             if choice == 1:
-                subjectQuiz()
+                subjectquiz.subjectQuiz()
                 
             elif choice == 2:
-                viewLeaderboard()
+                quizleaderboard.viewLeaderboard()
                 
             elif choice == 3:
                 print("You have chosen to view the instructions.")
