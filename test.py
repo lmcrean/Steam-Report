@@ -86,8 +86,9 @@ def generate_comparison_data_main():
     """
     highest_category = calculateHighestSTEAMScore()
     calculateSTEAMRank(highest_category)
-    calculateHighestOCEANScore()
-    assignOCEAN_STEAM_feedback()
+    highest_category = calculateHighestOCEANScore()
+    calculateOCEANPercentage(highest_category)
+    assignOCEAN_STEAM_feedback(highest_category)
 
 def calculateHighestSTEAMScore():
     worksheet = SHEET.worksheet('score')  # Access worksheet
@@ -205,15 +206,42 @@ def calculateSTEAMRank(highest_category):
         ordinal_suffix = ordinal_suffixes.get(user_rank % 10, 'th') # the second parameter is a default.
     print(f"You came {user_rank}{ordinal_suffix} in {highest_category}")
 
-def assignOCEAN_STEAM_feedback():
+def calculateOCEANPercentage(highest_category):
+    worksheet = SHEET.worksheet('personality')  # Access 'personality' worksheet
+    data = worksheet.get_all_values()  # Read data
+    all_user_info = [dict(zip(data[0], row)) for row in data[1:]]  # Populate user info
+    category_mapping = {# Mapping from full category name to worksheet column abbreviation
+        "Openness": "O",
+        "Conscientiousness": "C",
+        "Extraversion": "E",
+        "Agreeableness": "A",
+        "Neuroticism": "N"
+    }
+    category_abbr = category_mapping[highest_category]
+    scores = [int(userinfo[category_abbr]) for userinfo in all_user_info]# Collect scores of all users in the highest OCEAN category
+    scores.sort(reverse=True)  # Sort scores in descending order
+    localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None) # Get the user's score in the highest category
+    if localuser_data:
+        user_score = int(localuser_data[category_abbr]) 
+    else:
+        print(f"Username {username_str} not found")
+        return
+    user_index = scores.index(user_score)# Find the user's index in the sorted list
+    percentage_rank = (1 - (user_index / len(scores))) * 100 # Calculate the user's percentage rank
+    print(f"Our data suggests you were in the top {percentage_rank:.2f}% of {highest_category}")
+
+def assignOCEAN_STEAM_feedback(highest_category):
     with open('finalreport_feedback_database.json', 'r') as file:
         feedback_database = json.load(file) # Call the previously defined functions to get the highest STEAM and OCEAN categories. for JSON file .load see “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 8 Oct. 2023.
     highest_STEAM_category = calculateHighestSTEAMScore()
     highest_OCEAN_category = calculateHighestOCEANScore()
     print(f"Your highest STEAM category is {highest_STEAM_category}")
     print(f"Your highest OCEAN category is {highest_OCEAN_category}")
+    print(f"Based on your results, we suggest you consider a career in {highest_STEAM_category}")
+    print("Here is some feedback based on your results:")
     combined_ID = f"{highest_STEAM_category} and {highest_OCEAN_category}" # Combine the two categories to create a unique ID for the feedback. This is because the feedback is stored in a dictionary, and the dictionary keys must be unique.
     feedback = feedback_database.get(combined_ID, {}).get('feedback', 'Feedback not found') # Retrieve the relevant feedback from the database, for .get see “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
     print(feedback)  # Print the feedback or return it as needed
+    
 
 generate_comparison_data_main()
