@@ -664,7 +664,7 @@ def generate_comparison_data_main():
     calculateOCEANPercentage(highest_category)
     assignOCEAN_STEAM_feedback(highest_category)
 
-def calculateHighestSTEAMScore():
+def calculateHighestSTEAMScore(username_str):
     worksheet = SHEET.worksheet('score')  # Access worksheet
     data = worksheet.get_all_values()  # Read data
     table = PrettyTable()  # Create PrettyTable object
@@ -705,7 +705,7 @@ def calculateHighestSTEAMScore():
     #“How to Sort a List of Dictionaries by a Value of the Dictionary in Python?” Stack Overflow, 2023, stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python. Accessed 5 Oct. 2023.
     #“Sort a List of Objects in Python | FavTutor.” FavTutor, 2022, favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
 
-def calculateHighestOCEANScore():
+def calculateHighestOCEANScore(username_str):
     worksheet = SHEET.worksheet('personality')  # Access 'personality' worksheet
     data = worksheet.get_all_values()  # Read data
     table = PrettyTable()  # Create PrettyTable object
@@ -747,7 +747,7 @@ def calculateHighestOCEANScore():
     
     return highest_category
 
-def calculateSTEAMRank(highest_category):
+def calculateSTEAMRank(highest_category, username_str):
     worksheet = SHEET.worksheet('score')  # Access worksheet
     data = worksheet.get_all_values()  # Read data
     all_user_info = [dict(zip(data[0], row)) for row in data[1:]]  # Populate user info
@@ -780,7 +780,7 @@ def calculateSTEAMRank(highest_category):
         ordinal_suffix = ordinal_suffixes.get(user_rank % 10, 'th') # the second parameter is a default.
     print(f"You came {user_rank}{ordinal_suffix} in {highest_category}")
 
-def calculateOCEANPercentage(highest_category):
+def calculateOCEANPercentage(highest_category, username_str):
     worksheet = SHEET.worksheet('personality')  # Access 'personality' worksheet
     data = worksheet.get_all_values()  # Read data
     all_user_info = [dict(zip(data[0], row)) for row in data[1:]]  # Populate user info
