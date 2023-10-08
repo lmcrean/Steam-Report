@@ -7,7 +7,6 @@ import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 import sys; print(sys.executable)
-from termcolor import colored, cprint
 import subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "termcolor"])
@@ -15,6 +14,7 @@ os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable
+from termcolor import colored, cprint
 x = PrettyTable()
 
 SCOPE = [
