@@ -111,7 +111,7 @@ def mainMenu():
     print("4 - About STEAM")
     print("5 - Exit") 
 
-def main():
+def main(): is the 
     """
     run all program functions, starting with the main menu. Plays the game.
     """
@@ -129,7 +129,7 @@ def main():
                 start_personality_quiz()
                 print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
                 subject_scores = SubjectScore(0,0,0,0,0,0)
-                leaderboardMain(subject_scores)
+                leaderboardMain(subject_scores, username_str)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -363,7 +363,7 @@ def getUserAnswer() -> int:
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
-def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
+def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username_str) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
@@ -417,7 +417,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"--------Question {question_number} of 10---------\n")
         
     print("You have completed the test!")
-    leaderboardMain(subject_scores)
+    leaderboardMain(subject_scores, username_str)
 
 def get_user_data(subject_scores: SubjectScore, username_str) -> None:
     """
@@ -499,13 +499,13 @@ def get_high_score_leaderboard():
 
     return 
 
-def leaderboardMain(subject_scores): #leaderboardmain() uses the subject_scores variable
+def leaderboardMain(subject_scores, username_str): #leaderboardmain() uses the subject_scores variable
     """
     Run all program functions
     """
     print("Welcome to the leaderboard!")
     # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
-    data = get_user_data(subject_scores)  # call the get_user_data function and store the returned data in a variable called data
+    data = get_user_data(subject_scores, username_str)  # call the get_user_data function and store the returned data in a variable called data
     print(f"Data provided: {data}\n")
     user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
     print(f"User Data:{user_data}") 
