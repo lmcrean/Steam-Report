@@ -111,7 +111,7 @@ def mainMenu():
     print("4 - About STEAM")
     print("5 - Exit") 
 
-def main(): is the 
+def main():
     """
     run all program functions, starting with the main menu. Plays the game.
     """
