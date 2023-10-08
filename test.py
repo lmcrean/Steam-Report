@@ -126,29 +126,31 @@ def get_high_score_leaderboard():
     “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
 
-    worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    
-    data = worksheet.get_all_values() # Read data from Google Sheet
+    from prettytable import PrettyTable
 
-    table = PrettyTable() # Create a PrettyTable object
-
-    table.field_names = data[0] # Set the field names based on the first row of data (assuming it's the header row)
-
+    worksheet = SHEET.worksheet('score')  # Access worksheet
+    data = worksheet.get_all_values()  # Read data
+    table, table2 = PrettyTable(), PrettyTable()  # Create PrettyTable objects
+    table.field_names = table2.field_names = data[0]  # Set field names
     all_user_info = []
-
-    for row in data[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
+    for row in data[1:]:  # Populate table and collect user info
         table.add_row(row)
-        # print(table.field_names)
-        # print(row)
-        userinfo = dict(zip(table.field_names,row))
+        userinfo = dict(zip(table.field_names, row))
         all_user_info.append(userinfo)
-
-    print(all_user_info)
-
-    sortedByScience = sorted(all_user_info, key = lambda d: d['S'], reverse=True)
-
-    print()
+    print("Original Table")
+    print(table)  # Display original table
+    # Sort and display table by Science Score
+    sortedByScience = sorted(all_user_info, key=lambda d: int(d['S']), reverse=True)  
+    table_sorted_by_science = PrettyTable()
+    table_sorted_by_science.field_names = data[0]
+    for row_dict in sortedByScience:
+        row = [row_dict[field] for field in table_sorted_by_science.field_names]
+        table_sorted_by_science.add_row(row)
     print("Sorted by Science Score")
+    print(table_sorted_by_science)
+
+
+
     #“How to Sort a List of Dictionaries by a Value of the Dictionary in Python?” Stack Overflow, 2023, stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python. Accessed 5 Oct. 2023.
     #“Sort a List of Objects in Python | FavTutor.” FavTutor, 2022, favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
 

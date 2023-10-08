@@ -639,8 +639,15 @@ def personalityReport():
     3. Identify the OCEAN top % and STEAM rank.
     4. Print the report with the collected variables.
     5. Offer to Restart the programme.
-    """
-    
+    """ 
+    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
+    print("Welcome to your personality report!")
+    print("We're going to look at your personality traits and recommend a career path for you.")
+    print("Press any key to continue")
+    input()
+    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
+    print("Here are your personality traits:")
+    print("Trait Scores in Percentage:")    
 
 
 
