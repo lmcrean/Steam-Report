@@ -199,7 +199,7 @@ def ask_question(question_index):
     print(question["statement"])
 
     while True:
-        response = input("Please enter a number from 1 to 9 (1 = Strongly Disagree, 5 = Neutral, 9 = Strongly Agree): ")
+        response = input("Please enter a number from 1 to 9 \n (1 = Strongly Disagree, 5 = Neutral, 9 = Strongly Agree): ")
 
         try:
             response = int(response) # Convert the user's response to an integer
@@ -253,7 +253,8 @@ def personalityResults():
 
 
 
-
+# ------------------ Subject Quiz Section ------------------
+# In this section, the user will be asked 10 questions from each subject area with 4 multiple choice answers to choose from. The user will be given a score out of 10 for each subject area, and a total score out of 50.
 
 
 def subjectQuiz():
@@ -363,19 +364,19 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
     print("You have chosen to begin the multiple choice quiz.")
-    question_pool = getTriviaQuestions(amount, category)
+    question_pool = getTriviaQuestions(amount, category) # Get the questions from the API
     question_number = startQuestionNumber()  # Initialize question_number
-    for question in question_pool:
-        question_text = html.unescape(question["question"])
-        print(question_text)
-        choices = question ["incorrect_answers"]
-        choices.extend([question["correct_answer"]])
+    for question in question_pool: # Loop through the questions
+        question_text = html.unescape(question["question"]) # Get the question text
+        print(question_text) # Print the question
+        choices = question ["incorrect_answers"] # Get the incorrect answers
+        choices.extend([question["correct_answer"]]) # Add the correct answer to the choices list
         question_number = trackQuestionNumber(question_number)  # Pass question_number as an argument
-        shuffled_choices = shuffleAnswerChoices(choices)
-        printAnswerChoices(question_number, shuffled_choices)
-        user_choice_index = getUserAnswer()
-        user_choice_text = shuffled_choices[user_choice_index]
-        correct_choice_text = html.unescape(question["correct_answer"])
+        shuffled_choices = shuffleAnswerChoices(choices) # Shuffle the choices
+        printAnswerChoices(question_number, shuffled_choices) # Print the choices
+        user_choice_index = getUserAnswer() # Get the user's answer
+        user_choice_text = shuffled_choices[user_choice_index] # Get the user's choice text
+        correct_choice_text = html.unescape(question["correct_answer"]) # Get the correct choice text
 
         os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 
@@ -383,32 +384,27 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username
             subject_scores.updateTotalScore()  # Update Total score
             if category == 17:
                 subject_scores.updateScienceScore() # Update Science score
+                topic = "Science"
             elif category == 30:
                 subject_scores.updateTechnologyScore() # Update Technology score
+                topic = "Technology"
             elif category == 10:
                 subject_scores.updateEnglishScore() # Update English score
+                topic = "English"
             elif category == 25:
                 subject_scores.updateArtScore()
+                topic = "Art"
             elif category == 19:
                 subject_scores.updateMathScore()
+                topic = "Math"
             print(f"Correct! You answered: {correct_choice_text}\n")
             print("You have earned 1 point!")
-            print(f"Your Total score is {subject_scores.scoreTotal} of 50 \n")
-            print(f"your score in Science is {subject_scores.scoreScience} of 10")
-            print(f"your score in Technology is {subject_scores.scoreTechnology} of 10")
-            print(f"your score in English is {subject_scores.scoreEnglish} of 10")
-            print(f"your score in Art is {subject_scores.scoreArt} of 10")
-            print(f"your score in Math is {subject_scores.scoreMath} of 10")
+            print(f"---------Section: {topic}---------\n")
             print(f"---------Question {question_number} of 10---------\n")
             
         else:
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
-            print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print(f"your score in Science is {subject_scores.scoreScience} of 10")
-            print(f"your score in Technology is {subject_scores.scoreTechnology} of 10")
-            print(f"your score in English is {subject_scores.scoreEnglish} of 10")
-            print(f"your score in Art is {subject_scores.scoreArt} of 10")
-            print(f"your score in Math is {subject_scores.scoreMath} of 10")
+            print(f"---------Section: {topic}---------\n")
             print(f"--------Question {question_number} of 10---------\n")
         
     print("You have completed the test!")
@@ -548,6 +544,22 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
+def leaderboardMain(subject_scores, username_str): #leaderboardmain() uses the subject_scores variable
+    """
+    Run all program functions
+    """
+    print("Welcome to the leaderboard!")
+    # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
+    data = get_user_data(subject_scores, username_str)  # call the get_user_data function and store the returned data in a variable called data
+    print(f"Data provided: {data}\n")
+    user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+    print(f"User Data:{user_data}")
+    #press any key to continue
+    print("Press any key to continue")
+    input()
+    update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
+    get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
+
 def get_user_data(subject_scores: SubjectScore, username_str) -> None:
     """
     Gets the score and username from user and returns the username.
@@ -571,6 +583,8 @@ def get_user_data(subject_scores: SubjectScore, username_str) -> None:
             print("Data is valid!")
             break # break out of the while loop if data is valid
     print("Data is ready to be uploaded to Google Sheets.\n")
+    print("Press any key to continue")
+    input()
     return user_data # return the user_data list
   
 def validate_name(values):
@@ -593,21 +607,22 @@ def update_worksheet(data, worksheet):
     Receives a list of strings and integers to be inserted into a worksheet.
     Update the worksheet with the data provided.
     """
-    from run import SHEET
     print(f"Updating {worksheet} worksheet...\n")
-    worksheet_to_update = SHEET.worksheet(worksheet) # access the relevant worksheet
+    worksheet_to_update = SHEET.worksheet('score') # access the relevant worksheet
     print(f"Data to be inserted: {data}\n")
+    print("Press any key to continue")
+    input()
     worksheet_to_update.append_row(data) # append the test user values provided as a new row at the bottom of the relevant worksheet
     print(f"{worksheet} worksheet updated successfully.\n")
+    print("Press any key to continue")
+    input()
 
 def get_high_score_leaderboard():
     """
-    Collects columns of data from score worksheet, collecting the last 5 entries for each sandwich and returns the data as a list of lists.
+    Collects columns of data from score worksheet.
 
     “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
-    from run import SHEET
-
     worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
     
     data = worksheet.get_all_values() # Read data from Google Sheet
@@ -624,22 +639,13 @@ def get_high_score_leaderboard():
 
     print(table) # Print the PrettyTable
 
+    print("Press any key to continue")
+    input()
+
     #TODO: 1 insert dummy data into the Rank column from a string
 
     return 
 
-def leaderboardMain(subject_scores, username_str): #leaderboardmain() uses the subject_scores variable
-    """
-    Run all program functions
-    """
-    print("Welcome to the leaderboard!")
-    # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
-    data = get_user_data(subject_scores, username_str)  # call the get_user_data function and store the returned data in a variable called data
-    print(f"Data provided: {data}\n")
-    user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
-    print(f"User Data:{user_data}") 
-    update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
-    get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
 
 
