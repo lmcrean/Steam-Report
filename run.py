@@ -187,9 +187,6 @@ def start_subject_quiz():
 
 
 
-#TODO: fix error with extra question being asked
-
-
 def ask_question(question_index): 
     """
     question_index is a parameter. 
@@ -258,8 +255,6 @@ def personalityResults():
 
 
 
-
-# FIX: leads back to question 1 of personality quiz
 
 def subjectQuiz():
     subject_scores = SubjectScore(0,0,0,0,0,0)
@@ -419,98 +414,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username
     print("You have completed the test!")
     leaderboardMain(subject_scores, username_str)
 
-def get_user_data(subject_scores: SubjectScore, username_str) -> None:
-    """
-    Gets the score and username from user and returns the username.
-    """
 
-    while True: # True
-
-        print("gather user data")
-        
-        print(f"Username: {username_str}\n") # print the username
-        
-        #place high score data into user_data_string variable
-        user_data_string = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" 
-
-        user_data = user_data_string.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
-
-        print(f"User Data: {user_data}\n") # print the user_data list
-
-
-        if validate_name(user_data): # if validate_name(user_data) == True:
-            print("Data is valid!")
-            break # break out of the while loop if data is valid
-    print("Data is ready to be uploaded to Google Sheets.\n")
-    return user_data # return the user_data list
-  
-def validate_name(values):
-    """
-    The name cannot be more than 9 characters long.
-    """
-    try:
-        if len(values) > 9:
-            raise ValueError(
-                f"Invalid name: {values}. The name cannot be more than 9 characters long. You provided {len(values)} characters.\n"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
-        return False  # return False if errors are raised.
-    
-    return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
-
-def update_worksheet(data, worksheet):
-    """
-    Receives a list of strings and integers to be inserted into a worksheet.
-    Update the worksheet with the data provided.
-    """
-    from run import SHEET
-    print(f"Updating {worksheet} worksheet...\n")
-    worksheet_to_update = SHEET.worksheet(worksheet) # access the relevant worksheet
-    print(f"Data to be inserted: {data}\n")
-    worksheet_to_update.append_row(data) # append the test user values provided as a new row at the bottom of the relevant worksheet
-    print(f"{worksheet} worksheet updated successfully.\n")
-
-def get_high_score_leaderboard():
-    """
-    Collects columns of data from score worksheet, collecting the last 5 entries for each sandwich and returns the data as a list of lists.
-
-    “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
-    """
-    from run import SHEET
-
-    worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    
-    data = worksheet.get_all_values() # Read data from Google Sheet
-
-    table = PrettyTable() # Create a PrettyTable object
-
-    table.field_names = data[0] # Set the field names based on the first row of data (assuming it's the header row)
-
-    for row in data[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
-        table.add_row(row)
-
-    table.sortby = "Score" # Sort the table by the Total column, in ascending order
-    table.reversesort = True # Reverse the order of the sort, so it's descending
-
-    print(table) # Print the PrettyTable
-
-    #TODO: 1 insert dummy data into the Rank column from a string
-
-    return 
-
-def leaderboardMain(subject_scores, username_str): #leaderboardmain() uses the subject_scores variable
-    """
-    Run all program functions
-    """
-    print("Welcome to the leaderboard!")
-    # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
-    data = get_user_data(subject_scores, username_str)  # call the get_user_data function and store the returned data in a variable called data
-    print(f"Data provided: {data}\n")
-    user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
-    print(f"User Data:{user_data}") 
-    update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
-    get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
  
 
 def getTriviaQuestions(amount: int, category: int) -> list:
@@ -625,5 +529,125 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             print(f"your score in Art is {subject_scores.scoreArt} of 10")
             print(f"your score in Math is {subject_scores.scoreMath} of 10")
             print(f"--------Question {question_number} of 10---------\n")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------ Leaderboard Section ------------------
+# In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
+# This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
+
+def get_user_data(subject_scores: SubjectScore, username_str) -> None:
+    """
+    Gets the score and username from user and returns the username.
+    """
+
+    while True: # True
+
+        print("gather user data")
+        
+        print(f"Username: {username_str}\n") # print the username
+        
+        #place high score data into user_data_string variable
+        user_data_string = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" 
+
+        user_data = user_data_string.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
+
+        print(f"User Data: {user_data}\n") # print the user_data list
+
+
+        if validate_name(user_data): # if validate_name(user_data) == True:
+            print("Data is valid!")
+            break # break out of the while loop if data is valid
+    print("Data is ready to be uploaded to Google Sheets.\n")
+    return user_data # return the user_data list
+  
+def validate_name(values):
+    """
+    The name cannot be more than 9 characters long.
+    """
+    try:
+        if len(values) > 9:
+            raise ValueError(
+                f"Invalid name: {values}. The name cannot be more than 9 characters long. You provided {len(values)} characters.\n"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False  # return False if errors are raised.
+    
+    return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
+
+def update_worksheet(data, worksheet):
+    """
+    Receives a list of strings and integers to be inserted into a worksheet.
+    Update the worksheet with the data provided.
+    """
+    from run import SHEET
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet) # access the relevant worksheet
+    print(f"Data to be inserted: {data}\n")
+    worksheet_to_update.append_row(data) # append the test user values provided as a new row at the bottom of the relevant worksheet
+    print(f"{worksheet} worksheet updated successfully.\n")
+
+def get_high_score_leaderboard():
+    """
+    Collects columns of data from score worksheet, collecting the last 5 entries for each sandwich and returns the data as a list of lists.
+
+    “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
+    """
+    from run import SHEET
+
+    worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
+    
+    data = worksheet.get_all_values() # Read data from Google Sheet
+
+    table = PrettyTable() # Create a PrettyTable object
+
+    table.field_names = data[0] # Set the field names based on the first row of data (assuming it's the header row)
+
+    for row in data[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
+        table.add_row(row)
+
+    table.sortby = "Score" # Sort the table by the Total column, in ascending order
+    table.reversesort = True # Reverse the order of the sort, so it's descending
+
+    print(table) # Print the PrettyTable
+
+    #TODO: 1 insert dummy data into the Rank column from a string
+
+    return 
+
+def leaderboardMain(subject_scores, username_str): #leaderboardmain() uses the subject_scores variable
+    """
+    Run all program functions
+    """
+    print("Welcome to the leaderboard!")
+    # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
+    data = get_user_data(subject_scores, username_str)  # call the get_user_data function and store the returned data in a variable called data
+    print(f"Data provided: {data}\n")
+    user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+    print(f"User Data:{user_data}") 
+    update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
+    get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
+
+
+
+
+
+
+
+
+
 
 main()
