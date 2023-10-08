@@ -547,7 +547,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -
 
 
 
-# ------------------ Data sorting Section ------------------
+# ------------------ Data Handling Section ------------------
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
@@ -578,21 +578,6 @@ def getLocalDataFromUser(subject_scores: SubjectScore, username_str) -> None:
 
         break # break out of the while loop
     return user_data # return the user_data list
-  
-def validate_name(values):
-    """
-    The name cannot be more than 9 characters long.
-    """
-    try:
-        if len(values) > 9:
-            raise ValueError(
-                f"Invalid name: {values}. The name cannot be more than 9 characters long. You provided {len(values)} characters.\n"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
-        return False  # return False if errors are raised.
-    
-    return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
 def pushToAPICloud(data):
     """
