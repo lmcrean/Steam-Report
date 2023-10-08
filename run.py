@@ -121,7 +121,7 @@ def main():
     """
     print("Welcome to Steam Test!")
     print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
-    username_str = input("Enter your username here: ") # ask the user for their username
+    username_str = input("Please note that your data will be collected from this test. To protect your privacy, please DO NOT provide your real name and instead provide an anonymous PSEUDONYM e.g. Birdy34, Koala25, Croc76 \n \n Enter your username here: ") # ask the user for their username
     if validate_name(username_str): 
             print("Data is valid!")
     while True:
@@ -551,57 +551,64 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
-def dataHandling(subject_scores, username_str): #dataHandling() uses the subject_scores variable
+def dataHandling(subject_scores, username_str, trait_scores): #dataHandling() uses the subject_scores variable
     """
     Run all program functions
     """
-    data = getLocalDataFromUser(subject_scores, username_str)  # call the getLocalDataFromUser function and store the returned data in a variable called data
-    user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
-    pushToAPICloud(user_data, "score")  # call the pushToAPICloud function with user_data as a list
+    data_STEAM = getLocalDataFromUser_STEAM(subject_scores, username_str)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
+    data_OCEAN = getLocalDataFromUser_OCEAN(trait_scores, username_str)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
+    user_data_STEAM = data_STEAM  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+    user_data_OCEAN = data_OCEAN  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+    pushToAPICloud(user_data_STEAM, "score", user_data_OCEAN, "personality")  # call the pushToAPICloud function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
-def getLocalDataFromUser(subject_scores: SubjectScore, username_str) -> None:
+def getLocalDataFromUser_STEAM(subject_scores: SubjectScore, username_str) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
 
     while True: # loop until valid data is provided
-
-        print("gather user data")
-        
-        print(f"Username: {username_str}\n") # print the username
-        
-        #place high score data into user_data_string variable
-        user_data_string = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" 
-
-        user_data = user_data_string.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
-
+        user_data_string_STEAM = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" #place high score data into user_data_string_STEAM variable
+        user_data_STEAM = user_data_string_STEAM.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
         break # break out of the while loop
-    return user_data # return the user_data list
+    return user_data_STEAM # return the user_data list
 
-def pushToAPICloud(data):
+def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
+    """
+    Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
+    """
+    while True: # loop until valid data is provided
+        user_data_string_OCEAN = f"{username_str},{trait_scores['Openness']},{trait_scores['Conscientiousness']},{trait_scores['Extraversion']},{trait_scores['Agreeableness']},{trait_scores['Neuroticism']}"
+        user_data_OCEAN = user_data_string_OCEAN.split(",")
+        break # break out of the while loop
+    return user_data_OCEAN # return the user_data list
+
+def pushToAPICloud(data_STEAM, data_OCEAN):
     """
     Receives a list of strings and integers to be inserted into a worksheet.
     Update the worksheet with the data provided.
     """
     worksheet_to_update = SHEET.worksheet('score') # access the relevant worksheet
-    worksheet_to_update.append_row(data) # append the test user values provided as a new row at the bottom of the relevant worksheet
+    worksheet_to_update.append_row(data_STEAM) # append the test user values provided as a new row at the bottom of the relevant worksheet
+    worksheet_to_update = SHEET.worksheet('personality') # access the relevant worksheet
+    worksheet_to_update.append_row(data_OCEAN) # append the test user values provided as a new row at the bottom
 
 def get_high_score_leaderboard():
     """
-    Collects columns of data from score worksheet.
+    Prints highscore leaderboard from worksheet. Collects columns of data_STEAM from score worksheet.
 
     “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
     worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    data = worksheet.get_all_values() # Read data from Google Sheet
+    data_STEAM = worksheet.get_all_values() # Read data from Google Sheet
     table = PrettyTable
-    table.field_names = data[0] # Set the field names based on the first row of data (assuming it's the header row)
-    for row in data[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
+    table.field_names = data_STEAM[0] # Set the field names based on the first row of data (assuming it's the header row)
+    for row in data_STEAM[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
         table.add_row(row)
     table.sortby = "Score" # Sort the table by the Total column, in ascending order
     table.reversesort = True # Reverse the order of the sort, so it's descending
     print(table) # Print the PrettyTable
+    
     print("Above is your subject score, sorted by total score.")
     print("Press any key to continue on to your Personality Report")
     input()
@@ -621,14 +628,17 @@ def get_high_score_leaderboard():
 
 
 
-
 def personalityReport():
     """
     This personality report summarises the users personality traits and provides a recommendation for a career path.
 
     It goes through a series of if statements to determine the user's personality type, and then prints the relevant report.
 
-    "your name is X and your personality type is Y, you scored highest in "
+    1. Retrieve the tables from OCEAN and STEAM
+    2. Process the data, identify the individual user's highest score in what category. 
+    3. Identify the OCEAN top % and STEAM rank.
+    4. Print the report with the collected variables.
+    5. Offer to Restart the programme.
     """
     
 
