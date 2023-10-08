@@ -86,6 +86,7 @@ def generate_comparison_data_main():
     """
     calculateHighestSTEAMScore()
     calculateHighestOCEANScore()
+    assignOCEAN_STEAM_feedback()
 
 def calculateHighestSTEAMScore():
     worksheet = SHEET.worksheet('score')  # Access worksheet
@@ -117,11 +118,13 @@ def calculateHighestSTEAMScore():
             elif highest_category == "A":
                 highest_category = "Art"
             elif highest_category == "M":
-                highest_category = "Math"
+                highest_category = "Maths"
         
-        print(f"You scored highest in {highest_category}")
+        
     else:
         print(f"Username {username_str} not found")
+
+    return highest_category
 
     #“How to Sort a List of Dictionaries by a Value of the Dictionary in Python?” Stack Overflow, 2023, stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python. Accessed 5 Oct. 2023.
     #“Sort a List of Objects in Python | FavTutor.” FavTutor, 2022, favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
@@ -163,8 +166,20 @@ def calculateHighestOCEANScore():
             elif highest_category == "N":
                 highest_category = "Neuroticism"
 
-        print(f"You scored highest in {highest_category}")
     else:
         print(f"Username {username_str} not found")
+    
+    return highest_category
+
+def assignOCEAN_STEAM_feedback():
+    with open('finalreport_feedback_database.json', 'r') as file:
+        feedback_database = json.load(file) # Call the previously defined functions to get the highest STEAM and OCEAN categories. for JSON file .load see “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 8 Oct. 2023.
+    highest_STEAM_category = calculateHighestSTEAMScore()
+    highest_OCEAN_category = calculateHighestOCEANScore()
+    print(f"Your highest STEAM category is {highest_STEAM_category}")
+    print(f"Your highest OCEAN category is {highest_OCEAN_category}")
+    combined_ID = f"{highest_STEAM_category} and {highest_OCEAN_category}" # Combine the two categories to create a unique ID for the feedback. This is because the feedback is stored in a dictionary, and the dictionary keys must be unique.
+    feedback = feedback_database.get(combined_ID, {}).get('feedback', 'Feedback not found') # Retrieve the relevant feedback from the database, for .get see “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
+    print(feedback)  # Print the feedback or return it as needed
 
 generate_comparison_data_main()
