@@ -77,9 +77,12 @@ username_str = "Betty56"
 
 def generate_comparison_data_main():
     """
-    Collects columns of data from score worksheet, collecting the last 5 entries for each sandwich and returns the data as a list of lists.
-
-    “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
+    [x] calculate user's highest steam score
+    [x] calculate user's highest ocean score
+    [ ] calculate user's rank in STEAM e.g. "you came 3rd in science"
+    [ ] calculate user's percentage of highest score in OCEAN. e.g. "our data suggests you were in the top 13% of Openness"
+    [ ] suggest a career based on the user's highest STEAM score
+    [ ] suggest what kind of environment the user would thrive in based on their highest OCEAN score
     """
     calculateHighestSTEAMScore()
     calculateHighestOCEANScore()

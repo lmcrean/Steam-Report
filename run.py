@@ -10,6 +10,7 @@ import sys; print(sys.executable)
 from termcolor import colored, cprint
 import subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "termcolor"])
 os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 from google.oauth2.service_account import Credentials
 from pprint import pprint
