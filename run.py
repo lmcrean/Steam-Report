@@ -7,6 +7,7 @@ import html #https://docs.python.org/3/library/html.html
 import random #https://docs.python.org/3/library/random.html
 import os #https://docs.python.org/3/library/os.html
 import sys; print(sys.executable)
+from termcolor import colored, cprint
 import subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
 os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
@@ -103,7 +104,10 @@ def mainMenu():
     The main menu of the game
     """
     os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
-    
+
+    print("Welcome to Steam Test!")
+    print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
+
     print("Please select an option from the menu below:")
     print("1 - Begin Personality Quiz (Testing phase)")
     print("2 - View STEAM Leaderboard (Testing phase)")
@@ -120,16 +124,16 @@ def main():
     username_str = input("Enter your username here: ") # ask the user for their username
     if validate_name(username_str): 
             print("Data is valid!")
-    mainMenu()
     while True:
         try:
+            mainMenu()
             choice = int(input("Please enter your choice: "))
             if choice == 1:
                 """redirects to personality quiz, which will then redirect to subject quiz"""
                 start_personality_quiz()
                 print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
                 subject_scores = SubjectScore(0,0,0,0,0,0)
-                leaderboardMain(subject_scores, username_str)
+                dataHandling(subject_scores, username_str)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -165,6 +169,9 @@ def validate_name(values):
     return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
 
+# ------------------ Overall Structure of Programme ------------------
+# The programme will begin with the main menu, which will allow the user to go through the personality quiz, the subject quiz and leaderboard, and finally onto a personality report.
+
 def start_personality_quiz():
     random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
     question_index = 0
@@ -179,6 +186,14 @@ def start_personality_quiz():
 def start_subject_quiz():
     subjectQuiz()
 
+def start_personality_report():
+    personalityReport()
+
+
+
+
+
+
 
 
 
@@ -189,7 +204,9 @@ def start_subject_quiz():
 
 def ask_question(question_index): 
     """
-    question_index is a parameter. 
+    Ask the user a question about their personality and get their response.
+
+    The question_index indicates the question number in the quiz_data dictionary.
     
     “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments.asp#:~:text=A%20parameter%20is%20the%20variable,function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
     """
@@ -228,19 +245,14 @@ def convert_score_to_percentage(score):
 
 
 def personalityResults():
-    """displays personality results in percentage, with option to render full results"""
+    """displays personality results, with option to render full results"""
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     print("\nTrait Scores in Percentage:")
     for trait, score in trait_scores.items():
         print(f"{trait}: {convert_score_to_percentage(score)}%")
 
-    print("\nPress 1 to continue on to the subject quiz.")
-
-    if input() == "1":
-        print("You have chosen to continue on to the subject quiz.")
-        start_subject_quiz()
-    else:
-        print("Invalid answer. Please enter a number between 1 and 2.")
+    print("press any key to continue")
+    input()
 
 
 
@@ -265,35 +277,38 @@ def subjectQuiz():
     print(f"---------Question 1 of 10---------\n")
     amount = 10
     category = 17 #Category 17 is Science
-    topic = "Science"
-    difficulty = "&difficulty=easy"
     startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
     subject_scores.resetAllScores()
-    playQuiz(amount, category, subject_scores)
+    topic = "Science"
+    playQuiz(amount, category, subject_scores, topic)
     
     print("Now on to Technology!\n")
     amount = 10
     category = 30 #Category 30 is Technology
     startQuestionNumber()
-    playQuiz(amount, category, subject_scores)
+    topic = "Technology"
+    playQuiz(amount, category, subject_scores, topic)
     
     print("Now on to English!\n")
     amount = 10
     category = 10 #Category 10 is Books
     startQuestionNumber()
-    playQuiz(amount, category, subject_scores)
+    topic = "English"
+    playQuiz(amount, category, subject_scores, topic)
     
     print("Now on to Art!\n")
     amount = 10
     category = 25 #Category 25 is Art
     startQuestionNumber()
-    playQuiz(amount, category, subject_scores)
+    topic = "Art"
+    playQuiz(amount, category, subject_scores, topic)
     
     print("Now on to Math!\n")
     amount = 10 
     category = 19 #Category 19 is Math
     startQuestionNumber() 
-    playQuiz(amount, category, subject_scores)
+    topic = "Math"
+    playQuiz(amount, category, subject_scores, topic)
     
     #clear the terminal screen
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
@@ -408,7 +423,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username
             print(f"--------Question {question_number} of 10---------\n")
         
     print("You have completed the test!")
-    leaderboardMain(subject_scores, username_str)
+    dataHandling(subject_scores, username_str)
 
 
  
@@ -474,7 +489,7 @@ def getUserAnswer() -> int:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
 
-def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
+def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
@@ -494,7 +509,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
 
         os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 
-        if user_choice_text == correct_choice_text:
+        if user_choice_text == correct_choice_text: # If the user's choice is correct....
             subject_scores.updateTotalScore()  # Update Total score
             if category == 17:
                 subject_scores.updateScienceScore() # Update Science score
@@ -503,27 +518,19 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
             elif category == 10:
                 subject_scores.updateEnglishScore() # Update English score
             elif category == 25:
-                subject_scores.updateArtScore()
+                subject_scores.updateArtScore() # Update Art score
             elif category == 19:
-                subject_scores.updateMathScore()
+                subject_scores.updateMathScore() # Update Math score
             print(f"Correct! You answered: {correct_choice_text}\n")
             print("You have earned 1 point!")
             print(f"Your Total score is {subject_scores.scoreTotal} of 50 \n")
-            print(f"your score in Science is {subject_scores.scoreScience} of 10")
-            print(f"your score in Technology is {subject_scores.scoreTechnology} of 10")
-            print(f"your score in English is {subject_scores.scoreEnglish} of 10")
-            print(f"your score in Art is {subject_scores.scoreArt} of 10")
-            print(f"your score in Math is {subject_scores.scoreMath} of 10")
+            print(f"--------Topic: {topic}---------\n")
             print(f"---------Question {question_number} of 10---------\n")
             
-        else:
+        else: #if the user's choice is incorrect, don't update the score...
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
             print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print(f"your score in Science is {subject_scores.scoreScience} of 10")
-            print(f"your score in Technology is {subject_scores.scoreTechnology} of 10")
-            print(f"your score in English is {subject_scores.scoreEnglish} of 10")
-            print(f"your score in Art is {subject_scores.scoreArt} of 10")
-            print(f"your score in Math is {subject_scores.scoreMath} of 10")
+            print(f"--------Topic: {topic}---------\n")
             print(f"--------Question {question_number} of 10---------\n")
 
 
@@ -540,32 +547,25 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
 
 
 
-# ------------------ Leaderboard Section ------------------
+# ------------------ Data sorting Section ------------------
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
-def leaderboardMain(subject_scores, username_str): #leaderboardmain() uses the subject_scores variable
+def dataHandling(subject_scores, username_str): #dataHandling() uses the subject_scores variable
     """
     Run all program functions
     """
-    print("Welcome to the leaderboard!")
-    # subject_scores = SubjectScore(0,0,0,0,0,0) # create a SubjectScore object and store it in a variable called subject_scores
-    data = get_user_data(subject_scores, username_str)  # call the get_user_data function and store the returned data in a variable called data
-    print(f"Data provided: {data}\n")
+    data = getLocalDataFromUser(subject_scores, username_str)  # call the getLocalDataFromUser function and store the returned data in a variable called data
     user_data = data  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
-    print(f"User Data:{user_data}")
-    #press any key to continue
-    print("Press any key to continue")
-    input()
-    update_worksheet(user_data, "score")  # call the update_worksheet function with user_data as a list
+    pushToAPICloud(user_data, "score")  # call the pushToAPICloud function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
-def get_user_data(subject_scores: SubjectScore, username_str) -> None:
+def getLocalDataFromUser(subject_scores: SubjectScore, username_str) -> None:
     """
-    Gets the score and username from user and returns the username.
+    Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
 
-    while True: # True
+    while True: # loop until valid data is provided
 
         print("gather user data")
         
@@ -576,15 +576,7 @@ def get_user_data(subject_scores: SubjectScore, username_str) -> None:
 
         user_data = user_data_string.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
 
-        print(f"User Data: {user_data}\n") # print the user_data list
-
-
-        if validate_name(user_data): # if validate_name(user_data) == True:
-            print("Data is valid!")
-            break # break out of the while loop if data is valid
-    print("Data is ready to be uploaded to Google Sheets.\n")
-    print("Press any key to continue")
-    input()
+        break # break out of the while loop
     return user_data # return the user_data list
   
 def validate_name(values):
@@ -602,20 +594,13 @@ def validate_name(values):
     
     return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
-def update_worksheet(data, worksheet):
+def pushToAPICloud(data):
     """
     Receives a list of strings and integers to be inserted into a worksheet.
     Update the worksheet with the data provided.
     """
-    print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet('score') # access the relevant worksheet
-    print(f"Data to be inserted: {data}\n")
-    print("Press any key to continue")
-    input()
     worksheet_to_update.append_row(data) # append the test user values provided as a new row at the bottom of the relevant worksheet
-    print(f"{worksheet} worksheet updated successfully.\n")
-    print("Press any key to continue")
-    input()
 
 def get_high_score_leaderboard():
     """
@@ -624,27 +609,51 @@ def get_high_score_leaderboard():
     “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
     worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    
     data = worksheet.get_all_values() # Read data from Google Sheet
-
-    table = PrettyTable() # Create a PrettyTable object
-
+    table = PrettyTable
     table.field_names = data[0] # Set the field names based on the first row of data (assuming it's the header row)
-
     for row in data[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
         table.add_row(row)
-
     table.sortby = "Score" # Sort the table by the Total column, in ascending order
     table.reversesort = True # Reverse the order of the sort, so it's descending
-
     print(table) # Print the PrettyTable
-
-    print("Press any key to continue")
+    print("Above is your subject score, sorted by total score.")
+    print("Press any key to continue on to your Personality Report")
     input()
-
-    #TODO: 1 insert dummy data into the Rank column from a string
+    start_personality_report()
 
     return 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def personalityReport():
+    """
+    This personality report summarises the users personality traits and provides a recommendation for a career path.
+
+    It goes through a series of if statements to determine the user's personality type, and then prints the relevant report.
+
+    "your name is X and your personality type is Y, you scored highest in "
+    """
+    
+
+
+
+
+
+
+
+
 
 
 

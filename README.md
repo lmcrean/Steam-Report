@@ -138,7 +138,8 @@ The business goals were to provide users with a fun and engaging quiz that would
 
 <div align="center"><h3> User Stories testing</h3>
 
-<img  src="assets/media/documentation/userimage.svg" width="900px" >
+<img src="assets/media/userimg.png" width="800">
+
  </div>
 
 **Business stories**
@@ -489,6 +490,10 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
 4. doesn't transition to next section
 ‌
 solution: removed package and converted to single file on run.py
+
+![](assets/media/issues/2023-10-08-11-05-16.png)
+
+![](assets/media/issues/2023-10-08-11-06-12.png)
 
 ## 4.5. Issue with personality quiz functioning
 VSCode terminal:
