@@ -134,7 +134,7 @@ def main():
                 start_personality_quiz()
                 print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
                 subject_scores = SubjectScore(0,0,0,0,0,0)
-                dataHandling(subject_scores, username_str)
+                dataHandling(subject_scores, username_str, trait_scores)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
