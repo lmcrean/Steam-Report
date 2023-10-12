@@ -35,43 +35,6 @@ with open("personality_statements.json", "r") as file: # Load the questions from
 user_answers = [] 
 trait_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
 
-class PersonalityScore:
-    def __init__(self):
-        self.scoreOpenness = 0
-        self.scoreConscientiousness = 0
-        self.scoreExtraversion = 0
-        self.scoreAgreeableness = 0
-        self.scoreNeuroticism = 0
-
-    def update_score(self, trait, value):
-        if trait == "Openness":
-            self.scoreOpenness += value
-        elif trait == "Conscientiousness":
-            self.scoreConscientiousness += value
-        elif trait == "Extraversion":
-            self.scoreExtraversion += value
-        elif trait == "Agreeableness":
-            self.scoreAgreeableness += value
-        elif trait == "Neuroticism":
-            self.scoreNeuroticism += value
-
-    def get_scores(self):
-        return {
-            "Openness": self.scoreOpenness,
-            "Conscientiousness": self.scoreConscientiousness,
-            "Extraversion": self.scoreExtraversion,
-            "Agreeableness": self.scoreAgreeableness,
-            "Neuroticism": self.scoreNeuroticism
-        }
-    
-    def resetAllScores(self):
-        self.scoreOpenness = 0
-        self.scoreConscientiousness = 0
-        self.scoreExtraversion = 0
-        self.scoreAgreeableness = 0
-        self.scoreNeuroticism = 0
-        return self.scoreOpenness, self.scoreConscientiousness, self.scoreExtraversion, self.scoreAgreeableness, self.scoreNeuroticism
-
 
 # For subject test, initialize variables including subject scores.
 class SubjectScore:
@@ -603,7 +566,6 @@ def getLocalDataFromUser_STEAM(username_str, subject_scores: SubjectScore) -> No
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
-    username_str = username_str # assign the username provided by the user to the variable username_str
 
     while True: # loop until valid data is provided
         user_data_string_STEAM = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" #place high score data into user_data_string_STEAM variable
@@ -615,24 +577,23 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
-    username_str = username_str # assign the username provided by the user to the variable username_str
-
     print(type(trait_scores))  # This will print the type of trait_scores
     print(trait_scores)  # This will print the value of trait_scores
 
     print("$$$ getLocalDataFromUser_OCEAN debug1")
+    input()
 
-    trait_scores_Openness_string = str(trait_scores.scoreOpenness)  # convert the trait_scores.scoreOpenness value to a string
-    trait_scores_Conscientiousness_string = str(trait_scores.scoreConscientiousness)  # convert the trait_scores.scoreConscientiousness value to a string
-    trait_scores_Extraversion_string = str(trait_scores.scoreExtraversion)  # convert the trait_scores.scoreExtraversion value to a string
-    trait_scores_Agreeableness_string = str(trait_scores.scoreAgreeableness)  # convert the trait_scores.scoreAgreeableness value to a string
-    trait_scores_Neuroticism_string = str(trait_scores.scoreNeuroticism)  # convert the trait_scores.scoreNeuroticism value to a string
+    trait_scores_Openness_string = str(trait_scores["Openness"]) # convert the trait_scores["Openness"] value to a string
+    trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"]) # convert the trait_scores["Conscientiousness"] value to a string
+    trait_scores_Extraversion_string = str(trait_scores["Extraversion"]) # convert the trait_scores["Extraversion"] value to a string
+    trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"]) # convert the trait_scores["Agreeableness"] value to a string
+    trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"]) # convert the trait_scores["Neuroticism"] value to a string
 
-
-    print(type(trait_scores_Openness_string))  # This will print the type of trait_scores
-    print(trait_scores_Openness_string)  # This will print the value of trait_scores
+    print(type(trait_scores))  # This will print the type of trait_scores
+    print(trait_scores)  # This will print the value of trait_scores
 
     print("$$$ getLocalDataFromUser_OCEAN debug2")
+    input()
     
     while True: # loop until valid data is provided
         user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}" #place high score data into user_data_string_OCEAN variable
