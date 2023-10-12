@@ -184,14 +184,12 @@ def validate_name(values):
 
 def start_personality_quiz(username_str):
     personality_quiz() #start the personality quiz
-    print("\n$$$ end of quiz") 
     personalityResults(trait_scores) #once the while loop is complete, the personality results will be displayed.
     start_subject_quiz(username_str, trait_scores)
 
 def start_subject_quiz(username_str, trait_scores):
     subject_scores = SubjectScore(0,0,0,0,0,0)
     subjectQuiz(subject_scores) #start the subject quiz
-    print("\n$$$ end of subject quiz") # Display the user's answers
     start_data_handling(username_str, trait_scores, subject_scores)
 
 def start_data_handling(username_str, trait_scores, subject_scores):
@@ -245,6 +243,7 @@ def ask_question(question_index):
             if 1 <= response <= 9:
                 user_answers.append(response) # Add the response to the user's answers
                 trait_scores[question["trait"]] += response  # Add the response to the corresponding trait score
+                print(trait_scores)
                 break  # Exit the loop when a valid response is provided
             else:
                 print("Invalid response. Please enter a number between 1 and 9.")
@@ -543,7 +542,7 @@ def getUserAnswer() -> int:
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
-def dataHandling(username_str, subject_scores, trait_scores): #dataHandling() uses the subject_scores variable
+def dataHandling(username_str, trait_scores, subject_scores): #dataHandling() uses the subject_scores variable
     """
     Run all program functions
     """
@@ -558,7 +557,7 @@ def dataHandling(username_str, subject_scores, trait_scores): #dataHandling() us
     print(type(user_data_OCEAN))  # This will print the type of user_data_OCEAN
     print(type(user_data_STEAM))  # This will print the type of user_data_STEAM
     input()
-    pushToAPICloud(user_data_STEAM, "score", user_data_OCEAN, "personality")  # call the pushToAPICloud function with user_data as a list
+    pushToAPICloud(data_STEAM, data_OCEAN)  # call the pushToAPICloud function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
 def getLocalDataFromUser_STEAM(username_str, subject_scores: SubjectScore) -> None:
