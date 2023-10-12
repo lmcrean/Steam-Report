@@ -525,8 +525,44 @@ Neuroticism: Invalid score. It should be between 5 and 45.%
 press any key to continue
 ```
 
+Error with order
+```---------Section: Art---------
 
+--------Question 1 of 10---------
 
+$$$ End of function
+Now on to Math!
+
+You have chosen to begin the multiple choice quiz.
+What is the derivative of Acceleration with respect to time?
+1. Shift
+2. Bump
+3. Jerk
+4. Slide
+Enter the number of your choice: 
+```
+
+```
+Traceback (most recent call last):
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 827, in <module>
+
+    ^
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 134, in main
+    start_personality_quiz(username_str)
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 190, in start_personality_quiz
+    start_subject_quiz(username_str, trait_scores)
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 196, in start_subject_quiz
+    start_data_handling(username_str, trait_scores, subject_scores)
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 199, in start_data_handling
+    dataHandling(username_str, trait_scores, subject_scores) # Upload the user's data to Google Sheets
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 536, in dataHandling
+
+  File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 549, in getLocalDataFromUser_STEAM
+    data_STEAM = getLocalDataFromUser_STEAM(subject_scores, username_str)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'scoreTotal'
+```
 
 
 [↑ Back to top](#Steam-Test)

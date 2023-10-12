@@ -167,25 +167,42 @@ def validate_name(values):
     return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ------------------ Overall Structure of Quiz ------------------
 # The user to go through the personality quiz, the subject quiz and leaderboard, and finally onto a personality report.
 
 def start_personality_quiz(username_str):
-    personality_quiz(username_str) #start the personality quiz
+    personality_quiz() #start the personality quiz
     print("\n$$$ end of quiz") 
-    personalityResults(username_str, trait_scores) #once the while loop is complete, the personality results will be displayed.
-    start_subject_quiz()
+    personalityResults(trait_scores) #once the while loop is complete, the personality results will be displayed.
+    start_subject_quiz(username_str, trait_scores)
 
 def start_subject_quiz(username_str, trait_scores):
     subject_scores = SubjectScore(0,0,0,0,0,0)
     subjectQuiz(subject_scores) #start the subject quiz
     print("\n$$$ end of subject quiz") # Display the user's answers
-    start_personality_report(subject_scores, username_str, trait_scores)
+    start_data_handling(username_str, trait_scores, subject_scores)
+
+def start_data_handling(username_str, trait_scores, subject_scores):
+    dataHandling(username_str, trait_scores, subject_scores) # Upload the user's data to Google Sheets
+    start_personality_report(username_str, trait_scores, subject_scores)
 
 def start_personality_report(username_str, trait_scores, subject_scores):
-    print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
-    dataHandling(username_str, trait_scores, subject_scores)
-    personalityReport()
+    personalityReport(username_str, trait_scores, subject_scores) # Display the user's answers
+
+# ------------------ ------------------------ ------------------
 
 
 
@@ -195,9 +212,8 @@ def start_personality_report(username_str, trait_scores, subject_scores):
 
 
 
-
-
-
+# ------------------ Personality Quiz Section ------------------
+# This section goes through the personality quiz, which is based on the OCEAN personality test. The user will be asked 10 questions, and their answers will be used to determine their personality type.
 
 def personality_quiz():
     random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
@@ -251,7 +267,7 @@ def convert_score_to_percentage(score):
         return "Invalid score. It should be between 5 and 45."
 
 
-def personalityResults():
+def personalityResults(trait_scores):
     """displays personality results, with option to render full results"""
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     print("\nTrait Scores in Percentage:")
@@ -382,7 +398,7 @@ def getUserAnswer() -> int:
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
-def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
+def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
@@ -406,28 +422,41 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
         if user_choice_text == correct_choice_text:
             subject_scores.updateTotalScore()  # Update Total score
             if category == 17:
-                subject_scores.updateScienceScore() # Update Science score
                 topic = "Science"
+                subject_scores.updateScienceScore() # Update Science score
             elif category == 30:
-                subject_scores.updateTechnologyScore() # Update Technology score
                 topic = "Technology"
+                subject_scores.updateTechnologyScore() # Update Technology score
             elif category == 10:
-                subject_scores.updateEnglishScore() # Update English score
                 topic = "English"
+                subject_scores.updateEnglishScore() # Update English score
+                
             elif category == 25:
-                subject_scores.updateArtScore()
                 topic = "Art"
+                subject_scores.updateArtScore()
             elif category == 19:
-                subject_scores.updateMathScore()
                 topic = "Math"
+                subject_scores.updateMathScore()
+                
             print(f"Correct! You answered: {correct_choice_text}\n")
             print("You have earned 1 point!")
-            print(f"---------Section: {topic}---------\n")
+            
             print(f"---------Question {question_number} of 10---------\n")
             
         else:
+            if category == 17:
+                topic = "Science"
+            elif category == 30:
+                topic = "Technology"
+            elif category == 10:
+                topic = "English"
+            elif category == 25:
+                topic = "Art"
+            elif category == 19:
+                topic = "Math"
+            
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
-            print(f"---------Section: {topic}---------\n")
+            print(f"---------Section: {topic}---------")
             print(f"--------Question {question_number} of 10---------\n")
         
     print("$$$ End of function")
@@ -513,18 +542,25 @@ def getUserAnswer() -> int:
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
-def dataHandling(subject_scores, username_str, trait_scores): #dataHandling() uses the subject_scores variable
+def dataHandling(username_str, subject_scores, trait_scores): #dataHandling() uses the subject_scores variable
     """
     Run all program functions
     """
-    data_STEAM = getLocalDataFromUser_STEAM(subject_scores, username_str)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
-    data_OCEAN = getLocalDataFromUser_OCEAN(trait_scores, username_str)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
-    user_data_STEAM = data_STEAM  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+    data_OCEAN = getLocalDataFromUser_OCEAN(username_str, trait_scores)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
     user_data_OCEAN = data_OCEAN  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+
+    data_STEAM = getLocalDataFromUser_STEAM(username_str, subject_scores)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
+    user_data_STEAM = data_STEAM  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
+    
+
+    print("$$$ getlocaldatafromuser functions have passed")
+    print(type(user_data_OCEAN))  # This will print the type of user_data_OCEAN
+    print(type(user_data_STEAM))  # This will print the type of user_data_STEAM
+    input()
     pushToAPICloud(user_data_STEAM, "score", user_data_OCEAN, "personality")  # call the pushToAPICloud function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
-def getLocalDataFromUser_STEAM(subject_scores: SubjectScore, username_str) -> None:
+def getLocalDataFromUser_STEAM(username_str, subject_scores: SubjectScore) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
@@ -542,16 +578,28 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     print(type(trait_scores))  # This will print the type of trait_scores
     print(trait_scores)  # This will print the value of trait_scores
 
+    print("$$$ getLocalDataFromUser_OCEAN debug1")
+    input()
+
     trait_scores_Openness_string = str(trait_scores["Openness"]) # convert the trait_scores["Openness"] value to a string
     trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"]) # convert the trait_scores["Conscientiousness"] value to a string
     trait_scores_Extraversion_string = str(trait_scores["Extraversion"]) # convert the trait_scores["Extraversion"] value to a string
     trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"]) # convert the trait_scores["Agreeableness"] value to a string
     trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"]) # convert the trait_scores["Neuroticism"] value to a string
+
+    print(type(trait_scores))  # This will print the type of trait_scores
+    print(trait_scores)  # This will print the value of trait_scores
+
+    print("$$$ getLocalDataFromUser_OCEAN debug2")
+    input()
     
     while True: # loop until valid data is provided
         user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}" #place high score data into user_data_string_OCEAN variable
         user_data_OCEAN = user_data_string_OCEAN.split(",")
         break # break out of the while loop
+
+    print("$$$ getLocalDataFromUser_OCEAN debug3")
+    input()
     return user_data_OCEAN # return the user_data list
 
 def pushToAPICloud(data_STEAM, data_OCEAN):
@@ -583,7 +631,7 @@ def get_high_score_leaderboard():
     print("Above is your subject score, sorted by total score.")
     print("Press any key to continue on to your Personality Report")
     input()
-    start_personality_report()
+    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 
     return 
 
@@ -599,7 +647,7 @@ def get_high_score_leaderboard():
 
 
 
-def personalityReport():
+def personalityReport(username_str, trait_scores, subject_scores):
     """
     This personality report summarises the users personality traits and provides a recommendation for a career path.
 
@@ -612,7 +660,7 @@ def personalityReport():
     5. Offer to Restart the programme.
     """ 
     os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
-    print("Welcome to your personality report!")
+    print("Welcome to your final personality report!")
     print("We're going to look at your personality traits and recommend a career path for you.")
     print("Press any key to continue")
     input()
@@ -626,7 +674,7 @@ def generate_comparison_data_main():
     [x] calculate user's relative rank from highest STEAM score e.g. "you came 3rd in science"
     [x] calculate user's percentage of highest score in OCEAN. e.g. "our data suggests you were in the top 13% of Openness"
     [x] suggest a career based on the user's highest STEAM score
-    [z] suggest what kind of environment the user would thrive in based on their highest OCEAN score
+    [x] suggest what kind of environment the user would thrive in based on their highest OCEAN score
     """
     highest_category = calculateHighestSTEAMScore()
     calculateSTEAMRank(highest_category)
