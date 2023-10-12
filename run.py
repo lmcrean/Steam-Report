@@ -130,6 +130,7 @@ def main():
             choice = int(input("Please enter your choice: "))
             if choice == 1:
                 """redirects to personality quiz, which will then redirect to subject quiz"""
+                print(username_str, "main")
                 start_personality_quiz(username_str)
                 
             elif choice == 2:
@@ -552,11 +553,6 @@ def dataHandling(username_str, trait_scores, subject_scores): #dataHandling() us
     data_STEAM = getLocalDataFromUser_STEAM(username_str, subject_scores)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
     user_data_STEAM = data_STEAM  # convert the data provided by the user into integers. num is a variable that represents each item in the list data. 
     
-
-    print("$$$ getlocaldatafromuser functions have passed")
-    print(type(user_data_OCEAN))  # This will print the type of user_data_OCEAN
-    print(type(user_data_STEAM))  # This will print the type of user_data_STEAM
-    input()
     pushToAPICloud(data_STEAM, data_OCEAN)  # call the pushToAPICloud function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
@@ -585,20 +581,12 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     trait_scores_Extraversion_string = str(trait_scores["Extraversion"]) # convert the trait_scores["Extraversion"] value to a string
     trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"]) # convert the trait_scores["Agreeableness"] value to a string
     trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"]) # convert the trait_scores["Neuroticism"] value to a string
-
-    print(type(trait_scores))  # This will print the type of trait_scores
-    print(trait_scores)  # This will print the value of trait_scores
-
-    print("$$$ getLocalDataFromUser_OCEAN debug2")
-    input()
     
     while True: # loop until valid data is provided
         user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}" #place high score data into user_data_string_OCEAN variable
         user_data_OCEAN = user_data_string_OCEAN.split(",")
         break # break out of the while loop
 
-    print("$$$ getLocalDataFromUser_OCEAN debug3")
-    input()
     return user_data_OCEAN # return the user_data list
 
 def pushToAPICloud(data_STEAM, data_OCEAN):
@@ -619,7 +607,7 @@ def get_high_score_leaderboard():
     """
     worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
     data_STEAM = worksheet.get_all_values() # Read data from Google Sheet
-    table = PrettyTable
+    table = PrettyTable()
     table.field_names = data_STEAM[0] # Set the field names based on the first row of data (assuming it's the header row)
     for row in data_STEAM[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
         table.add_row(row)
@@ -629,8 +617,8 @@ def get_high_score_leaderboard():
     
     print("Above is your subject score, sorted by total score.")
     print("Press any key to continue on to your Personality Report")
+
     input()
-    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 
     return 
 
@@ -663,10 +651,10 @@ def personalityReport(username_str, trait_scores, subject_scores):
     print("We're going to look at your personality traits and recommend a career path for you.")
     print("Press any key to continue")
     input()
-    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
-    generate_comparison_data_main()
+    print(username_str, "personalityReport")
+    generate_comparison_data_main(username_str)
     
-def generate_comparison_data_main():
+def generate_comparison_data_main(username_str):
     """
     [x] calculate user's highest steam score
     [x] calculate user's highest ocean score
@@ -675,11 +663,12 @@ def generate_comparison_data_main():
     [x] suggest a career based on the user's highest STEAM score
     [x] suggest what kind of environment the user would thrive in based on their highest OCEAN score
     """
-    highest_category = calculateHighestSTEAMScore()
-    calculateSTEAMRank(highest_category)
-    highest_category = calculateHighestOCEANScore()
-    calculateOCEANPercentage(highest_category)
-    assignOCEAN_STEAM_feedback(highest_category)
+    print(username_str, "generate_comparison_data_main")
+    highest_category = calculateHighestSTEAMScore(username_str)
+    calculateSTEAMRank(highest_category, username_str)
+    highest_category = calculateHighestOCEANScore(username_str)
+    calculateOCEANPercentage(highest_category, username_str)
+    assignOCEAN_STEAM_feedback(username_str)
 
 def calculateHighestSTEAMScore(username_str):
     worksheet = SHEET.worksheet('score')  # Access worksheet
@@ -691,6 +680,7 @@ def calculateHighestSTEAMScore(username_str):
         table.add_row(row)
         userinfo = dict(zip(table.field_names, row))
         all_user_info.append(userinfo)
+    print(all_user_info, username_str)
     localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None)    # Filter out the data for username
     if localuser_data:
         # Extract STEAM scores and find the highest category
@@ -821,11 +811,11 @@ def calculateOCEANPercentage(highest_category, username_str):
     percentage_rank = (1 - (user_index / len(scores))) * 100 # Calculate the user's percentage rank
     print(f"Our data suggests you were in the top {percentage_rank:.2f}% of {highest_category}")
 
-def assignOCEAN_STEAM_feedback(highest_category):
+def assignOCEAN_STEAM_feedback(username_str):
     with open('finalreport_feedback_database.json', 'r') as file:
         feedback_database = json.load(file) # Call the previously defined functions to get the highest STEAM and OCEAN categories. for JSON file .load see “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 8 Oct. 2023.
-    highest_STEAM_category = calculateHighestSTEAMScore()
-    highest_OCEAN_category = calculateHighestOCEANScore()
+    highest_STEAM_category = calculateHighestSTEAMScore(username_str)
+    highest_OCEAN_category = calculateHighestOCEANScore(username_str)
     print(f"Your highest STEAM category is {highest_STEAM_category}")
     print(f"Your highest OCEAN category is {highest_OCEAN_category}")
     print(f"Based on your results, we suggest you consider a career in {highest_STEAM_category}")
@@ -833,6 +823,9 @@ def assignOCEAN_STEAM_feedback(highest_category):
     combined_ID = f"{highest_STEAM_category} and {highest_OCEAN_category}" # Combine the two categories to create a unique ID for the feedback. This is because the feedback is stored in a dictionary, and the dictionary keys must be unique.
     feedback = feedback_database.get(combined_ID, {}).get('feedback', 'Feedback not found') # Retrieve the relevant feedback from the database, for .get see “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
     print(feedback)  # Print the feedback or return it as needed
+    
+    print("press any key to go back")
+    input()
     
 
 
