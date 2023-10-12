@@ -295,26 +295,27 @@ def personalityResults(trait_scores):
 
 def subjectQuiz(subject_scores):
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
-    print("We are now beginning the multiple choice test.")
-    print("Let's Start with Science!\n")
+    print("We are now beginning the multiple choice test.\n")
+    topic = "Science"
+    print(f"---------Section: {topic}---------")
     print(f"---------Question 1 of 10---------\n")
     amount = 10
     category = 17 #Category 17 is Science
     startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
     subject_scores.resetAllScores()
-    topic = "Science"
     playQuiz(amount, category, subject_scores, topic) #
     
     topic = "Technology"
     print(f"---------Section: {topic}---------")
+    print("---------Question number 1 of 10---------")
     amount = 10
     category = 30 #Category 30 is Technology
     startQuestionNumber()
-    topic = "Technology"
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "English"
     print(f"---------Section: {topic}---------")
+    print("---------Question number 1 of 10---------")
     amount = 10
     category = 10 #Category 10 is Books
     startQuestionNumber()
@@ -322,6 +323,7 @@ def subjectQuiz(subject_scores):
     
     topic = "Art"
     print(f"---------Section: {topic}---------")
+    print("---------Question number 1 of 10---------")
     amount = 10
     category = 25 #Category 25 is Art
     startQuestionNumber()
@@ -329,6 +331,7 @@ def subjectQuiz(subject_scores):
     
     topic = "Math"
     print(f"---------Section: {topic}---------")
+    print("---------Question number 1 of 10---------")
     amount = 10 
     category = 19 #Category 19 is Math
     startQuestionNumber() 
@@ -571,11 +574,6 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
-    print(type(trait_scores))  # This will print the type of trait_scores
-    print(trait_scores)  # This will print the value of trait_scores
-
-    print("$$$ getLocalDataFromUser_OCEAN debug1")
-
     trait_scores_Openness_string = str(trait_scores["Openness"]) # convert the trait_scores["Openness"] value to a string
     trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"]) # convert the trait_scores["Conscientiousness"] value to a string
     trait_scores_Extraversion_string = str(trait_scores["Extraversion"]) # convert the trait_scores["Extraversion"] value to a string
@@ -610,6 +608,7 @@ def get_high_score_leaderboard():
     table = PrettyTable()
     table.field_names = data_STEAM[0] # Set the field names based on the first row of data (assuming it's the header row)
     for row in data_STEAM[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
+        row[1] = int(row[1]) #converts Score string to integer, helping to order correctly
         table.add_row(row)
     table.sortby = "Score" # Sort the table by the Total column, in ascending order
     table.reversesort = True # Reverse the order of the sort, so it's descending
