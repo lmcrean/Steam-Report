@@ -182,7 +182,7 @@ def start_personality_quiz():
     while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
         ask_question(question_index)
         question_index += 1
-    personalityResults()
+    personalityResults() #once the while loop is complete, the personality results will be displayed.
 
 def start_subject_quiz():
     subjectQuiz()
@@ -230,6 +230,8 @@ def ask_question(question_index):
         except ValueError:
             print("Invalid response. Please enter a number between 1 and 9.")
 
+    personalityResults()
+
 def convert_score_to_percentage(score):
     """
     Convert a personality trait score between 5 and 45 to a percentage.
@@ -254,6 +256,8 @@ def personalityResults():
 
     print("press any key to continue")
     input()
+
+    subjectQuiz()
 
 
 
@@ -375,7 +379,7 @@ def getUserAnswer() -> int:
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
-def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username_str) -> None:
+def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username_str, trait_scores) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
@@ -424,7 +428,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username
             print(f"--------Question {question_number} of 10---------\n")
         
     print("You have completed the test!")
-    dataHandling(subject_scores, username_str)
+    dataHandling(subject_scores, username_str, trait_scores)
 
 
  
@@ -578,8 +582,17 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
+    print(type(trait_scores))  # This will print the type of trait_scores
+    print(trait_scores)  # This will print the value of trait_scores
+
+    trait_scores_Openness_string = str(trait_scores["Openness"]) # convert the trait_scores["Openness"] value to a string
+    trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"]) # convert the trait_scores["Conscientiousness"] value to a string
+    trait_scores_Extraversion_string = str(trait_scores["Extraversion"]) # convert the trait_scores["Extraversion"] value to a string
+    trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"]) # convert the trait_scores["Agreeableness"] value to a string
+    trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"]) # convert the trait_scores["Neuroticism"] value to a string
+    
     while True: # loop until valid data is provided
-        user_data_string_OCEAN = f"{username_str},{trait_scores['Openness']},{trait_scores['Conscientiousness']},{trait_scores['Extraversion']},{trait_scores['Agreeableness']},{trait_scores['Neuroticism']}"
+        user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}" #place high score data into user_data_string_OCEAN variable
         user_data_OCEAN = user_data_string_OCEAN.split(",")
         break # break out of the while loop
     return user_data_OCEAN # return the user_data list

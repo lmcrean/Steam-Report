@@ -66,7 +66,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
   - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-issue-2)
   - [4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:](#44-series-of-error-messages-on-heroku-after-seperating-into-package-files-and-using-from-import-syntax)
-  - [4.5. Issue with personality quiz functioning](#45-issue-with-personality-quiz-functioning)
+  - [4.5. Tracing Terminal issues on the](#45-tracing-terminal-issues-on-the)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets](#52-code-snippets)
@@ -466,13 +466,12 @@ I'm expecting the code to run the main menu, but it's running the final report. 
 
 2. Transferred code from personality.py to run.py
 
-![Alt text](image.png)
 
 Sources consulted:
 “The Import Statements in Python.” Tutorialspoint.com, 2020, www.tutorialspoint.com/the-import-statements-in-python#:~:text=Python%27s%20from%20statement%20lets%20you,from%20fib%20import%20fibonacci. Accessed 7 Oct. 2023.
 “Python Packages (with Examples).” Programiz.com, 2023, www.programiz.com/python-programming/package. Accessed 7 Oct. 2023.
 
-3. currently displaying error with Prettytable
+1. currently displaying error with Prettytable
 Heroku:
 ```console
 Traceback (most recent call last):
@@ -495,9 +494,29 @@ solution: removed package and converted to single file on run.py
 
 ![](assets/media/issues/2023-10-08-11-06-12.png)
 
-## 4.5. Issue with personality quiz functioning
+## 4.5. Tracing Terminal issues on the 
 VSCode terminal:
 ![](assets/media/issues/2023-10-07-18-32-39.png)
+
+![](assets/media/issues/2023-10-08-18-51-13.png)
+
+```python
+Traceback (most recent call last):
+  File "/app/run.py", line 841, in <module>
+    main()
+  File "/app/run.py", line 137, in main
+    dataHandling(subject_scores, username_str, trait_scores)
+  File "/app/run.py", line 560, in dataHandling
+    data_OCEAN = getLocalDataFromUser_OCEAN(trait_scores, username_str)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/run.py", line 582, in getLocalDataFromUser_OCEAN
+    user_data_string_OCEAN = f"{username_str},{trait_scores['Openness']},{trait_scores['Conscientiousness']},{trait_scores['Extraversion']},{trait_scores['Agreeableness']},{trait_scores['Neuroticism']}"
+                                               ~~~~~~~~~~~~^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+```
+
+
+
 
 [↑ Back to top](#Steam-Test)
 
