@@ -325,7 +325,6 @@ def subjectQuiz(subject_scores):
     amount = 10
     category = 25 #Category 25 is Art
     startQuestionNumber()
-    
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "Math"
@@ -581,7 +580,6 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     print(trait_scores)  # This will print the value of trait_scores
 
     print("$$$ getLocalDataFromUser_OCEAN debug1")
-    input()
 
     trait_scores_Openness_string = str(trait_scores["Openness"]) # convert the trait_scores["Openness"] value to a string
     trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"]) # convert the trait_scores["Conscientiousness"] value to a string
