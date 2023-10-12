@@ -515,6 +515,17 @@ Traceback (most recent call last):
 TypeError: string indices must be integers, not 'str'
 ```
 
+```
+Trait Scores in Percentage:
+Openness: Invalid score. It should be between 5 and 45.%
+Conscientiousness: Invalid score. It should be between 5 and 45.%
+Extraversion: Invalid score. It should be between 5 and 45.%
+Agreeableness: Invalid score. It should be between 5 and 45.%
+Neuroticism: Invalid score. It should be between 5 and 45.%
+press any key to continue
+```
+
+
 
 
 

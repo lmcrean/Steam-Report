@@ -131,10 +131,7 @@ def main():
             choice = int(input("Please enter your choice: "))
             if choice == 1:
                 """redirects to personality quiz, which will then redirect to subject quiz"""
-                start_personality_quiz()
-                print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
-                subject_scores = SubjectScore(0,0,0,0,0,0)
-                dataHandling(subject_scores, username_str, trait_scores)
+                start_personality_quiz(username_str)
                 
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
@@ -170,24 +167,24 @@ def validate_name(values):
     return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
 
-# ------------------ Overall Structure of Programme ------------------
-# The programme will begin with the main menu, which will allow the user to go through the personality quiz, the subject quiz and leaderboard, and finally onto a personality report.
+# ------------------ Overall Structure of Quiz ------------------
+# The user to go through the personality quiz, the subject quiz and leaderboard, and finally onto a personality report.
 
-def start_personality_quiz():
-    random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
-    question_index = 0
-    print(len(quiz_data["questions"]))
-    print(f"question_index: {question_index}")
-    ask_question(question_index)
-    while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
-        ask_question(question_index)
-        question_index += 1
-    personalityResults() #once the while loop is complete, the personality results will be displayed.
+def start_personality_quiz(username_str):
+    personality_quiz(username_str) #start the personality quiz
+    print("\n$$$ end of quiz") 
+    personalityResults(username_str, trait_scores) #once the while loop is complete, the personality results will be displayed.
+    start_subject_quiz()
 
-def start_subject_quiz():
-    subjectQuiz()
+def start_subject_quiz(username_str, trait_scores):
+    subject_scores = SubjectScore(0,0,0,0,0,0)
+    subjectQuiz(subject_scores) #start the subject quiz
+    print("\n$$$ end of subject quiz") # Display the user's answers
+    start_personality_report(subject_scores, username_str, trait_scores)
 
-def start_personality_report():
+def start_personality_report(username_str, trait_scores, subject_scores):
+    print("\nThank you for completing the quiz! Your responses:") # Display the user's answers
+    dataHandling(username_str, trait_scores, subject_scores)
     personalityReport()
 
 
@@ -202,7 +199,16 @@ def start_personality_report():
 
 
 
-
+def personality_quiz():
+    random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
+    question_index = 0
+    print(len(quiz_data["questions"]))
+    print(f"question_index: {question_index}")
+    ask_question(question_index)
+    while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
+        ask_question(question_index)
+        question_index += 1
+    
 def ask_question(question_index): 
     """
     Ask the user a question about their personality and get their response.
@@ -230,8 +236,6 @@ def ask_question(question_index):
         except ValueError:
             print("Invalid response. Please enter a number between 1 and 9.")
 
-    personalityResults()
-
 def convert_score_to_percentage(score):
     """
     Convert a personality trait score between 5 and 45 to a percentage.
@@ -254,10 +258,10 @@ def personalityResults():
     for trait, score in trait_scores.items():
         print(f"{trait}: {convert_score_to_percentage(score)}%")
 
-    print("press any key to continue")
+    print("press any key to continue on to the subject quiz")
     input()
 
-    subjectQuiz()
+    
 
 
 
@@ -274,8 +278,7 @@ def personalityResults():
 # In this section, the user will be asked 10 questions from each subject area with 4 multiple choice answers to choose from. The user will be given a score out of 10 for each subject area, and a total score out of 50.
 
 
-def subjectQuiz():
-    subject_scores = SubjectScore(0,0,0,0,0,0)
+def subjectQuiz(subject_scores):
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     print("We are now beginning the multiple choice test.")
     print("Let's Start with Science!\n")
@@ -285,7 +288,7 @@ def subjectQuiz():
     startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
     subject_scores.resetAllScores()
     topic = "Science"
-    playQuiz(amount, category, subject_scores, topic)
+    playQuiz(amount, category, subject_scores, topic) #
     
     print("Now on to Technology!\n")
     amount = 10
@@ -379,7 +382,7 @@ def getUserAnswer() -> int:
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
-def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username_str, trait_scores) -> None:
+def playQuiz (amount: int, category: int, subject_scores: SubjectScore) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
@@ -427,8 +430,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, username
             print(f"---------Section: {topic}---------\n")
             print(f"--------Question {question_number} of 10---------\n")
         
-    print("You have completed the test!")
-    dataHandling(subject_scores, username_str, trait_scores)
+    print("$$$ End of function")
 
 
  
@@ -492,51 +494,6 @@ def getUserAnswer() -> int:
                 print("Invalid input. Enter a number between 1 and 4")
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
-
-
-def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -> None:
-    """
-    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
-    """
-    question_pool = getTriviaQuestions(amount, category)
-    question_number = startQuestionNumber()  # Initialize question_number
-    for question in question_pool:
-        question_text = html.unescape(question["question"])
-        print(question_text)
-        choices = question ["incorrect_answers"]
-        choices.extend([question["correct_answer"]])
-        question_number = trackQuestionNumber(question_number)  # Pass question_number as an argument
-        shuffled_choices = shuffleAnswerChoices(choices)
-        printAnswerChoices(question_number, shuffled_choices)
-        user_choice_index = getUserAnswer()
-        user_choice_text = shuffled_choices[user_choice_index]
-        correct_choice_text = html.unescape(question["correct_answer"])
-
-        os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
-
-        if user_choice_text == correct_choice_text: # If the user's choice is correct....
-            subject_scores.updateTotalScore()  # Update Total score
-            if category == 17:
-                subject_scores.updateScienceScore() # Update Science score
-            elif category == 30:
-                subject_scores.updateTechnologyScore() # Update Technology score
-            elif category == 10:
-                subject_scores.updateEnglishScore() # Update English score
-            elif category == 25:
-                subject_scores.updateArtScore() # Update Art score
-            elif category == 19:
-                subject_scores.updateMathScore() # Update Math score
-            print(f"Correct! You answered: {correct_choice_text}\n")
-            print("You have earned 1 point!")
-            print(f"Your Total score is {subject_scores.scoreTotal} of 50 \n")
-            print(f"--------Topic: {topic}---------\n")
-            print(f"---------Question {question_number} of 10---------\n")
-            
-        else: #if the user's choice is incorrect, don't update the score...
-            print(f"Incorrect. The correct answer is {correct_choice_text}\n")
-            print(f"Your Total score is {subject_scores.scoreTotal}\n")
-            print(f"--------Topic: {topic}---------\n")
-            print(f"--------Question {question_number} of 10---------\n")
 
 
 
