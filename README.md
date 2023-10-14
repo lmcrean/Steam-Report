@@ -284,6 +284,11 @@ The Automatic Testing achieved
 
 ## 3.1. Validator Testing
 
+![[passed](http://www.shields.io)](https://img.shields.io/badge/Python-passed-green?style=for-the-badge&logo=python&color=green&logoColor=green)
+
+The Validator used was the Code Institute PEP8 Python Linter. https://pep8ci.herokuapp.com/
+
+
 
 
 [↑ Back to top](#Steam-Test)

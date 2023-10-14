@@ -1,20 +1,20 @@
-#run.py
-
-import json #https://docs.python.org/3/library/json.html
-import gspread #https://docs.gspread.org/en/latest/
-import requests #https://docs.python-requests.org/en/latest/
-import html #https://docs.python.org/3/library/html.html
-import random #https://docs.python.org/3/library/random.html
-import os #https://docs.python.org/3/library/os.html
-import sys; print(sys.executable)
-import subprocess
-subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
-subprocess.check_call([sys.executable, "-m", "pip", "install", "termcolor"])
-os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 from prettytable import PrettyTable
 from termcolor import colored, cprint
+
+import json  # https://docs.python.org/3/library/json.html
+import gspread  # https://docs.gspread.org/en/latest/
+import requests  # https://docs.python-requests.org/en/latest/
+import html  # https://docs.python.org/3/library/html.html
+import random  # https://docs.python.org/3/library/random.html
+import os  # https://docs.python.org/3/library/os.html
+import sys
+import subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "termcolor"])
+os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
+
 x = PrettyTable()
 
 SCOPE = [
@@ -23,16 +23,23 @@ SCOPE = [
     'https://www.googleapis.com/auth/drive'
 ]
 
-# Google API imported with thanks to Code Institute Tutorial 'Love Sandwiches' by Anna Greaves
-CREDS = Credentials.from_service_account_file('creds.json') # creds.json is a file that is not pushed to github 
-SCOPED_CREDS = CREDS.with_scopes(SCOPE) #creds.with_scopes is a method that takes in the scope variable. The scope variable is a list of API's that we want to access.
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) # gspread.authorize is a method that takes in the SCOPED_CREDS variable. This variable is the credentials we created to access the API's.
-SHEET = GSPREAD_CLIENT.open('Steam_Test') # name of the spreadsheet
+"""
+Adapted from gspread tutorial 'Love Sandwiches' by Anna Greaves/ Code Institute
+creds.json is a file that is not pushed to github.
+creds.with_scopes is a method that takes in the scope variable.
+The SCOPE variable is a list of API's that we want to access.
+gspread.authorize is a method that takes in the SCOPED_CREDS variable.
+This variable is the credentials we created to access the API's.
+"""
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('Steam_Test')  # name of the spreadsheet
 
 # For personality test, initialize variables including trait scores.
-with open("personality_statements.json", "r") as file: # Load the questions from the JSON file. R = read.
-    quiz_data = json.load(file) #“Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
-user_answers = [] 
+with open("personality_statements.json", "r") as file:  # Load the questions from the JSON file. R = read.
+    quiz_data = json.load(file)  # “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
+user_answers = []
 trait_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
 
 
@@ -48,31 +55,31 @@ class SubjectScore:
         self.scoreArt = scoreArt
         self.scoreMath = scoreMath
         self.scoreTotal = scoreTotal
-    
+
     def updateScienceScore(self):
         self.scoreScience += 1
         return self.scoreScience
-    
+
     def updateTechnologyScore(self):
         self.scoreTechnology += 1
         return self.scoreTechnology
-    
+
     def updateEnglishScore(self):
         self.scoreEnglish += 1
         return self.scoreEnglish
-    
+
     def updateArtScore(self):
         self.scoreArt += 1
         return self.scoreArt
-    
+
     def updateMathScore(self):
         self.scoreMath += 1
         return self.scoreMath
-    
+
     def updateTotalScore(self):
         self.scoreTotal += 1
         return self.scoreTotal
-    
+
     def resetAllScores(self):
         self.scoreScience = 0
         self.scoreTechnology = 0
@@ -81,29 +88,13 @@ class SubjectScore:
         self.scoreMath = 0
         self.scoreTotal = 0
         return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath, self.scoreTotal
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def mainMenu():
     """
     The main menu of the game
     """
-    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
 
     print("Welcome to Steam Test!")
     print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
@@ -115,13 +106,14 @@ def mainMenu():
     print("4 - About STEAM")
     print("5 - Exit") 
 
+
 def main():
     """
     run all program functions, starting with the main menu. Plays the game.
     """
     print("Welcome to Steam Test!")
     print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
-    username_str = input("Please note that your data will be collected from this test. To protect your privacy, please DO NOT provide your real name and instead provide an anonymous PSEUDONYM e.g. Birdy34, Koala25, Croc76 \n \n Enter your username here: ") # ask the user for their username
+    username_str = input("Please note that your data will be collected from this test. To protect your privacy, please DO NOT provide your real name and instead provide an anonymous PSEUDONYM e.g. Birdy34, Koala25, Croc76 \n \n Enter your username here: ")  # ask the user for their username
     if validate_name(username_str): 
             print("Data is valid!")
     while True:
@@ -164,65 +156,49 @@ def validate_name(values):
         print(f"Invalid data: {e}, please try again.\n")
         return False  # return False if errors are raised.
     
-    return True # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return True  # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
 # ------------------ Overall Structure of Quiz ------------------
 # The user to go through the personality quiz, the subject quiz and leaderboard, and finally onto a personality report.
 
+
 def start_personality_quiz(username_str):
-    personality_quiz() #start the personality quiz
-    personalityResults(trait_scores) #once the while loop is complete, the personality results will be displayed.
+    personality_quiz()  #start the personality quiz
+    personalityResults(trait_scores)  #once the while loop is complete, the personality results will be displayed.
     start_subject_quiz(username_str, trait_scores)
+
 
 def start_subject_quiz(username_str, trait_scores):
     subject_scores = SubjectScore(0,0,0,0,0,0)
-    subjectQuiz(subject_scores) #start the subject quiz
+    subjectQuiz(subject_scores)  #start the subject quiz
     start_data_handling(username_str, trait_scores, subject_scores)
 
+
 def start_data_handling(username_str, trait_scores, subject_scores):
-    dataHandling(username_str, trait_scores, subject_scores) # Upload the user's data to Google Sheets
+    dataHandling(username_str, trait_scores, subject_scores)  # Upload the user's data to Google Sheets
     start_personality_report(username_str, trait_scores, subject_scores)
 
+
 def start_personality_report(username_str, trait_scores, subject_scores):
-    personalityReport(username_str, trait_scores, subject_scores) # Display the user's answers
+    personalityReport(username_str, trait_scores, subject_scores)  # Display the user's answers
 
 # ------------------ ------------------------ ------------------
-
-
-
-
-
-
-
-
 
 # ------------------ Personality Quiz Section ------------------
 # This section goes through the personality quiz, which is based on the OCEAN personality test. The user will be asked 10 questions, and their answers will be used to determine their personality type.
 
+
 def personality_quiz():
-    random.shuffle(quiz_data["questions"]) # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
+    random.shuffle(quiz_data["questions"])  # Shuffle the questions. “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp. Accessed 5 Oct. 2023.
     question_index = 0
     print(len(quiz_data["questions"]))
     print(f"question_index: {question_index}")
     ask_question(question_index)
-    while question_index < len(quiz_data["questions"]) - 1: #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
-        question_index += 1 # adds one to the question index, so that the next question is asked. “Python Increment and Decrement Operators.” W3schools.com, 2023, www.w3schools.com/python/python_operators.asp. Accessed 5 Oct. 2023.
+    while question_index < len(quiz_data["questions"]) - 1:  #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
+        question_index += 1  # adds one to the question index, so that the next question is asked. “Python Increment and Decrement Operators.” W3schools.com, 2023, www.w3schools.com/python/python_operators.asp. Accessed 5 Oct. 2023.
         ask_question(question_index)
-    
+
+
 def ask_question(question_index): 
     """
     Ask the user a question about their personality and get their response.
@@ -231,7 +207,7 @@ def ask_question(question_index):
     
     “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments.asp#:~:text=A%20parameter%20is%20the%20variable,function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
     """
-    os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
     question = quiz_data["questions"][question_index]
     print(f"Question {question_index + 1}:")
     print(question["statement"])
@@ -240,15 +216,16 @@ def ask_question(question_index):
         response = input("Please enter a number from 1 to 9 \n (1 = Strongly Disagree, 5 = Neutral, 9 = Strongly Agree): ")
 
         try:
-            response = int(response) # Convert the user's response to an integer
+            response = int(response)  # Convert the user's response to an integer
             if 1 <= response <= 9:
-                user_answers.append(response) # Add the response to the user's answers
+                user_answers.append(response)  # Add the response to the user's answers
                 trait_scores[question["trait"]] += response  # Add the response to the corresponding trait score
                 break  # Exit the loop when a valid response is provided
             else:
                 print("Invalid response. Please enter a number between 1 and 9.")
         except ValueError:
             print("Invalid response. Please enter a number between 1 and 9.")
+
 
 def convert_score_to_percentage(score):
     """
@@ -260,75 +237,61 @@ def convert_score_to_percentage(score):
     """
     if 5 <= score <= 45:
         percentage = ((score - 5) / 40) * 100
-        return round(percentage, 1) #“Python Round() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_round.asp. Accessed 5 Oct. 2023.
+        return round(percentage, 1)  #“Python Round() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_round.asp. Accessed 5 Oct. 2023.
     else:
         return "Invalid score. It should be between 5 and 45."
 
 
 def personalityResults(trait_scores):
     """displays personality results, with option to render full results"""
-    os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
     print("\nTrait Scores in Percentage:")
     for trait, score in trait_scores.items():
         print(f"{trait}: {convert_score_to_percentage(score)}%")
-
     print("press any key to continue on to the subject quiz")
     input()
-
-    
-
-
-
-
-
-
-
-
-
-
-
 
 # ------------------ Subject Quiz Section ------------------
 # In this section, the user will be asked 10 questions from each subject area with 4 multiple choice answers to choose from. The user will be given a score out of 10 for each subject area, and a total score out of 50.
 
 
 def subjectQuiz(subject_scores):
-    os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
     print("We are now beginning the multiple choice test.\n")
     topic = "Science"
     amount = 10
-    category = 17 #Category 17 is Science
-    startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
+    category = 17  # Category 17 is Science
+    startQuestionNumber()  #startQuestionNumber is a function that sets the question number to 1
     subject_scores.resetAllScores()
-    playQuiz(amount, category, subject_scores, topic) #
+    playQuiz(amount, category, subject_scores, topic)
     
     topic = "Technology"
     amount = 10
-    category = 30 #Category 30 is Technology
+    category = 30  #Category 30 is Technology
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "English"
     amount = 10
-    category = 10 #Category 10 is Books
+    category = 10  #Category 10 is Books
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "Art"
     amount = 10
-    category = 25 #Category 25 is Art
+    category = 25  #Category 25 is Art
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "Math"
     amount = 10 
-    category = 19 #Category 19 is Math
+    category = 19  #Category 19 is Math
     startQuestionNumber() 
     topic = "Math"
     playQuiz(amount, category, subject_scores, topic)
     
     #clear the terminal screen
-    os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
 
 
 def getTriviaQuestions(amount: int, category: int) -> list:
@@ -340,6 +303,7 @@ def getTriviaQuestions(amount: int, category: int) -> list:
     response_json = response.json()
     return response_json["results"]
 
+
 def shuffleAnswerChoices(choices: list) -> list:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
@@ -347,12 +311,14 @@ def shuffleAnswerChoices(choices: list) -> list:
     random.shuffle(choices)
     return choices
 
+
 def startQuestionNumber() -> int:
     """
     Starts the question number at 1
     """
     question_number = 1
     return question_number
+
 
 def trackQuestionNumber(question_number: int) -> int:
     """
@@ -362,6 +328,7 @@ def trackQuestionNumber(question_number: int) -> int:
     if question_number > 10:
         question_number = 1
     return question_number
+
 
 def printAnswerChoices(question_number: int, choices: list) -> None:
     """
@@ -384,47 +351,48 @@ def getUserAnswer() -> int:
             continue  # Continue the loop without processing further
         try:
             user_choice = int(user_input)
-            if user_choice in range(1, 5): # 1,2,3, or 4
+            if user_choice in range(1, 5):  # 1,2,3, or 4
                 return user_choice - 1
             else:
                 print("Invalid input. Enter a number between 1 and 4")
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
+
 def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -> None:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
     """
     
-    question_pool = getTriviaQuestions(amount, category) # Get the questions from the API
+    question_pool = getTriviaQuestions(amount, category)  # Get the questions from the API
     question_number = startQuestionNumber()  # Initialize question_number
-    for question in question_pool: # Loop through the questions
+    for question in question_pool:  # Loop through the questions
         print(f"---------Section: {topic}---------")
         print(f"---------Question {question_number} of 10---------\n")
-        question_text = html.unescape(question["question"]) # Get the question text
-        print(question_text) # Print the question
-        choices = question ["incorrect_answers"] # Get the incorrect answers
-        choices.extend([question["correct_answer"]]) # Add the correct answer to the choices list
+        question_text = html.unescape(question["question"])  # Get the question text
+        print(question_text)  # Print the question
+        choices = question ["incorrect_answers"]  # Get the incorrect answers
+        choices.extend([question["correct_answer"]])  # Add the correct answer to the choices list
         question_number = trackQuestionNumber(question_number)  # Pass question_number as an argument
-        shuffled_choices = shuffleAnswerChoices(choices) # Shuffle the choices
-        printAnswerChoices(question_number, shuffled_choices) # Print the choices
-        user_choice_index = getUserAnswer() # Get the user's answer
-        user_choice_text = shuffled_choices[user_choice_index] # Get the user's choice text
-        correct_choice_text = html.unescape(question["correct_answer"]) # Get the correct choice text
+        shuffled_choices = shuffleAnswerChoices(choices)  # Shuffle the choices
+        printAnswerChoices(question_number, shuffled_choices)  # Print the choices
+        user_choice_index = getUserAnswer()  # Get the user's answer
+        user_choice_text = shuffled_choices[user_choice_index]  # Get the user's choice text
+        correct_choice_text = html.unescape(question["correct_answer"])  # Get the correct choice text
 
-        os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
+        os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
 
         if user_choice_text == correct_choice_text:
             subject_scores.updateTotalScore()  # Update Total score
             if category == 17:
                 topic = "Science"
-                subject_scores.updateScienceScore() # Update Science score
+                subject_scores.updateScienceScore()  # Update Science score
             elif category == 30:
                 topic = "Technology"
-                subject_scores.updateTechnologyScore() # Update Technology score
+                subject_scores.updateTechnologyScore()  # Update Technology score
             elif category == 10:
                 topic = "English"
-                subject_scores.updateEnglishScore() # Update English score
+                subject_scores.updateEnglishScore()  # Update English score
                 
             elif category == 25:
                 topic = "Art"
@@ -464,6 +432,7 @@ def getTriviaQuestions(amount: int, category: int) -> list:
     response_json = response.json()
     return response_json["results"]
 
+
 def shuffleAnswerChoices(choices: list) -> list:
     """
     credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
@@ -471,12 +440,14 @@ def shuffleAnswerChoices(choices: list) -> list:
     random.shuffle(choices)
     return choices
 
+
 def startQuestionNumber() -> int:
     """
     Starts the question number at 1
     """
     question_number = 1
     return question_number
+
 
 def trackQuestionNumber(question_number: int) -> int:
     """
@@ -486,6 +457,7 @@ def trackQuestionNumber(question_number: int) -> int:
     if question_number > 10:
         question_number = 1
     return question_number
+
 
 def printAnswerChoices(question_number: int, choices: list) -> None:
     """
@@ -508,32 +480,19 @@ def getUserAnswer() -> int:
             continue  # Continue the loop without processing further
         try:
             user_choice = int(user_input)
-            if user_choice in range(1, 5): # 1,2,3, or 4
+            if user_choice in range(1, 5):  # 1,2,3, or 4
                 return user_choice - 1
             else:
                 print("Invalid input. Enter a number between 1 and 4")
         except ValueError:
             print("Invalid input with Value error. Enter a number between 1 and 4")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # ------------------ Data Handling Section ------------------
 # In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
 # This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
-def dataHandling(username_str, trait_scores, subject_scores): #dataHandling() uses the subject_scores variable
+
+def dataHandling(username_str, trait_scores, subject_scores):  #dataHandling() uses the subject_scores variable
     """
     Run all program functions
     """
@@ -546,43 +505,47 @@ def dataHandling(username_str, trait_scores, subject_scores): #dataHandling() us
     pushToAPICloud(data_STEAM, data_OCEAN)  # call the pushToAPICloud function with user_data as a list
     get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
 
+
 def getLocalDataFromUser_STEAM(username_str, subject_scores: SubjectScore) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
 
-    while True: # loop until valid data is provided
-        user_data_string_STEAM = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}" #place high score data into user_data_string_STEAM variable
-        user_data_STEAM = user_data_string_STEAM.split(",") # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
-        break # break out of the while loop
-    return user_data_STEAM # return the user_data list
+    while True:  # loop until valid data is provided
+        user_data_string_STEAM = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}"  #place high score data into user_data_string_STEAM variable
+        user_data_STEAM = user_data_string_STEAM.split(",")  # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
+        break  # break out of the while loop
+    return user_data_STEAM  # return the user_data list
+
 
 def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
     """
-    trait_scores_Openness_string = str(trait_scores["Openness"]) # convert the trait_scores["Openness"] value to a string
-    trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"]) # convert the trait_scores["Conscientiousness"] value to a string
-    trait_scores_Extraversion_string = str(trait_scores["Extraversion"]) # convert the trait_scores["Extraversion"] value to a string
-    trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"]) # convert the trait_scores["Agreeableness"] value to a string
-    trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"]) # convert the trait_scores["Neuroticism"] value to a string
+    trait_scores_Openness_string = str(trait_scores["Openness"])  # convert the trait_scores["Openness"] value to a string
+    trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"])  # convert the trait_scores["Conscientiousness"] value to a string
+    trait_scores_Extraversion_string = str(trait_scores["Extraversion"])  # convert the trait_scores["Extraversion"] value to a string
+    trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"])  # convert the trait_scores["Agreeableness"] value to a string
+    trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"])  # convert the trait_scores["Neuroticism"] value to a string
     
-    while True: # loop until valid data is provided
-        user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}" #place high score data into user_data_string_OCEAN variable
+    while True:  # loop until valid data is provided
+        user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}"  #place high score data into user_data_string_OCEAN variable
         user_data_OCEAN = user_data_string_OCEAN.split(",")
-        break # break out of the while loop
+        break  # break out of the while loop
 
-    return user_data_OCEAN # return the user_data list
+    return user_data_OCEAN  # return the user_data list
+
 
 def pushToAPICloud(data_STEAM, data_OCEAN):
     """
     Receives a list of strings and integers to be inserted into a worksheet.
     Update the worksheet with the data provided.
     """
-    worksheet_to_update = SHEET.worksheet('score') # access the relevant worksheet
-    worksheet_to_update.append_row(data_STEAM) # append the test user values provided as a new row at the bottom of the relevant worksheet
-    worksheet_to_update = SHEET.worksheet('personality') # access the relevant worksheet
-    worksheet_to_update.append_row(data_OCEAN) # append the test user values provided as a new row at the bottom
+    worksheet_to_update = SHEET.worksheet('score')  # access the relevant worksheet
+    worksheet_to_update.append_row(data_STEAM)  # append the test user values provided as a new row at the bottom of the relevant worksheet
+    worksheet_to_update = SHEET.worksheet('personality')  # access the relevant worksheet
+    worksheet_to_update.append_row(data_OCEAN)  # append the test user values provided as a new row at the bottom
+
 
 def get_high_score_leaderboard():
     """
@@ -591,33 +554,19 @@ def get_high_score_leaderboard():
     “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
     worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    data_STEAM = worksheet.get_all_values() # Read data from Google Sheet
+    data_STEAM = worksheet.get_all_values()  # Read data from Google Sheet
     table = PrettyTable()
-    table.field_names = data_STEAM[0] # Set the field names based on the first row of data (assuming it's the header row)
-    for row in data_STEAM[1:]: # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
-        row[1] = int(row[1]) #converts Score string to integer, helping to order correctly
+    table.field_names = data_STEAM[0]  # Set the field names based on the first row of data (assuming it's the header row)
+    for row in data_STEAM[1:]:  # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
+        row[1] = int(row[1])  #converts Score string to integer, helping to order correctly
         table.add_row(row)
-    table.sortby = "Score" # Sort the table by the Total column, in ascending order
-    table.reversesort = True # Reverse the order of the sort, so it's descending
-    print(table) # Print the PrettyTable
-    
+    table.sortby = "Score"  # Sort the table by the Total column, in ascending order
+    table.reversesort = True  # Reverse the order of the sort, so it's descending
+    print(table)  # Print the PrettyTable
     print("Above is your subject score, sorted by total score.")
     print("Press any key to continue on to your Personality Report")
-
     input()
-
     return 
-
-
-
-
-
-
-
-
-
-
-
 
 
 def personalityReport(username_str, trait_scores, subject_scores):
@@ -632,13 +581,14 @@ def personalityReport(username_str, trait_scores, subject_scores):
     4. Print the report with the collected variables.
     5. Offer to Restart the programme.
     """ 
-    os.system('cls' if os.name == 'nt' else 'clear') # Clear the terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
     print("Welcome to your final personality report!")
     print("We're going to look at your personality traits and recommend a career path for you.")
     print("Press any key to continue")
     input()
     generate_comparison_data_main(username_str)
-    
+
+
 def generate_comparison_data_main(username_str):
     """
     This main branch calls the functions to generate the comparison data for the user.
@@ -648,6 +598,7 @@ def generate_comparison_data_main(username_str):
     highest_category = calculateHighestOCEANScore(username_str)
     calculateOCEANPercentage(highest_category, username_str)
     assignOCEAN_STEAM_feedback(username_str)
+
 
 def calculateHighestSTEAMScore(username_str):
     """
@@ -692,6 +643,7 @@ def calculateHighestSTEAMScore(username_str):
 
     #“How to Sort a List of Dictionaries by a Value of the Dictionary in Python?” Stack Overflow, 2023, stackoverflow.com/questions/72899/how-to-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary-in-python. Accessed 5 Oct. 2023.
     #“Sort a List of Objects in Python | FavTutor.” FavTutor, 2022, favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
+
 
 def calculateHighestOCEANScore(username_str):
     """
@@ -738,6 +690,7 @@ def calculateHighestOCEANScore(username_str):
     
     return highest_category
 
+
 def calculateSTEAMRank(highest_category, username_str):
     """
     takes the highest STEAM category and calculates the relative rank of STEAM total score for the user and returns the rank. e.g. 1st, 2nd, 3rd, 4th, 5th in Science.
@@ -755,9 +708,9 @@ def calculateSTEAMRank(highest_category, username_str):
         "Maths": "M"
     }
     category_abbr = category_mapping[highest_category]
-    scores = [int(userinfo[category_abbr]) for userinfo in all_user_info]# Collect scores of all users in the highest STEAM category
+    scores = [int(userinfo[category_abbr]) for userinfo in all_user_info]  # Collect scores of all users in the highest STEAM category
     scores.sort(reverse=True)  # Sort scores in descending order
-    localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None) # Get the user's score in the highest category
+    localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None)  # Get the user's score in the highest category
     if localuser_data:
         user_score = int(localuser_data[category_abbr])
     else:
@@ -771,8 +724,9 @@ def calculateSTEAMRank(highest_category, username_str):
     if 10 <= user_rank % 100 <= 20:
         ordinal_suffix = 'th'
     else:
-        ordinal_suffix = ordinal_suffixes.get(user_rank % 10, 'th') # the second parameter is a default.
+        ordinal_suffix = ordinal_suffixes.get(user_rank % 10, 'th')  # the second parameter is a default.
     print(f"You came {user_rank}{ordinal_suffix} in {highest_category}")
+
 
 def calculateOCEANPercentage(highest_category, username_str):
     """
@@ -781,7 +735,7 @@ def calculateOCEANPercentage(highest_category, username_str):
     worksheet = SHEET.worksheet('personality')  # Access 'personality' worksheet
     data = worksheet.get_all_values()  # Read data
     all_user_info = [dict(zip(data[0], row)) for row in data[1:]]  # Populate user info
-    category_mapping = {# Mapping from full category name to worksheet column abbreviation
+    category_mapping = {  # Mapping from full category name to worksheet column abbreviation
         "Openness": "O",
         "Conscientiousness": "C",
         "Extraversion": "E",
@@ -789,56 +743,38 @@ def calculateOCEANPercentage(highest_category, username_str):
         "Neuroticism": "N"
     }
     category_abbr = category_mapping[highest_category]
-    scores = [int(userinfo[category_abbr]) for userinfo in all_user_info]# Collect scores of all users in the highest OCEAN category
+    scores = [int(userinfo[category_abbr]) for userinfo in all_user_info]  # Collect scores of all users in the highest OCEAN category
     scores.sort(reverse=True)  # Sort scores in descending order
-    localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None) # Get the user's score in the highest category
+    localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None)  # Get the user's score in the highest category
     if localuser_data:
         user_score = int(localuser_data[category_abbr]) 
     else:
         print(f"Username {username_str} not found")
         return
-    user_index = scores.index(user_score)# Find the user's index in the sorted list
-    percentage_rank = (1 - (user_index / len(scores))) * 100 # Calculate the user's percentage rank
+    user_index = scores.index(user_score)  # Find the user's index in the sorted list
+    percentage_rank = (1 - (user_index / len(scores))) * 100  # Calculate the user's percentage rank
     print(f"Our data suggests you were in the top {percentage_rank:.2f}% of {highest_category}")
+
 
 def assignOCEAN_STEAM_feedback(username_str):
     """
     assigns feedback based on the highest STEAM and OCEAN categories. Retrieves from the JSON database based on highest STEAM and OCEAN categories, which are (5x5=)25 possible combinations e.g. Science and Openness are highest category for the user, leading to a unique ID of Science and Openness. This ID is used to retrieve the feedback from the JSON database.
     """
     with open('finalreport_feedback_database.json', 'r') as file:
-        feedback_database = json.load(file) # Call the previously defined functions to get the highest STEAM and OCEAN categories. for JSON file .load see “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 8 Oct. 2023.
+        feedback_database = json.load(file)  # Call the previously defined functions to get the highest STEAM and OCEAN categories. for JSON file .load see “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 8 Oct. 2023.
     highest_STEAM_category = calculateHighestSTEAMScore(username_str)
     highest_OCEAN_category = calculateHighestOCEANScore(username_str)
     print(f"Your highest STEAM category is {highest_STEAM_category}")
     print(f"Your highest OCEAN category is {highest_OCEAN_category}")
     print(f"Based on your results, we suggest you consider a career in {highest_STEAM_category}")
     print("Here is some feedback based on your results:")
-    combined_ID = f"{highest_STEAM_category} and {highest_OCEAN_category}" # Combine the two categories to create a unique ID for the feedback. This is because the feedback is stored in a dictionary, and the dictionary keys must be unique.
-    feedback = feedback_database.get(combined_ID, {}).get('feedback', 'Feedback not found') # Retrieve the relevant feedback from the database, for .get see “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
+    combined_ID = f"{highest_STEAM_category} and {highest_OCEAN_category}"  # Combine the two categories to create a unique ID for the feedback. This is because the feedback is stored in a dictionary, and the dictionary keys must be unique.
+    feedback = feedback_database.get(combined_ID, {}).get('feedback', 'Feedback not found')  # Retrieve the relevant feedback from the database, for .get see “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
     print(feedback)  # Print the feedback or return it as needed
     
     print("press any key to go back")
     input()
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 main()
+
