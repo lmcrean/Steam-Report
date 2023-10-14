@@ -4,13 +4,16 @@
 
 <img src="assets/media/logo.svg" width="700px">
 
-# Steam Test: a fun cross-curricular quiz for students <!-- omit in toc -->
+# Steam Test: a holistic test for young students that provides personalised career recommendations <!-- omit in toc -->
 
-![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python&color=black) ![Excel](https://img.shields.io/badge/excel-14354C?style=for-the-badge&logo=microsoftexcel&color=black&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=black&logoColor=darkgreen)
+![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python) 
+
+![Google Sheets](https://img.shields.io/badge/Google_Sheets-14354C?style=for-the-badge&logo=googlesheets&color=black&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=black&logoColor=darkgreen) ![JSON](https://img.shields.io/badge/JSON-14354C?style=for-the-badge&logo=json&color=black&logoColor=grey) ![Google Sheets](https://img.shields.io/badge/GSPread_API-14354C?style=for-the-badge&logo=googlesheets&color=navy&logoColor=darkgreen) ![OpenTrivaDB](https://img.shields.io/badge/OpenTriviaDB_API-14354C?style=for-the-badge&logo=opentriviadb&color=navy&logoColor=darkgreen) ![Heroku](https://img.shields.io/badge/Heroku-deployed-purple?style=for-the-badge&logo=heroku&logoColor=pink) ![[passed](http://www.shields.io)](https://img.shields.io/badge/CI_Python_Linter_(PEP8)-passed-green?style=for-the-badge&logo=python&color=green&logoColor=blue)
 
 </div>
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div><br>
+
 
 This readme introduces the key features of the project, using the framework of the 5 planes of User Experience. It summarises key challenges addressed along the way and also provides credits and acknowledgesments at the end.
 
@@ -48,7 +51,6 @@ Full Table of Contents: <!-- omit in toc --></div>
     - [2.1.2. Initial Product Research](#212-initial-product-research)
     - [2.1.3. Project Timeline](#213-project-timeline)
     - [2.1.4. User Stories \& business goals](#214-user-stories--business-goals)
-  - [I need a quiz that provides me with broader feedback that relates to other users.](#i-need-a-quiz-that-provides-me-with-broader-feedback-that-relates-to-other-users)
   - [2.2. Scope plane](#22-scope-plane)
     - [2.2.1. Mininum Viable Product features](#221-mininum-viable-product-features)
     - [2.2.2. Unique Selling Point features](#222-unique-selling-point-features)
@@ -150,15 +152,19 @@ I need to use CRUD logic
 I need footers at the bottom to promote my brand
 
 **User Stories Scope**
+
 I need a quiz that provides me with personal feedback on a certain holistic level.
  - the user takes a personality quiz at the beginning of the session.
  - the user takes a quiz on STEAM subjects.
  - the user receives a personal report at the end of the session, summarising their personality, academic knowledge and suggesting what qualities they might have for a career in STEAM.
 
 I need a quiz that provides me with broader feedback that relates to other users.
-  -
+ - the user is given a rank in the leaderboard, and is shown how many users have completed the quiz.
+ - the user is told what rank they came in their most knowledgeable subject, in relation to other users. E.g. ```You came 5th in Science.```
+ - the user is told what percentage they came in their strongest personality trait, in relation to other users. E.g. ```You scored in the top 20% for Openness.```
 
-I want option to retake the quiz or delete my results.
+I want option to retake the quiz
+- the user can easily navigate back to the menu
 
 I need my identity to be anonymous as there is sensitive data being handled
  - the user is asked to enter a username at the beginning of the session.
@@ -284,7 +290,7 @@ The Automatic Testing achieved
 
 ## 3.1. Validator Testing
 
-![[passed](http://www.shields.io)](https://img.shields.io/badge/PEP8_(Code_Institute_Version)-passed-green?style=for-the-badge&logo=python&color=green&logoColor=green)
+![[passed](http://www.shields.io)](https://img.shields.io/badge/CI_Python_Linter_(PEP8)-passed-green?style=for-the-badge&logo=python&color=green&logoColor=green)
 
 The Validator used was the Code Institute PEP8 Python Linter. https://pep8ci.herokuapp.com/
 
@@ -306,9 +312,8 @@ To check the lighthouse report on a chrome browser, right click inspect and clic
 
 | | Home Page |
 |---|---|
-| Mobile |   | 
-| Desktop |  | 
-|Timestamp|  |
+| Desktop | ![](assets/media/issues/2023-10-14-18-53-12.png) | 
+|Timestamp| 14/10/23 |
 
 [↑ Back to top](#Steam-Test)
 
