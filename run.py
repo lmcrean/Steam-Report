@@ -296,8 +296,6 @@ def subjectQuiz(subject_scores):
     os.system('cls' if os.name == 'nt' else 'clear')# Clear the terminal screen
     print("We are now beginning the multiple choice test.\n")
     topic = "Science"
-    print(f"---------Section: {topic}---------")
-    print(f"---------Question 1 of 10---------\n")
     amount = 10
     category = 17 #Category 17 is Science
     startQuestionNumber() #startQuestionNumber is a function that sets the question number to 1
@@ -305,32 +303,24 @@ def subjectQuiz(subject_scores):
     playQuiz(amount, category, subject_scores, topic) #
     
     topic = "Technology"
-    print(f"---------Section: {topic}---------")
-    print("---------Question number 1 of 10---------")
     amount = 10
     category = 30 #Category 30 is Technology
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "English"
-    print(f"---------Section: {topic}---------")
-    print("---------Question number 1 of 10---------")
     amount = 10
     category = 10 #Category 10 is Books
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "Art"
-    print(f"---------Section: {topic}---------")
-    print("---------Question number 1 of 10---------")
     amount = 10
     category = 25 #Category 25 is Art
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
     
     topic = "Math"
-    print(f"---------Section: {topic}---------")
-    print("---------Question number 1 of 10---------")
     amount = 10 
     category = 19 #Category 19 is Math
     startQuestionNumber() 
@@ -409,6 +399,8 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -
     question_pool = getTriviaQuestions(amount, category) # Get the questions from the API
     question_number = startQuestionNumber()  # Initialize question_number
     for question in question_pool: # Loop through the questions
+        print(f"---------Section: {topic}---------")
+        print(f"---------Question {question_number} of 10---------\n")
         question_text = html.unescape(question["question"]) # Get the question text
         print(question_text) # Print the question
         choices = question ["incorrect_answers"] # Get the incorrect answers
@@ -443,9 +435,6 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -
                 
             print(f"Correct! You answered: {correct_choice_text}")
             print("You have earned 1 point!\n")
-
-            print(f"---------Section: {topic}---------")
-            print(f"---------Question {question_number} of 10---------\n")
             
         else:
             if category == 17:
@@ -460,8 +449,7 @@ def playQuiz (amount: int, category: int, subject_scores: SubjectScore, topic) -
                 topic = "Math"
             
             print(f"Incorrect. The correct answer is {correct_choice_text}\n")
-            print(f"---------Section: {topic}---------")
-            print(f"--------Question {question_number} of 10---------\n")
+
         
 
 
@@ -649,19 +637,12 @@ def personalityReport(username_str, trait_scores, subject_scores):
     print("We're going to look at your personality traits and recommend a career path for you.")
     print("Press any key to continue")
     input()
-    print(username_str, "personalityReport")
     generate_comparison_data_main(username_str)
     
 def generate_comparison_data_main(username_str):
     """
-    [x] calculate user's highest steam score
-    [x] calculate user's highest ocean score
-    [x] calculate user's relative rank from highest STEAM score e.g. "you came 3rd in science"
-    [x] calculate user's percentage of highest score in OCEAN. e.g. "our data suggests you were in the top 13% of Openness"
-    [x] suggest a career based on the user's highest STEAM score
-    [x] suggest what kind of environment the user would thrive in based on their highest OCEAN score
+    This main branch calls the functions to generate the comparison data for the user.
     """
-    print(username_str, "generate_comparison_data_main")
     highest_category = calculateHighestSTEAMScore(username_str)
     calculateSTEAMRank(highest_category, username_str)
     highest_category = calculateHighestOCEANScore(username_str)
@@ -669,6 +650,9 @@ def generate_comparison_data_main(username_str):
     assignOCEAN_STEAM_feedback(username_str)
 
 def calculateHighestSTEAMScore(username_str):
+    """
+    calculates the highest STEAM score for the user and returns the category.
+    """
     worksheet = SHEET.worksheet('score')  # Access worksheet
     data = worksheet.get_all_values()  # Read data
     table = PrettyTable()  # Create PrettyTable object
@@ -678,7 +662,6 @@ def calculateHighestSTEAMScore(username_str):
         table.add_row(row)
         userinfo = dict(zip(table.field_names, row))
         all_user_info.append(userinfo)
-    print(all_user_info, username_str)
     localuser_data = next((item for item in all_user_info if item["Username"] == username_str), None)    # Filter out the data for username
     if localuser_data:
         # Extract STEAM scores and find the highest category
@@ -711,6 +694,9 @@ def calculateHighestSTEAMScore(username_str):
     #“Sort a List of Objects in Python | FavTutor.” FavTutor, 2022, favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
 
 def calculateHighestOCEANScore(username_str):
+    """
+    calculates the highest OCEAN score for the user and returns the category.
+    """
     worksheet = SHEET.worksheet('personality')  # Access 'personality' worksheet
     data = worksheet.get_all_values()  # Read data
     table = PrettyTable()  # Create PrettyTable object
@@ -753,6 +739,9 @@ def calculateHighestOCEANScore(username_str):
     return highest_category
 
 def calculateSTEAMRank(highest_category, username_str):
+    """
+    takes the highest STEAM category and calculates the relative rank of STEAM total score for the user and returns the rank. e.g. 1st, 2nd, 3rd, 4th, 5th in Science.
+    """
     worksheet = SHEET.worksheet('score')  # Access worksheet
     data = worksheet.get_all_values()  # Read data
     all_user_info = [dict(zip(data[0], row)) for row in data[1:]]  # Populate user info
@@ -786,6 +775,9 @@ def calculateSTEAMRank(highest_category, username_str):
     print(f"You came {user_rank}{ordinal_suffix} in {highest_category}")
 
 def calculateOCEANPercentage(highest_category, username_str):
+    """
+    Takes the highest OCEAN category and calculates the relative percentage of OCEAN total score for the user and returns the percentage. e.g. top 10% in Openness.
+    """
     worksheet = SHEET.worksheet('personality')  # Access 'personality' worksheet
     data = worksheet.get_all_values()  # Read data
     all_user_info = [dict(zip(data[0], row)) for row in data[1:]]  # Populate user info
@@ -810,6 +802,9 @@ def calculateOCEANPercentage(highest_category, username_str):
     print(f"Our data suggests you were in the top {percentage_rank:.2f}% of {highest_category}")
 
 def assignOCEAN_STEAM_feedback(username_str):
+    """
+    assigns feedback based on the highest STEAM and OCEAN categories. Retrieves from the JSON database based on highest STEAM and OCEAN categories, which are (5x5=)25 possible combinations e.g. Science and Openness are highest category for the user, leading to a unique ID of Science and Openness. This ID is used to retrieve the feedback from the JSON database.
+    """
     with open('finalreport_feedback_database.json', 'r') as file:
         feedback_database = json.load(file) # Call the previously defined functions to get the highest STEAM and OCEAN categories. for JSON file .load see “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 8 Oct. 2023.
     highest_STEAM_category = calculateHighestSTEAMScore(username_str)
