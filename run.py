@@ -50,19 +50,38 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Steam_Test')  # name of the spreadsheet
 
-# For personality test, initialize variables including trait scores.
-with open("personality_statements.json", "r") as file:  # Load the questions from the JSON file. R = read.
-    quiz_data = json.load(file)  # “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020, www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
+
+"""
+For personality test, initialize variables including trait scores.
+“Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020,
+www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
+"""
+with open("personality_statements.json", "r") as file:  # r = read.
+    quiz_data = json.load(file)  # Load the questions from the JSON file.
 user_answers = []
-trait_scores = {"Openness": 0, "Conscientiousness": 0, "Extraversion": 0, "Agreeableness": 0, "Neuroticism": 0}
+trait_scores = {
+    "Openness": 0,
+    "Conscientiousness": 0,
+    "Extraversion": 0,
+    "Agreeableness": 0,
+    "Neuroticism": 0
+}
 
 
 # For subject test, initialize variables including subject scores.
 class SubjectScore:
     """
-    Update the score in the local variable, adding 1 point for each correct answer.
+    Update the score in the local variable,
+    adding 1 point for each correct answer.
     """
-    def __init__(self, scoreScience, scoreTechnology, scoreEnglish, scoreArt, scoreMath, scoreTotal):
+    def __init__(
+            self,
+            scoreScience,
+            scoreTechnology,
+            scoreEnglish,
+            scoreArt,
+            scoreMath,
+            scoreTotal):
         self.scoreScience = scoreScience
         self.scoreTechnology = scoreTechnology
         self.scoreEnglish = scoreEnglish
@@ -101,56 +120,70 @@ class SubjectScore:
         self.scoreArt = 0
         self.scoreMath = 0
         self.scoreTotal = 0
-        return self.scoreScience, self.scoreTechnology, self.scoreEnglish, self.scoreArt, self.scoreMath, self.scoreTotal
+        return (
+            self.scoreScience,
+            self.scoreTechnology,
+            self.scoreEnglish,
+            self.scoreArt,
+            self.scoreMath,
+            self.scoreTotal
+        )
 
 
 def mainMenu():
     """
     The main menu of the game
     """
-    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     print("Welcome to Steam Test!")
-    print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
+    print("We're going to test your personality and run a quiz to help with")
+    print("your career choices.At the end of the test you'll get a customized")
+    print("personality report.\n")
 
     print("Please select an option from the menu below:")
     print("1 - Begin Personality Quiz (Testing phase)")
     print("2 - View STEAM Leaderboard (Testing phase)")
     print("3 - How to Play")
     print("4 - About STEAM")
-    print("5 - Exit") 
+    print("5 - Exit")
 
 
 def main():
     """
     run all program functions, starting with the main menu. Plays the game.
     """
+    os.system('cls' if os.name == 'nt' else 'clear')
     print("Welcome to Steam Test!")
-    print("We're going to test your personality and run a quiz to help with your career choices. At the end of the test you'll get a customized personality report.\n")
-    username_str = input("Please note that your data will be collected from this test. To protect your privacy, please DO NOT provide your real name and instead provide an anonymous PSEUDONYM e.g. Birdy34, Koala25, Croc76 \n \n Enter your username here: ")  # ask the user for their username
-    if validate_name(username_str): 
-            print("Data is valid!")
+    print("We're going to test your personality and run a quiz to help with")
+    print("your career choices.At the end of the test you'll get a customized")
+    print("personality report.\n")
+    print("Please note that your data will be collected from this test.")
+    print("To protect your privacy, please DO NOT provide your real name.")
+    print("instead provide an anonymous PSEUDONYM")
+    print("e.g. Birdy34, Koala25, Croc76 \n\n")
+    # ask the user for their username
+    username_str = input("Enter your username here: ")
+    if validate_name(username_str):
+        print("Data is valid!")
     while True:
         try:
             mainMenu()
             choice = int(input("Please enter your choice: "))
             if choice == 1:
-                """redirects to personality quiz, which will then redirect to subject quiz"""
+                """
+                redirects to personality quiz,
+                which will then redirect to subject quiz
+                """
                 print(username_str, "main")
                 start_personality_quiz(username_str)
-                
             elif choice == 2:
                 print("You have chosen to view the leaderboard.")
-                
             elif choice == 3:
                 print("You have chosen to view the instructions.")
-                
             elif choice == 4:
                 print("You have chosen to view information about STEAM.")
-                
             elif choice == 5:
                 print("You have chosen to exit the program.")
-                
             else:
                 print("Please enter a number between 1 and 5.")
         except ValueError:
@@ -164,12 +197,13 @@ def validate_name(values):
     try:
         if len(values) > 9:
             raise ValueError(
-                f"Invalid name: {values}. The name cannot be more than 9 characters long. You provided {len(values)} characters.\n"
+                f"Invalid name: {values}."
+                "The name cannot be more than 9 characters long."
+                f"You provided {len(values)} characters.\n"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False  # return False if errors are raised.
-    
     return True  # return True if noerrors are raised. This means that the function will return True if the try block is successful. If unsuccessful, the except block will run and return False. For example, if the user en ters 5 numbers instead of 6, the except block will run and return False.
 
 # ------------------ Overall Structure of Quiz ------------------
