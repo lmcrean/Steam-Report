@@ -1,19 +1,33 @@
 from google.oauth2.service_account import Credentials
 from pprint import pprint
-from prettytable import PrettyTable
-from termcolor import colored, cprint
-
-import json  # https://docs.python.org/3/library/json.html
-import gspread  # https://docs.gspread.org/en/latest/
-import requests  # https://docs.python-requests.org/en/latest/
-import html  # https://docs.python.org/3/library/html.html
-import random  # https://docs.python.org/3/library/random.html
-import os  # https://docs.python.org/3/library/os.html
+import os
 import sys
 import subprocess
-subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
-subprocess.check_call([sys.executable, "-m", "pip", "install", "termcolor"])
-os.system('cls' if os.name == 'nt' else 'clear')  # Clear the terminal screen
+import json
+import gspread
+import requests
+import html
+import random
+
+
+def install_libraries():
+    subprocess.check_call(
+        [sys.executable, "-m", "pip", "install", "prettytable"]
+    )
+    subprocess.check_call(
+        [sys.executable, "-m", "pip", "install", "termcolor"]
+    )
+
+
+def import_libraries():
+    global PrettyTable, colored, cprint
+    from prettytable import PrettyTable
+    from termcolor import colored, cprint
+
+
+install_libraries()
+import_libraries()
+
 
 x = PrettyTable()
 

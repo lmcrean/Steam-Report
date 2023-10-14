@@ -315,7 +315,9 @@ To check the lighthouse report on a chrome browser, right click inspect and clic
 
 https://www.browserstack.com/
 
-xxxxxxxxxxxxxxxx
+testing on different browsers: there seems to be an issue with the logo falling above the navigation bar on the home page in Safari/iOS
+
+![](assets/media/issues/browserstack1.png)
 
 [↑ Back to top](#Steam-Test)
 
