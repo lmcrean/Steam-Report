@@ -141,12 +141,12 @@ def mainMenu():
     print("your career choices.At the end of the test you'll get a customized")
     print("personality report.\n")
 
-    cprint("Please select an option from the menu below:", 'cyan')
-    cprint("1 - Begin Personality Quiz (Testing phase)", 'green')
-    cprint("2 - View STEAM Leaderboard (Testing phase)", 'green')
-    cprint("3 - How to Play", 'green')
-    cprint("4 - About STEAM", 'green')
-    cprint("5 - Exit", 'green')
+    cprint("Please select an option from the menu below:", 'yellow')
+    cprint("1 - Begin Personality Quiz (Testing phase)", 'blue')
+    cprint("2 - View STEAM Leaderboard (Testing phase)", 'blue')
+    cprint("3 - How to Play", 'blue')
+    cprint("4 - About STEAM", 'blue')
+    cprint("5 - Exit", 'blue')
 
 
 
@@ -155,7 +155,7 @@ def main():
     run all program functions, starting with the main menu. Plays the game.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("Welcome to Steam Test!")
+    cprint("Welcome to Steam Test!", 'yellow', attrs=['bold'])
     print("We're going to test your personality and run a quiz to help with")
     print("your career choices.At the end of the test you'll get a customized")
     print("personality report.\n")
@@ -555,8 +555,8 @@ def playQuiz(
             elif category == 19:
                 topic = "Math"
                 subject_scores.updateMathScore()
-            print(f"Correct! You answered: {correct_choice_text}")
-            print("You have earned 1 point!\n")
+            cprint(f"Correct! You answered: {correct_choice_text}", 'green')
+            cprint("You have earned 1 point!\n", 'green')
         else:
             if category == 17:
                 topic = "Science"
@@ -568,7 +568,7 @@ def playQuiz(
                 topic = "Art"
             elif category == 19:
                 topic = "Math"
-            print(f"Incorrect. The correct answer is {correct_choice_text}\n")
+            cprint(f"Incorrect. The correct answer is {correct_choice_text}\n", 'red')
 
 
 def getTriviaQuestions(amount: int, category: int) -> list:
@@ -1041,7 +1041,7 @@ def assignOCEAN_STEAM_feedback(username_str):
     # Retrieve the relevant feedback from the database,
     # for .get see “Python Dictionary get() Method.” W3Schools,
     # www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
-    print(feedback)  # Print the feedback or return it as needed
+    cprint(feedback, 'blue')  # Print the feedback or return it as needed
     print("press any key to check your subject knowledge results")
     print("on the leaderboard")
     input()
