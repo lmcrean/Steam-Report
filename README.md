@@ -284,11 +284,15 @@ The Automatic Testing achieved
 
 ## 3.1. Validator Testing
 
-![[passed](http://www.shields.io)](https://img.shields.io/badge/Python-passed-green?style=for-the-badge&logo=python&color=green&logoColor=green)
+![[passed](http://www.shields.io)](https://img.shields.io/badge/PEP8_(Code_Institute_Version)-passed-green?style=for-the-badge&logo=python&color=green&logoColor=green)
 
 The Validator used was the Code Institute PEP8 Python Linter. https://pep8ci.herokuapp.com/
 
+While this was the main validator used, the developer also used the following validators to check the code:
 
+- PyLint for quickly spotting long lines of code and other errors. https://www.pylint.org/
+
+![](assets/media/issues/2023-10-14-17-29-42.png)
 
 
 [↑ Back to top](#Steam-Test)
