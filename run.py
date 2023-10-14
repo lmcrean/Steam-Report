@@ -136,17 +136,18 @@ def mainMenu():
     The main menu of the game
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("Welcome to Steam Test!")
+    cprint("Welcome to Steam Test!", 'yellow', attrs=['bold'])
     print("We're going to test your personality and run a quiz to help with")
     print("your career choices.At the end of the test you'll get a customized")
     print("personality report.\n")
 
-    print("Please select an option from the menu below:")
-    print("1 - Begin Personality Quiz (Testing phase)")
-    print("2 - View STEAM Leaderboard (Testing phase)")
-    print("3 - How to Play")
-    print("4 - About STEAM")
-    print("5 - Exit")
+    cprint("Please select an option from the menu below:", 'cyan')
+    cprint("1 - Begin Personality Quiz (Testing phase)", 'green')
+    cprint("2 - View STEAM Leaderboard (Testing phase)", 'green')
+    cprint("3 - How to Play", 'green')
+    cprint("4 - About STEAM", 'green')
+    cprint("5 - Exit", 'green')
+
 
 
 def main():
@@ -675,7 +676,7 @@ def dataHandling(username_str, trait_scores, subject_scores):
     pushToAPICloud(data_STEAM, data_OCEAN)
     # call the get_high_score_leaderboard function
     # and store the returned data in a variable called score_columns:
-    get_high_score_leaderboard()
+    
 
 
 def getLocalDataFromUser_STEAM(
@@ -773,7 +774,7 @@ def get_high_score_leaderboard():
     table.reversesort = True
     print(table)  # Print the PrettyTable
     print("Above is your subject score, sorted by total score.")
-    print("Press any key to continue on to your Personality Report")
+    print("Press any key to go back the Main Menu")
     input()
     return
 
@@ -1041,8 +1042,10 @@ def assignOCEAN_STEAM_feedback(username_str):
     # for .get see “Python Dictionary get() Method.” W3Schools,
     # www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
     print(feedback)  # Print the feedback or return it as needed
-    print("press any key to go back")
+    print("press any key to check your subject knowledge results")
+    print("on the leaderboard")
     input()
+    get_high_score_leaderboard()
 
 
 main()
