@@ -533,7 +533,7 @@ def play_quiz(
         # Get the correct choice text:
         correct_choice_text = html.unescape(question["correct_answer"])
         os.system('cls' if os.name == 'nt' else 'clear')
-        if user_choice_text == correct_choice_text: # If user was correct...
+        if user_choice_text == correct_choice_text:  # If user was correct...
             subject_scores.updateTotalScore()
             # Update Total score
             if category == 17:
@@ -574,7 +574,10 @@ def getTriviaQuestions(amount: int, category: int) -> list:
     """
     Get trivia questions from the json file
     """
-    url = f"https://opentdb.com/api.php?amount=10&category={category}&type=multiple"
+    url = (
+        "https://opentdb.com/api.php?"
+        f"amount=10&category={category}&type=multiple"
+        )
     response = requests.get(url)
     response_json = response.json()
     return response_json["results"]
@@ -582,7 +585,11 @@ def getTriviaQuestions(amount: int, category: int) -> list:
 
 def shuffleAnswerChoices(choices: list) -> list:
     """
-    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    credit to walkthrough:
+    "Quiz App Using API Data - Python Project.”
+    Run That, 16 May 2023,
+    www.runthat.blog/quiz-app-using-api-data-python-project/.
+    Accessed 24 Sept. 2023.
     """
     random.shuffle(choices)
     return choices
@@ -598,7 +605,11 @@ def startQuestionNumber() -> int:
 
 def trackQuestionNumber(question_number: int) -> int:
     """
-    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    credit to walkthrough:
+    "Quiz App Using API Data - Python Project.”
+    Run That, 16 May 2023,
+    www.runthat.blog/quiz-app-using-api-data-python-project/.
+    Accessed 24 Sept. 2023.
     """
     question_number += 1
     if question_number > 10:
@@ -608,7 +619,11 @@ def trackQuestionNumber(question_number: int) -> int:
 
 def printAnswerChoices(question_number: int, choices: list) -> None:
     """
-    credit to walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    credit to walkthrough:
+    "Quiz App Using API Data - Python Project.”
+    Run That, 16 May 2023,
+    www.runthat.blog/quiz-app-using-api-data-python-project/.
+    Accessed 24 Sept. 2023.
     """
     for choice_index, choice in enumerate(choices):
         print(f"{choice_index+1}. {html.unescape(choice)}")
@@ -617,8 +632,11 @@ def printAnswerChoices(question_number: int, choices: list) -> None:
 def getUserAnswer() -> int:
     """
     Get user input and ensure it's a valid number between 1 and 4.
-    
-    Adapted heavily from walkthrough: "Quiz App Using API Data - Python Project.” Run That, Run That, 16 May 2023, www.runthat.blog/quiz-app-using-api-data-python-project/. Accessed 24 Sept. 2023.
+    Adapted heavily from walkthrough:
+    "Quiz App Using API Data - Python Project.”
+    Run That, 16 May 2023,
+    www.runthat.blog/quiz-app-using-api-data-python-project/.
+    Accessed 24 Sept. 2023.
     """
     while True:
         user_input = input("Enter the number of your choice: ")
@@ -632,33 +650,55 @@ def getUserAnswer() -> int:
             else:
                 print("Invalid input. Enter a number between 1 and 4")
         except ValueError:
-            print("Invalid input with Value error. Enter a number between 1 and 4")
+            print("Invalid input with Value error.")
+            print("Enter a number between 1 and 4")
 
 # ------------------ Data Handling Section ------------------
-# In this section, the user's data from the quiz will be uploaded to Google Sheets, being appended to the bottom of a worksheet.
-# This section is heavily adapted from the Code Institute Love Sandwiches project by Anna Greaves
 
 
-def dataHandling(username_str, trait_scores, subject_scores):  #dataHandling() uses the subject_scores variable
+"""
+In this section, the user's data from the quiz will be uploaded to
+Google Sheets, being appended to the bottom of a worksheet.
+"""
+
+
+def dataHandling(username_str, trait_scores, subject_scores):
     """
-    Run all program functions
+    Run all program functions. The parameters carry unique data from the tests.
+    This section retrieves Local data and stores it in local variables.
     """
-    data_OCEAN = getLocalDataFromUser_OCEAN(username_str, trait_scores)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
-    user_data_OCEAN = data_OCEAN  # convert the data provided by the user into integers. num is a variable that represents each item in the list data.
-    data_STEAM = getLocalDataFromUser_STEAM(username_str, subject_scores)  # call the getLocalDataFromUser_STEAM function and store the returned data in a variable called data
-    user_data_STEAM = data_STEAM  # convert the data provided by the user into integers. num is a variable that represents each item in the list data.
-    pushToAPICloud(data_STEAM, data_OCEAN)  # call the pushToAPICloud function with user_data as a list
-    get_high_score_leaderboard()  # call the get_high_score_leaderboard function and store the returned data in a variable called score_columns
+    data_OCEAN = getLocalDataFromUser_OCEAN(username_str, trait_scores)
+    user_data_OCEAN = data_OCEAN
+    data_STEAM = getLocalDataFromUser_STEAM(username_str, subject_scores)
+    user_data_STEAM = data_STEAM
+    # call the pushToAPICloud function with formatted local variables ready:
+    pushToAPICloud(data_STEAM, data_OCEAN)
+    # call the get_high_score_leaderboard function
+    # and store the returned data in a variable called score_columns:
+    get_high_score_leaderboard()
 
 
-def getLocalDataFromUser_STEAM(username_str, subject_scores: SubjectScore) -> None:
+def getLocalDataFromUser_STEAM(
+        username_str,
+        subject_scores: SubjectScore
+        ) -> None:
     """
-    Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
+    Gets the score and username from user and returns the username.
+    After passing this loop, the data is ready to be appended to the worksheet.
+    user_data_string_STEAM compiles the data
+    into a single string seperated by commas.
+    The first item in the list will be the username,
+    and the rest of the items will be the scores.
     """
 
     while True:  # loop until valid data is provided
-        user_data_string_STEAM = f"{username_str},{subject_scores.scoreTotal},{subject_scores.scoreScience},{subject_scores.scoreTechnology},{subject_scores.scoreEnglish},{subject_scores.scoreArt},{subject_scores.scoreMath}"  #place high score data into user_data_string_STEAM variable
-        user_data_STEAM = user_data_string_STEAM.split(",")  # split the user_data string into a list of strings at each comma. This will create a list of strings. The first item in the list will be the username, and the rest of the items will be the scores.
+        user_data_string_STEAM = (
+            f"{username_str},{subject_scores.scoreTotal},"
+            f"{subject_scores.scoreScience},{subject_scores.scoreTechnology},"
+            f"{subject_scores.scoreEnglish},{subject_scores.scoreArt},"
+            f"{subject_scores.scoreMath}"
+        )  # place high score data into user_data_string_STEAM variable
+        user_data_STEAM = user_data_string_STEAM.split(",")
         break  # break out of the while loop
     return user_data_STEAM  # return the user_data list
 
@@ -666,8 +706,10 @@ def getLocalDataFromUser_STEAM(username_str, subject_scores: SubjectScore) -> No
 def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     """
     Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
+    
+    str() is used to convert into a string
     """
-    trait_scores_Openness_string = str(trait_scores["Openness"])  # convert the trait_scores["Openness"] value to a string
+    trait_scores_Openness_string = str(trait_scores["Openness"])  
     trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"])  # convert the trait_scores["Conscientiousness"] value to a string
     trait_scores_Extraversion_string = str(trait_scores["Extraversion"])  # convert the trait_scores["Extraversion"] value to a string
     trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"])  # convert the trait_scores["Agreeableness"] value to a string
