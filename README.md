@@ -63,6 +63,8 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [3.2. Lighthouse Report](#32-lighthouse-report)
   - [3.3. Browserstack Testing](#33-browserstack-testing)
   - [3.4. Deployment](#34-deployment)
+  - [3.4.1. Github](#341-github)
+  - [3.4.2. Heroku](#342-heroku)
 - [4. Python Issues and Bugs](#4-python-issues-and-bugs)
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
@@ -80,6 +82,8 @@ Full Table of Contents: <!-- omit in toc --></div>
 <div align="center">
 
 # 1. Outline of Features
+
+![](assets/media/issues/2023-10-14-19-12-15.png)
 
 ## 1.1. Feature 1
 </div>
@@ -336,14 +340,25 @@ testing on different browsers: there seems to be an issue with the logo falling 
 
 </div> 
 
+## 3.4.1. Github 
+[Code Institute template](https://github.com/Code-Institute-Org/python-essentials-template) was cloned to create the repository. I cloned repository to my local machine using GitHub Desktop and opened it in VSCode, where I developed the project with the git method.
+
+All libraries and packages were listed in ```requirements.txt```.
+
+
+## 3.4.2. Heroku
+
 The project was deployed on Heroku. The following steps were taken:
 
-1. Create a new app on Heroku
+1. Create a new app on Heroku, using app name ```steam-test```, Connect the app to the Github repository, and enable automatic deploys from the main branch.
+![](assets/media/issues/2023-10-14-19-21-01.png)
+![](assets/media/issues/2023-10-14-19-22-07.png)
 2. Add the following buildpacks in the following order:
     1. heroku/python
     2. heroku/nodejs
-3. Connect the app to the Github repository
-4. Deploy the app
+    ![](assets/media/issues/2023-10-14-19-18-15.png)
+3. Ensure that Config Vars supported the private key for Google Sheets API (partially hidden elow)
+![](assets/media/issues/2023-10-14-19-19-51.png)
 
 
 [↑ Back to top](#Steam-Test)
