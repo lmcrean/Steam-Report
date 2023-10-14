@@ -705,17 +705,32 @@ def getLocalDataFromUser_STEAM(
 
 def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
     """
-    Gets the score and username from user and returns the username. After passing this loop, the data is ready to be appended to the worksheet.
-    
+    Gets the score and username from user and returns the username.
+    After passing this loop, the data is ready to be appended to the worksheet.
+
     str() is used to convert into a string
     """
-    trait_scores_Openness_string = str(trait_scores["Openness"])  
-    trait_scores_Conscientiousness_string = str(trait_scores["Conscientiousness"])  # convert the trait_scores["Conscientiousness"] value to a string
-    trait_scores_Extraversion_string = str(trait_scores["Extraversion"])  # convert the trait_scores["Extraversion"] value to a string
-    trait_scores_Agreeableness_string = str(trait_scores["Agreeableness"])  # convert the trait_scores["Agreeableness"] value to a string
-    trait_scores_Neuroticism_string = str(trait_scores["Neuroticism"])  # convert the trait_scores["Neuroticism"] value to a string
+    trait_scores_Openness_string = str(trait_scores["Openness"])
+    trait_scores_Conscientiousness_string = str(
+        trait_scores["Conscientiousness"]
+    )  # convert the trait_scores["Conscientiousness"] value to a string
+    trait_scores_Extraversion_string = str(
+        trait_scores["Extraversion"]
+    )  # convert the trait_scores["Extraversion"] value to a string
+    trait_scores_Agreeableness_string = str(
+        trait_scores["Agreeableness"]
+    )  # convert the trait_scores["Agreeableness"] value to a string
+    trait_scores_Neuroticism_string = str(
+        trait_scores["Neuroticism"]
+    )  # convert the trait_scores["Neuroticism"] value to a string
     while True:  # loop until valid data is provided
-        user_data_string_OCEAN = f"{username_str},{trait_scores_Openness_string},{trait_scores_Conscientiousness_string},{trait_scores_Extraversion_string},{trait_scores_Agreeableness_string},{trait_scores_Neuroticism_string}"  #place high score data into user_data_string_OCEAN variable
+        user_data_string_OCEAN = (
+            f"{username_str},{trait_scores_Openness_string},"
+            f"{trait_scores_Conscientiousness_string},"
+            f"{trait_scores_Extraversion_string},"
+            f"{trait_scores_Agreeableness_string},"
+            f"{trait_scores_Neuroticism_string}"
+        )  # place high score data into user_data_string_OCEAN variable
         user_data_OCEAN = user_data_string_OCEAN.split(",")
         break  # break out of the while loop
     return user_data_OCEAN  # return the user_data list
@@ -724,29 +739,38 @@ def getLocalDataFromUser_OCEAN(username_str, trait_scores) -> None:
 def pushToAPICloud(data_STEAM, data_OCEAN):
     """
     Receives a list of strings and integers to be inserted into a worksheet.
-    Update the worksheet with the data provided.
+    Update the Google Sheets 'score' and 'personality' worksheet
+    with the data provided.
+    append_row Appends the test user values provided
+    as a new row at the bottom of the relevant worksheet.
     """
-    worksheet_to_update = SHEET.worksheet('score')  # access the relevant worksheet
-    worksheet_to_update.append_row(data_STEAM)  # append the test user values provided as a new row at the bottom of the relevant worksheet
-    worksheet_to_update = SHEET.worksheet('personality')  # access the relevant worksheet
-    worksheet_to_update.append_row(data_OCEAN)  # append the test user values provided as a new row at the bottom
+    worksheet_to_update = SHEET.worksheet('score')
+    worksheet_to_update.append_row(data_STEAM)
+    worksheet_to_update = SHEET.worksheet('personality')
+    worksheet_to_update.append_row(data_OCEAN)
 
 
 def get_high_score_leaderboard():
     """
-    Prints highscore leaderboard from worksheet. Collects columns of data_STEAM from score worksheet.
+    Prints highscore leaderboard from worksheet.
+    Collects columns of data_STEAM from score worksheet.
 
-    “Prettytable.” PyPI, 11 Sept. 2023, pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
+    “Prettytable.” PyPI, 11 Sept. 2023,
+    pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
-    worksheet = SHEET.worksheet('score')  # Replace 'Sheet1' with your worksheet name.
-    data_STEAM = worksheet.get_all_values()  # Read data from Google Sheet
+    worksheet = SHEET.worksheet('score')
+    data_STEAM = worksheet.get_all_values()  # Get all the data.
     table = PrettyTable()
-    table.field_names = data_STEAM[0]  # Set the field names based on the first row of data (assuming it's the header row)
-    for row in data_STEAM[1:]:  # Populate PrettyTable with data. 1 means start at index 1, which is the second row. This is because the first row is the header row.
-        row[1] = int(row[1])  #converts Score string to integer, helping to order correctly
+    # Set the field names based on the first row of data:
+    table.field_names = data_STEAM[0]
+    for row in data_STEAM[1:]:  # 1 means start at index 1 which is second row.
+        # ... This is because the first row is the header row.
+        row[1] = int(row[1])  # converts Score string to integer,
+        # this was a bug fix added later to help to order correctly
         table.add_row(row)
-    table.sortby = "Score"  # Sort the table by the Total column, in ascending order
-    table.reversesort = True  # Reverse the order of the sort, so it's descending
+    table.sortby = "Score"  # Sort the table by the Total column
+    # Reverse the order of the sort to descending order:
+    table.reversesort = True
     print(table)  # Print the PrettyTable
     print("Above is your subject score, sorted by total score.")
     print("Press any key to continue on to your Personality Report")
@@ -756,19 +780,23 @@ def get_high_score_leaderboard():
 
 def personalityReport(username_str, trait_scores, subject_scores):
     """
-    This personality report summarises the users personality traits and provides a recommendation for a career path.
+    This personality report summarises the users personality traits
+    and provides a recommendation for a career path.
 
-    It goes through a series of if statements to determine the user's personality type, and then prints the relevant report.
+    It goes through a series of if statements to determine the user's
+    personality type, and then prints the relevant report.
 
     1. Retrieve the tables from OCEAN and STEAM
-    2. Process the data, identify the individual user's highest score in what category. 
+    2. Process the data, identify the individual user's highest score
+    in what category.
     3. Identify the OCEAN top % and STEAM rank.
     4. Print the report with the collected variables.
     5. Offer to Restart the programme.
     """
-    os.system('cls' if os.name == 'nt' else 'clear')  
+    os.system('cls' if os.name == 'nt' else 'clear')
     print("Welcome to your final personality report!")
-    print("We're going to look at your personality traits and recommend a career path for you.")
+    print("We're going to look at your personality traits and recommend a")
+    print("career path for you.\n")
     print("Press any key to continue")
     input()
     generate_comparison_data_main(username_str)
