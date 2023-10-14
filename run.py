@@ -219,9 +219,9 @@ def personality_quiz():
     print(len(quiz_data["questions"]))
     print(f"question_index: {question_index}")
     ask_question(question_index)
-    while question_index < len(quiz_data["questions"]): #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
+    while question_index < len(quiz_data["questions"]) - 1: #“Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp. Accessed 5 Oct. 2023. Len() function returns the number of items in an object. While the question index is less than the number of questions in the quiz_data dictionary, the loop will continue. Once the question index is equal to the number of questions in the quiz_data dictionary, the loop will stop.
+        question_index += 1 # adds one to the question index, so that the next question is asked. “Python Increment and Decrement Operators.” W3schools.com, 2023, www.w3schools.com/python/python_operators.asp. Accessed 5 Oct. 2023.
         ask_question(question_index)
-        question_index += 1
     
 def ask_question(question_index): 
     """
@@ -244,7 +244,6 @@ def ask_question(question_index):
             if 1 <= response <= 9:
                 user_answers.append(response) # Add the response to the user's answers
                 trait_scores[question["trait"]] += response  # Add the response to the corresponding trait score
-                print(trait_scores)
                 break  # Exit the loop when a valid response is provided
             else:
                 print("Invalid response. Please enter a number between 1 and 9.")
