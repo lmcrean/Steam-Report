@@ -168,7 +168,10 @@ def main():
     # ask the user for their username
     username_str = input("Enter your username here: ")
     validate_name(username_str)
-    print("You have entered: " + username_str)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    cprint("Username is Valid!", 'white', 'on_blue', attrs=['bold'])
+    usernamemsg = "Your username is: " + username_str
+    cprint(f"{usernamemsg}", attrs=['bold'])
     print("Please confirm this is not your real name.\n")
     cprint("1 - confirm", 'light_green', attrs=['bold'])
     print("2 - input again")
@@ -355,8 +358,6 @@ def personality_quiz():
     # www.w3schools.com/python/ref_random_shuffle.asp.
     # Accessed 5 Oct. 2023.
     question_index = 0
-    print(len(quiz_data["questions"]))
-    print(f"question_index: {question_index}")
     ask_question(question_index)
     while question_index < len(quiz_data["questions"]) - 1:
         # “Python Len() Function.” W3schools.com, 2023,

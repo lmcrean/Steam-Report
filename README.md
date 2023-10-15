@@ -62,6 +62,7 @@ Full Table of Contents: <!-- omit in toc --></div>
     - [2.2.2. Unique Selling Point features](#222-unique-selling-point-features)
     - [2.2.3. Scope of Features](#223-scope-of-features)
   - [2.3. Structure Plane](#23-structure-plane)
+    - [2.3.1 Control Flow Diagram](#231-control-flow-diagram)
   - [2.4. Skeleton Plane](#24-skeleton-plane)
   - [2.5. Surface Plane](#25-surface-plane)
 - [3. Automatic Testing \& Deployment](#3-automatic-testing--deployment)
@@ -69,8 +70,8 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [3.2. Lighthouse Report](#32-lighthouse-report)
   - [3.3. Browserstack Testing](#33-browserstack-testing)
   - [3.4. Deployment](#34-deployment)
-  - [3.5. Github](#35-github)
-  - [3.6. Heroku](#36-heroku)
+    - [3.5. Github](#35-github)
+    - [3.6. Heroku](#36-heroku)
 - [4. Python Issues and Bugs](#4-python-issues-and-bugs)
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
@@ -273,6 +274,7 @@ The 6 week timeline used the Agile method of interations and priorities. Todoist
 It was important to choose a project that was achievable in the time frame, and that had a lot of resources available.
 
 The project was researched, conceived and designed in 6 weeks. Important limitations of the project had to be set from the outset such as
+
 - **Developing the Mininum Viable Product and Unique Selling Point simultaeneously.** This way, the essential product would be met in time with the deadline, and the unique features would keep me motivated.
 
 [↑ Back to top](#Steam-Report)
@@ -283,8 +285,10 @@ The project was researched, conceived and designed in 6 weeks. Important limitat
 
 A mininum viable product is a product with just enough features to satisfy early customers, and to provide feedback for future development.
 
+The minumum viable product was:
+
 <i>
-The minumum viable product was
+
 
 - a navigation menu with START, HIGH SCORES and HOW TO PLAY
 - a quiz with 10 questions per section
@@ -302,9 +306,15 @@ The minumum viable product was
 
 The unique selling point features were designed to meet the needs of new players, and to make the game more engaging and fun.
 
+The unique selling point features were:
+
 <i>
+
+- The STEAM Quiz is combined with a preceding personality quiz, to provide a more holistic report.
+- The Data identifies the user's strongest personality trait, and their strongest subject.
 - Personality report with a unique personality type for each player, suggests what career the student might enjoy.
-- Gambling game that reveals student's attitude to risk
+- a PrettyTable is used to display the leaderboard, with a rank, username, score and timestamp.
+
 </i>
 
 [↑ Back to top](#Steam-Report)
@@ -313,7 +323,7 @@ The unique selling point features were designed to meet the needs of new players
 
 ### 2.2.3. Scope of Features
 
-The full scope and function of features is discussed in the opening [Features](#1-features) section.
+The full scope and function of features is discussed in the opening [Features](#1-outline-of-features) section.
 
 [↑ Back to top](#Steam-Report)
 
@@ -323,15 +333,18 @@ The full scope and function of features is discussed in the opening [Features](#
 
 This Structure plane summarises the structure of each feature by highlighting most essential HTML, CSS and JS functions for the feature to work. The developer also used this as a workflow for drafting in the features.
 
+### 2.3.1 Control Flow Diagram
+
 ***
 
 <img src="assets/media/documentation/project-flowchart.svg" width="1700">
 
 ***
-
-Leaderboard flowchart (early draft)
+<details><summary>click here to see Leaderboard flowchart (early draft)</summary>
 
 <div align=center><img src="assets/media/documentation/leaderboard_flowchart.svg" width="1700"></div>
+
+</details>
 
 [↑ Back to top](#Steam-Report)
 
@@ -339,7 +352,15 @@ Leaderboard flowchart (early draft)
 
 ## 2.4. Skeleton Plane
 
-The skeleton plane covers the layout of the website, and the responsiveness to viewport width.
+- The skeleton plane covers the layout of the website, and the responsiveness to viewport width.
+
+- The website is desktop only. The terminal is centered on the page, and the hero image is below the terminal.
+
+- The terminal is cleared after each question, and the user is prompted to press enter to continue.
+
+```python
+os.system('cls' if os.name == 'nt' else 'clear')
+```
 
 [↑ Back to top](#Steam-Report)
 
@@ -347,6 +368,13 @@ The skeleton plane covers the layout of the website, and the responsiveness to v
 
 ## 2.5. Surface Plane
 This surface plane describes the choice of typefaces, colors and style themes relevant to the project's desired tone and practical needs.
+
+- The HTML/CSS Design choices are displayed in the [Features](#1-outline-of-features) section. 
+- The color scheme is blue, with a steam motif.
+- The font used is ```Bloom Skirt``` and was designed by the developer using Canva.
+- The background is a blue cloud vector, acquired using [bgjar.com](https://bgjar.com/).
+
+[↑ Back to top](#Steam-Report)
 
 [↑ Back to top](#Steam-Report)
 
@@ -357,10 +385,9 @@ This surface plane describes the choice of typefaces, colors and style themes re
 
 </div>
 
-The Automatic Testing achieved
-- xxxxxxxxxxxxxxx
-- xxxxxxxxxxxxx
-- xxxx
+The Automatic Testing refered to the automated testing of the code, and the deployment of the code to Heroku.
+
+Deployment was done on Heroku.
 
 [↑ Back to top](#Steam-Report)
 
@@ -417,13 +444,13 @@ testing on different browsers: there seems to be an issue with the logo falling 
 
 </div> 
 
-## 3.5. Github 
+### 3.5. Github 
 [Code Institute template](https://github.com/Code-Institute-Org/python-essentials-template) was cloned to create the repository. I cloned repository to my local machine using GitHub Desktop and opened it in VSCode, where I developed the project with the git method.
 
 All libraries and packages were listed in ```requirements.txt```.
 
 
-## 3.6. Heroku
+### 3.6. Heroku
 
 The project was deployed on Heroku. The following steps were taken:
 
