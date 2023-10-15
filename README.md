@@ -1,8 +1,6 @@
 <div align="center">
 
-
-
-<img src="assets/media/logo.svg" width="700px">
+<img src="https://github.com/lmcrean/Steam-Report/assets/133490867/1170dda1-3f07-4c06-88e9-ef32542c9529" width="700px">
 
 # Steam Report: personalised insights and career recommendations for young students <!-- omit in toc -->
 
