@@ -205,25 +205,47 @@ I need footers at the bottom to promote my brand
  - the purpose is clearly stated that the data is used to provide career feedback.
 
 **Structure**
-I need all the controls to navigate the test successfully
+**I need all the controls to navigate the test successfully**
+ - There are validation loops infused throughout the application, to ensure that the computer collects the correct data from the user.
+ - The user is prompted to enter a username, which is validated to confirm it is 3-9 characters long. Rationale for this is the leaderboard display.
+ - The user is prompted to enter a number from 1 to 5 to navigate the Menu
+ - The user is prompted to enter a number from 1 to 9 on a scale of Strongly Disagree to Strongly Agree
+ - The user is prompted to enter a number from 1 to 4 to complete the test
 
-I need the quiz to show me my overall STEAM high score and assess my high score on individual sections.
+**I need the quiz to provide ongoing feedback, in order to keep me engaged.**
+ - The user gets feedback on their overall personality traits at the end of the quiz.
+ - The user can see their running score during the STEAM Quiz.
+ - The user can see their overall results as describedin User Story ```I need a quiz that provides me with personal feedback on a certain holistic level.```
 
-I need to see my rank in the leaderboard. (If I completed the quiz faster than a user of the same rank, I deserve to be a higher rank)
-
-I need each section to select 10 random MCQs from a large database
+**I need the quiz to be dynamic, in order to keep me engaged.**
+- the OCEAN Personality Test randomises the questions from a database of 25 questions
+- the STEAM quiz select 10 random MCQs from a large API database
 
 **Skeleton needs**
-I need to see the logo consistently throughout the game
+I need to see simple branding consistently throughout the application.
+- the logo is displayed on the home page above the terminal
+- white on blue headings are used throughout the application
 
-I need to track my high score throughout the game
+**I need the all the text to fit in the terminal box**
+- the python code is never more than 79 characters long per line.
+- line breaks are used where appropriate
 
-I need the all the text to fit in the 80 by 80 box
+**Where appropriate, I want to get an idea of my progress through the subject quiz.**
+- For the OCEAN Personality quiz, there is no "score" fed back until the end, so as not to influence the user's answers with a "right answer".
+- For the STEAM quiz the user is told what question they are on, and their running score.
 
 **Surface needs**
-I would like to see a ASCII decorated logo
+I would like to have the overall website design to evoke a positive emotional response.
+- terminal is centered on the page
+- the background is a blue cloud vector, playing with the steam motif.
+- the logo is a steam motif, with bright colors and friendly cursive font
+- the favicon is a globe, to represent the the global nature of STEAM careers, as well as a positive representation of education.
+- the hero image below the terminal is a group of happy students, to represent the target audience of the application.
 
-I would like to have my terminal centered with a background
+I need the text to be readable and clear.
+- the white on blue heading at the top of the terminal ensures the user always knows where they are in the application.
+- where appropriate the text is highlighted with color prompts, such as red, amber, green.
+
 
 ### 2.1.2. Initial Product Research
 Initial Product research is credited in the [Credits and Acknowledgements section](#5-credits--acknowledgements). In summary, the developer researched quizzes and API walkthroughs to find a suitable project that would be achievable in the time frame.
