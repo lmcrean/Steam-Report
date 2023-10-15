@@ -45,19 +45,18 @@ Manual Testing with the UX Development Planes
 Full Table of Contents: <!-- omit in toc --></div>
 
 - [1. Outline of Features](#1-outline-of-features)
-  - [Menu](#menu)
-  - [Personality Quiz (OCEAN Big 5 Personality Traits)](#personality-quiz-ocean-big-5-personality-traits)
-  - [Personality Quiz Results](#personality-quiz-results)
-  - [Subject Quiz (STEAM = Science, Technology, English, Art, Math)](#subject-quiz-steam--science-technology-english-art-math)
-  - [Personalised Report](#personalised-report)
-  - [Leaderboard](#leaderboard)
-  - [Accessibility Features](#accessibility-features)
+  - [1.1. Menu](#11-menu)
+  - [1.2. Personality Quiz (OCEAN Big 5 Personality Traits)](#12-personality-quiz-ocean-big-5-personality-traits)
+  - [1.3. Personality Quiz Results](#13-personality-quiz-results)
+  - [1.4. Subject Quiz (STEAM = Science, Technology, English, Art, Math)](#14-subject-quiz-steam--science-technology-english-art-math)
+  - [1.5. Personalised Report](#15-personalised-report)
+  - [1.6. Leaderboard](#16-leaderboard)
+  - [1.7. Accessibility Features](#17-accessibility-features)
 - [2. Manual Testing with the UX Development Planes](#2-manual-testing-with-the-ux-development-planes)
   - [2.1. Strategy Plane](#21-strategy-plane)
-    - [2.1.1. Developer Research](#211-developer-research)
+    - [2.1.1. User Stories \& business goals](#211-user-stories--business-goals)
     - [2.1.2. Initial Product Research](#212-initial-product-research)
     - [2.1.3. Project Timeline](#213-project-timeline)
-    - [2.1.4. User Stories \& business goals](#214-user-stories--business-goals)
   - [2.2. Scope plane](#22-scope-plane)
     - [2.2.1. Mininum Viable Product features](#221-mininum-viable-product-features)
     - [2.2.2. Unique Selling Point features](#222-unique-selling-point-features)
@@ -70,8 +69,8 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [3.2. Lighthouse Report](#32-lighthouse-report)
   - [3.3. Browserstack Testing](#33-browserstack-testing)
   - [3.4. Deployment](#34-deployment)
-  - [3.4.1. Github](#341-github)
-  - [3.4.2. Heroku](#342-heroku)
+  - [3.5. Github](#35-github)
+  - [3.6. Heroku](#36-heroku)
 - [4. Python Issues and Bugs](#4-python-issues-and-bugs)
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
   - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
@@ -96,29 +95,29 @@ The Page is presented with a logo and a hero image underneath the terminal. The 
 
 At the beginning the user is asked to enter a username, and is asked to confirm that their input is not their real name. This is to protect the user's identity, as the user is asked to input sensitive data.
 
-## Menu
+## 1.1. Menu
 
 ![](assets/media/issues/2023-10-15-13-01-52.png)
 
 The main menu provides the user with several options, including taking the Personality Quiz, learning about the OCEAN Personality Test, participating in the STEAM Subject Quiz, and other useful information. Navigation is facilitated through numerical selections.
 
-## Personality Quiz (OCEAN Big 5 Personality Traits)
+## 1.2. Personality Quiz (OCEAN Big 5 Personality Traits)
 
 ![](assets/media/issues/2023-10-15-13-02-48.png)
 
 The Personality Quiz is designed to measure the Big 5 personality traits: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism (OCEAN). The user's responses are used to generate a personalised report to provide career guidance.
 
-## Personality Quiz Results
+## 1.3. Personality Quiz Results
 
 ![](assets/media/issues/2023-10-15-13-04-25.png)
 
-## Subject Quiz (STEAM = Science, Technology, English, Art, Math)
+## 1.4. Subject Quiz (STEAM = Science, Technology, English, Art, Math)
 
 ![](assets/media/issues/2023-10-15-13-04-57.png)
 
 The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, and Math. This quiz aims to identify the user's strengths and weaknesses in these subjects, offering additional insights for career choices.
 
-## Personalised Report
+## 1.5. Personalised Report
 
 ![](assets/media/issues/2023-10-15-13-06-10.png)
 
@@ -127,14 +126,14 @@ The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, a
 Based on the results from the Personality and Subject Quizzes, a detailed report is generated. This report includes recommended career paths and environments that the user may excel in, tailored to their unique personality and skill set.
 
 
-## Leaderboard
+## 1.6. Leaderboard
 ![](assets/media/issues/2023-10-15-13-07-29.png)
 
 ![](assets/media/issues/2023-10-15-13-08-02.png)
 
 The leaderboard feature allows users to compare their scores with others. It adds a competitive element to the quizzes and encourages users to improve their scores.
 
-## Accessibility Features
+## 1.7. Accessibility Features
 The application is built with accessibility in mind, focusing on readability and color prompts.
 
 ![](assets/media/issues/2023-10-15-13-08-51.png)
@@ -154,49 +153,22 @@ The application is built with accessibility in mind, focusing on readability and
 
 </div>
 
-**The 5 UX development planes were used as an efficient framework for documenting the project's intentions.** 
-
-
-**Manual testing focused on the functionality of the JS logic and CSS visuals:**
-
-Using the latter 3 UX Planes as a guideline:
-- **For the Structure plane, JS logic and HTML hyperlinks** functionality within each feature, using console.log() to check that the code was running as expected.
-- **For the Skeleton plane, CSS positioning and responsivity to viewport width**, key breakpoints being at mobile view, tablet view (768px), laptop view (1208px) and desktop view (1728px+). 
-- **For the Surface plane, design choices through vector graphics, typography, color and sound** that serve the user stories and elicit a positive emotional response. CSS was the key programming language and Canva was used for rendering graphic illustrations.
+**The 5 UX development planes were used as an efficient framework for documenting the project's intentions.** The planes were used to develop the project's strategy, scope, structure, skeleton and surface. The planes were also used to test the project's features and to document the process.
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
 ## 2.1. Strategy Plane
 
-The Strategy plane set the intention of $$$$$$$$$$$$$$$$$$$$$$$$ that would be developed over 5 weeks.
+The Strategy plane set the intention of a dynamic quiz that would be developed over 5 weeks.
 
 </div>
 
-
-### 2.1.1. Developer Research
-
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 ***
 
-### 2.1.2. Initial Product Research
-Initial Product research is credited in the [Credits and Acknowledgements section](#5-credits--acknowledgements).
 
-[↑ Back to top](#Steam-Test)
-
-***
-
-### 2.1.3. Project Timeline
-
-The 6 week timeline used the Agile method of interations and priorities. Todoist was chosen as the project management tool for it's simplicity and efficiency.
-
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$screen shot of todoist 
-
-[↑ Back to top](#Steam-Test)
-
-***
-
-### 2.1.4. User Stories & business goals
+### 2.1.1. User Stories & business goals
 
 The business goals were to provide users with a fun and engaging quiz that would promote careers in STEAM. The user stories were developed to meet the business goals.
 
@@ -215,22 +187,22 @@ I need footers at the bottom to promote my brand
 
 **User Stories Scope**
 
-I need a quiz that provides me with personal feedback on a certain holistic level.
+**I need a quiz that provides me with personal feedback on a certain holistic level.**
  - the user takes a personality quiz at the beginning of the session.
  - the user takes a quiz on STEAM subjects.
  - the user receives a personal report at the end of the session, summarising their personality, academic knowledge and suggesting what qualities they might have for a career in STEAM.
 
-I need a quiz that provides me with broader feedback that relates to other users.
+**I need a quiz that provides me with broader feedback that relates to other users.**
  - the user is given a rank in the leaderboard, and is shown how many users have completed the quiz.
  - the user is told what rank they came in their most knowledgeable subject, in relation to other users. E.g. ```You came 5th in Science.```
  - the user is told what percentage they came in their strongest personality trait, in relation to other users. E.g. ```You scored in the top 20% for Openness.```
 
-I want option to retake the quiz
+**I want option to retake the quiz**
 - the user can easily navigate back to the menu
 
-I need my identity to be anonymous as there is sensitive data being handled
- - the user is asked to enter a username at the beginning of the session.
- - the user is asked to use a Moniker, and is double checked to confirm that their input is not their real name.
+**I need to feel comfortable about my personality data being handled.**
+ - the user is prompted to use an anonymous Moniker, and is double checked to confirm that their input is not their real name.
+ - the purpose is clearly stated that the data is used to provide career feedback.
 
 **Structure**
 I need all the controls to navigate the test successfully
@@ -253,6 +225,24 @@ I would like to see a ASCII decorated logo
 
 I would like to have my terminal centered with a background
 
+### 2.1.2. Initial Product Research
+Initial Product research is credited in the [Credits and Acknowledgements section](#5-credits--acknowledgements). In summary, the developer researched quizzes and API walkthroughs to find a suitable project that would be achievable in the time frame.
+
+[↑ Back to top](#Steam-Report)
+
+***
+
+### 2.1.3. Project Timeline
+
+The 6 week timeline used the Agile method of interations and priorities. Todoist was chosen as the project management tool for it's simplicity and efficiency.
+
+![](assets/media/issues/2023-10-15-15-22-27.png)
+
+[↑ Back to top](#Steam-Report)
+
+***
+
+
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -263,7 +253,7 @@ It was important to choose a project that was achievable in the time frame, and 
 The project was researched, conceived and designed in 6 weeks. Important limitations of the project had to be set from the outset such as
 - **Developing the Mininum Viable Product and Unique Selling Point simultaeneously.** This way, the essential product would be met in time with the deadline, and the unique features would keep me motivated.
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -295,7 +285,7 @@ The unique selling point features were designed to meet the needs of new players
 - Gambling game that reveals student's attitude to risk
 </i>
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 ***
 
@@ -303,7 +293,7 @@ The unique selling point features were designed to meet the needs of new players
 
 The full scope and function of features is discussed in the opening [Features](#1-features) section.
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -321,7 +311,7 @@ Leaderboard flowchart (early draft)
 
 <div align=center><img src="assets/media/documentation/leaderboard_flowchart.svg" width="1700"></div>
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
@@ -329,14 +319,14 @@ Leaderboard flowchart (early draft)
 
 The skeleton plane covers the layout of the website, and the responsiveness to viewport width.
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
 ## 2.5. Surface Plane
 This surface plane describes the choice of typefaces, colors and style themes relevant to the project's desired tone and practical needs.
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -350,7 +340,7 @@ The Automatic Testing achieved
 - xxxxxxxxxxxxx
 - xxxx
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 ***
 
@@ -367,7 +357,7 @@ While this was the main validator used, the developer also used the following va
 ![](assets/media/issues/2023-10-14-17-29-42.png)
 
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 
 ***
@@ -381,7 +371,7 @@ To check the lighthouse report on a chrome browser, right click inspect and clic
 | Desktop | ![](assets/media/issues/2023-10-14-18-53-12.png) | 
 |Timestamp| 14/10/23 |
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 
 ***
@@ -394,7 +384,7 @@ testing on different browsers: there seems to be an issue with the logo falling 
 
 ![](assets/media/issues/browserstack1.png)
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -405,13 +395,13 @@ testing on different browsers: there seems to be an issue with the logo falling 
 
 </div> 
 
-## 3.4.1. Github 
+## 3.5. Github 
 [Code Institute template](https://github.com/Code-Institute-Org/python-essentials-template) was cloned to create the repository. I cloned repository to my local machine using GitHub Desktop and opened it in VSCode, where I developed the project with the git method.
 
 All libraries and packages were listed in ```requirements.txt```.
 
 
-## 3.4.2. Heroku
+## 3.6. Heroku
 
 The project was deployed on Heroku. The following steps were taken:
 
@@ -426,7 +416,7 @@ The project was deployed on Heroku. The following steps were taken:
 ![](assets/media/issues/2023-10-14-19-19-51.png)
 
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -661,7 +651,7 @@ AttributeError: 'str' object has no attribute 'scoreTotal'
 ```
 
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
@@ -777,7 +767,7 @@ In early stages of development, the following python projects were tested and re
 
 
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 
 ## 5.3. Technologies Used
@@ -796,7 +786,7 @@ In early stages of development, the following python projects were tested and re
 **Tools**
 
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 ***
 
@@ -824,7 +814,7 @@ In early stages of development, the following python projects were tested and re
 ## 5.5. Acknowledgements
 
 
-[↑ Back to top](#Steam-Test)
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"><br><br><img  src="assets/media/logo.svg" width="200px"></div>
 

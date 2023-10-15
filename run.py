@@ -167,8 +167,18 @@ def main():
     cprint("e.g. Birdy34, Koala25, Croc76 \n\n", 'light_green')
     # ask the user for their username
     username_str = input("Enter your username here: ")
-    if validate_name(username_str):
-        print("Data is valid!")
+    validate_name(username_str)
+    print("You have entered: " + username_str)
+    print("Please confirm this is not your real name.\n")
+    cprint("1 - confirm", 'light_green', attrs=['bold'])
+    print("2 - input again")
+    choice = int(input("Please enter your choice: "))
+    if choice == 1:
+        mainMenu()
+    elif choice == 2:
+        main()
+    else:
+        print("Please enter a number between 1 and 2.")
     while True:
         try:
             mainMenu()
@@ -234,22 +244,35 @@ def main():
             print("Please enter a number between 1 and 5.")
 
 
-def validate_name(values):
+def validate_name(username_str):
     """
     The name cannot be more than 9 characters long.
     """
-    try:
-        if len(values) > 9:
-            raise ValueError(
-                f"Invalid name: {values}."
-                "The name cannot be more than 9 characters long."
-                f"You provided {len(values)} characters.\n"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+    if len(username_str) > 9:
+        print(
+            f"Invalid name: {username_str}.\n"
+            "The name cannot be more than 9 characters long.\n"
+            "Please enter a name that is less than 9 characters long.\n"
+            "For example, Birdy34, Koala25, Croc76\n"
+            "press any key to try again\n"
+        )
+        input()
         main()
-        return False  # return False if errors are raised.
-    return True  # return True if noerrors are raised.
+        
+    elif len(username_str) < 3:
+        print(
+            f"Invalid name: {username_str}.\n"
+            "The name cannot be less than 3 characters.\n"
+            "Please enter a name that is more than 3 characters long.\n"
+            "For example, Birdy34, Koala25, Croc76\n"
+            "press any key to try again\n"
+        )
+        input()
+        main()
+    else:
+        cprint("Username is valid!\n", 'green')
+        username_str = username_str
+    return username_str  # return True if noerrors are raised.
     # The function will return True if the try block is successful.
     # If unsuccessful, the except block will run and return False.
     # For example, if the user enters 10 chracaters instead of 9,
