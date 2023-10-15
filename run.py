@@ -379,7 +379,7 @@ def ask_question(question_index):
 
         response = input(
             f"Please enter a number from 1 to 9."
-            f"({red_option}, {amber_option}, {green_option}):\n"
+            f"\n({red_option}, {amber_option}, {green_option}):\n"
         )
         try:
             response = int(response)  # Convert to an integer
@@ -466,6 +466,7 @@ def subjectQuiz(subject_scores):
     category = 19  # Category 19 is Math
     startQuestionNumber()
     playQuiz(amount, category, subject_scores, topic)
+    finalSTEAMScore(subject_scores)
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
@@ -568,8 +569,19 @@ def playQuiz(
     question_number = startQuestionNumber()  # Initialize question_number
     for question in question_pool:  # Loop through the questions
         cprint("STEAM Quiz", 'white', 'on_blue', attrs=['bold'])
-        print(f"\n---------Section: {topic}---------")
-        print(f"---------Question {question_number} of 10---------\n")
+        sectiontext= f"---------Section: {topic}---------"
+        cprint(f"{sectiontext}", 'yellow', attrs=['bold'])
+        print(f"---------Question {question_number} of 10---------")
+        if topic == "Science":
+            print(f"         Topic score: {subject_scores.scoreScience}\n")
+        elif topic == "Technology":
+            print(f"         Topic score: {subject_scores.scoreTechnology}\n")
+        elif topic == "English":
+            print(f"         Topic score: {subject_scores.scoreEnglish}\n")
+        elif topic == "Art":
+            print(f"         Topic score: {subject_scores.scoreArt}\n")
+        elif topic == "Math":
+            print(f"         Topic score: {subject_scores.scoreMath}\n")
         # Get the question text:
         question_text = html.unescape(question["question"])
         cprint(question_text, attrs=['bold']) # Print the question
@@ -704,6 +716,31 @@ def getUserAnswer() -> int:
         except ValueError:
             print("Invalid input with Value error.")
             print("Enter a number between 1 and 4")
+
+def finalSTEAMScore(subject_scores):
+    """
+    Displays the final STEAM score
+    """
+    cprint("STEAM Quiz Results\n", 'white', 'on_blue', attrs=['bold'])
+    print(f"Science: {subject_scores.scoreScience}/10")
+    print(f"Technology: {subject_scores.scoreTechnology}/10")
+    print(f"English: {subject_scores.scoreEnglish}/10")
+    print(f"Art: {subject_scores.scoreArt}/10")
+    print(f"Math: {subject_scores.scoreMath}/10 \n")
+    print(f"(Total: {subject_scores.scoreTotal}/50) \n")
+    # Finding the highest score
+    subject_dict = {
+        'Science': subject_scores.scoreScience,
+        'Technology': subject_scores.scoreTechnology,
+        'English': subject_scores.scoreEnglish,
+        'Art': subject_scores.scoreArt,
+        'Math': subject_scores.scoreMath
+    }
+    highest_subject = max(subject_dict, key=subject_dict.get)
+    highest_msg = f"you scored highest in: {highest_subject}"
+    cprint(highest_msg, 'green', attrs=['bold'])
+    print("\npress any key to continue on to the final report")
+    input()
 
 # ------------------ Data Handling Section ------------------
 
@@ -846,9 +883,11 @@ def personalityReport(username_str, trait_scores, subject_scores):
     5. Offer to Restart the programme.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    cprint("Welcome to your final report!", 'white', 'on_blue', attrs=['bold'])
-    print("We're going to look at your personality traits and recommend a")
-    print("career path for you.\n")
+    welcomemsg = "Welcome to your final report!"
+    cprint(f"{welcomemsg}", 'white', 'on_blue', attrs=['bold'])
+    print("\nWe're going to look at your strongest personality traits") 
+    print("and subject scores. Based on this data we will career path") 
+    print("for you.\n")
     print("Press any key to continue")
     input()
     os.system('cls' if os.name == 'nt' else 'clear')
