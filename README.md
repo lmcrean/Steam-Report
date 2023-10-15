@@ -6,9 +6,9 @@
 
 ![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python) 
 
-![JSON](https://img.shields.io/badge/JSON_Database-14354C?style=for-the-badge&logo=json&color=yellow&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=darkgreen&logoColor=white)  ![APIs](https://img.shields.io/badge/APIs-Google_Sheets,_OpenTriviaDB-blue?style=for-the-badge&logo=api&color=blue&logoColor=darkgreen) 
+![JSON](https://img.shields.io/badge/Database-JSON-14354C?style=for-the-badge&logo=json&color=yellow&logoColor=white) ![Node.js](https://img.shields.io/badge/Environment-Node.JS-14354C?style=for-the-badge&logo=node.js&color=darkgreen&logoColor=white)  ![APIs](https://img.shields.io/badge/API_1-Google_Sheets-blue?style=for-the-badge&logo=googlesheets&color=blue&logoColor=white) ![API](https://img.shields.io/badge/API_2-OpenTrivia_DB-blue?style=for-the-badge&logo=api&color=blue&logoColor=darkgreen)
 
-![Heroku](https://img.shields.io/badge/Heroku-deployed-purple?style=for-the-badge&logo=heroku&logoColor=pink) ![[passed](http://www.shields.io)](https://img.shields.io/badge/CI_Python_Linter_(PEP8)-passed-green?style=for-the-badge&logo=python&color=brightgreen&logoColor=blue)
+![Heroku](https://img.shields.io/badge/Heroku-deployed-purple?style=for-the-badge&logo=heroku&logoColor=white) ![[passed](http://www.shields.io)](https://img.shields.io/badge/CI_Python_Linter_(PEP8)-passed-green?style=for-the-badge&logo=python&color=brightgreen&logoColor=white)
 
 </div>
 
