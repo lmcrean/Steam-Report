@@ -46,8 +46,9 @@ Full Table of Contents: <!-- omit in toc --></div>
 
 - [1. Outline of Features](#1-outline-of-features)
   - [Menu](#menu)
-  - [Personality Quiz](#personality-quiz)
-  - [Subject Quiz](#subject-quiz)
+  - [Personality Quiz (OCEAN Big 5 Personality Traits)](#personality-quiz-ocean-big-5-personality-traits)
+  - [Personality Quiz Results](#personality-quiz-results)
+  - [Subject Quiz (STEAM = Science, Technology, English, Art, Math)](#subject-quiz-steam--science-technology-english-art-math)
   - [Personalised Report](#personalised-report)
   - [Leaderboard](#leaderboard)
   - [Accessibility Features](#accessibility-features)
@@ -89,42 +90,62 @@ Full Table of Contents: <!-- omit in toc --></div>
 
 # 1. Outline of Features
 
-![](assets/media/issues/2023-10-14-19-12-15.png)
+![](assets/media/issues/2023-10-15-13-01-08.png)
 
 The Page is presented with a logo and a hero image underneath the terminal. The colour scheme is themed blue with a Steam Motif to play on the idea of a Steam Report.
 
 At the beginning the user is asked to enter a username, and is asked to confirm that their input is not their real name. This is to protect the user's identity, as the user is asked to input sensitive data.
 
 ## Menu
+
+![](assets/media/issues/2023-10-15-13-01-52.png)
+
 The main menu provides the user with several options, including taking the Personality Quiz, learning about the OCEAN Personality Test, participating in the STEAM Subject Quiz, and other useful information. Navigation is facilitated through numerical selections.
 
-## Personality Quiz
+## Personality Quiz (OCEAN Big 5 Personality Traits)
+
+![](assets/media/issues/2023-10-15-13-02-48.png)
 
 The Personality Quiz is designed to measure the Big 5 personality traits: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism (OCEAN). The user's responses are used to generate a personalised report to provide career guidance.
 
-## Subject Quiz
+## Personality Quiz Results
+
+![](assets/media/issues/2023-10-15-13-04-25.png)
+
+## Subject Quiz (STEAM = Science, Technology, English, Art, Math)
+
+![](assets/media/issues/2023-10-15-13-04-57.png)
 
 The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, and Math. This quiz aims to identify the user's strengths and weaknesses in these subjects, offering additional insights for career choices.
 
 ## Personalised Report
 
+![](assets/media/issues/2023-10-15-13-06-10.png)
+
+![](assets/media/issues/2023-10-15-13-06-29.png)
+
 Based on the results from the Personality and Subject Quizzes, a detailed report is generated. This report includes recommended career paths and environments that the user may excel in, tailored to their unique personality and skill set.
 
 
 ## Leaderboard
-![](assets/media/issues/2023-10-15-11-35-11.png)
+![](assets/media/issues/2023-10-15-13-07-29.png)
+
+![](assets/media/issues/2023-10-15-13-08-02.png)
 
 The leaderboard feature allows users to compare their scores with others. It adds a competitive element to the quizzes and encourages users to improve their scores.
 
 ## Accessibility Features
 The application is built with accessibility in mind, focusing on readability and color prompts.
 
+![](assets/media/issues/2023-10-15-13-08-51.png)
+
+![](assets/media/issues/2023-10-15-13-08-35.png)
+
 </div>
 
  - consistent headings for navigation
  - How To Play in the menu
  - color prompts with simple Red, Amber Green. For example the menu highlights start option, the personality quiz uses red, amber, green to indicate the user's options of disagree/neutral/agree, and the subject quiz uses red, amber, green to indicate the user's feedback of incorrect/correct.
-
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
