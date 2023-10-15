@@ -136,18 +136,18 @@ def mainMenu():
     The main menu of the game
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    cprint("Welcome to Steam Report!", 'yellow', attrs=['bold'])
+    cprint("Welcome to your Steam Report!", 'white', 'on_blue', attrs=['bold'])
     print("We're going to test your personality and run a quiz to help with")
     print("your career choices. To do this you will take an OCEAN Personality Test,")
     print("and test your knowledge on the STEAM subjects.\n")
     print("At the end of the test you'll get a customized personality report.\n")
 
     cprint("Please select an option from the menu below:", 'yellow')
-    cprint("1 - Start", 'blue')
-    cprint("2 - About the OCEAN Personality Test", 'blue')
-    cprint("3 - About the STEAM Subjects", 'blue')
-    cprint("4 - How to Play", 'blue')
-    cprint("5 - How it works", 'blue')
+    cprint("1 - Start", 'light_green', attrs=['bold'])
+    print("2 - About the OCEAN Personality Test")
+    print("3 - About the STEAM Subjects")
+    print("4 - How to Play")
+    print("5 - How it works")
 
 
 
@@ -156,15 +156,15 @@ def main():
     run all program functions, starting with the main menu. Plays the game.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    cprint("Welcome to Steam Report!", 'yellow', attrs=['bold'])
+    cprint("Welcome to your Steam Report!", 'white', 'on_blue', attrs=['bold'])
     print("We're going to test your personality and run a quiz to help with")
     print("your career choices. To do this you will take an OCEAN Personality Test,")
     print("and test your knowledge on the STEAM subjects.\n")
     print("At the end of the test you'll get a customized personality report.\n")
     print("Please note that your data will be collected from this test.")
     cprint("To protect your privacy, please DO NOT provide your real name.", 'red')
-    cprint("instead provide an anonymous PSEUDONYM", 'red')
-    cprint("e.g. Birdy34, Koala25, Croc76 \n\n", 'red')
+    cprint("instead provide an anonymous PSEUDONYM", 'light_green')
+    cprint("e.g. Birdy34, Koala25, Croc76 \n\n", 'light_green')
     # ask the user for their username
     username_str = input("Enter your username here: ")
     if validate_name(username_str):
@@ -181,13 +181,53 @@ def main():
                 print(username_str, "main")
                 start_personality_quiz(username_str)
             elif choice == 2:
-                print("You have chosen to view the leaderboard.")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                cprint("About the OCEAN Personality Test.",
+                       'white', 'on_blue', attrs=['bold'])
+                print("The OCEAN Test measures the Big 5 personality traits:")
+                print("Openness, Conscientiousness, Extraversion, Agreeableness,")
+                print("and Neuroticism. These traits are key in various work")
+                print("settings, affecting teamwork, stress management, and more.\n")
+                print("press any key to go back to the menu")
+                input()
             elif choice == 3:
-                print("You have chosen to view the instructions.")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                cprint("About the STEAM Subject Quiz.",
+                      'white', 'on_blue', attrs=['bold'])
+                print("The STEAM Quiz covers Science, Technology, English,")
+                print("Art, and Math, which correspond to a broad range of careers.")
+                print("This helps in identifying your strengths for career choices.")
+                print("\npress any key to go back to the menu")
+                input()
             elif choice == 4:
-                print("You have chosen to view information about STEAM.")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                cprint("How to Play",
+                      'white', 'on_blue', attrs=['bold'])
+                print("Follow on-screen instructions for each quiz.")
+                print("For the Personality Quiz, you'll choose options from 1-9.")
+                print("For the STEAM Quiz, you'll choose options from 1-4.")
+                print("\npress any key to go back to the menu")
+                input()
             elif choice == 5:
-                print("You have chosen to exit the program.")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                cprint("How it Works:",
+                       'white', 'on_blue', attrs=['bold'])
+                print("The test identifies your strongest areas in both")
+                print("OCEAN and STEAM, and uses these to make career")
+                print("recommendations tailored to your strengths.")
+                table = PrettyTable()
+                table.field_names = [" ", "S", "T", "E", "A", "M"]
+                table.add_row(["O", " ", " ", " ", " ", " "])
+                table.add_row(["C", " ", " ", " ", " ", " "])
+                table.add_row(["E", " ", " ", " ", " ", ":)"])
+                table.add_row(["A", " ", " ", " ", " ", " "])
+                table.add_row(["N", " ", " ", " ", " ", " "])
+                print(table)
+                print("For example, if your strongest areas are")
+                print("Extraversion and Maths, then your career choices")
+                print("will be tailored to these areas.")
+                print("\npress any key to go back to the menu")
+                input()
             else:
                 print("Please enter a number between 1 and 5.")
         except ValueError:
@@ -327,14 +367,19 @@ def ask_question(question_index):
     function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+    cprint("OCEAN Personality Test", 'white', 'on_blue', attrs=['bold'])
     question = quiz_data["questions"][question_index]
     print(f"Question {question_index + 1}:")
-    print(question["statement"])
+    cprint(question["statement"], attrs=['bold'])
 
     while True:
+        red_option = colored("1 = Strongly Disagree", 'light_red')
+        amber_option = colored("5 = Neutral", 'light_yellow')
+        green_option = colored("9 = Strongly Agree", 'light_green')
+
         response = input(
-            "Please enter a number from 1 to 9."
-            "(1 = Strongly Disagree, 5 = Neutral, 9 = Strongly Agree):\n"
+            f"Please enter a number from 1 to 9."
+            f"({red_option}, {amber_option}, {green_option}):\n"
         )
         try:
             response = int(response)  # Convert to an integer
@@ -374,10 +419,13 @@ def convert_score_to_percentage(score):
 def personalityResults(trait_scores):
     """displays personality results, with option to render full results"""
     os.system('cls' if os.name == 'nt' else 'clear')
+    cprint("OCEAN Personality Test Results", 'white', 'on_blue', attrs=['bold'])
     print("\nTrait Scores in Percentage:")
     for trait, score in trait_scores.items():
         print(f"{trait}: {convert_score_to_percentage(score)}%")
-    print("press any key to continue on to the subject quiz")
+    highest_trait = max(trait_scores, key=trait_scores.get)
+    cprint("\nyou scored highest in: " + highest_trait, 'green', attrs=['bold'])
+    print("\npress any key to continue on to the subject quiz")
     input()
 
 # ------------------ Subject Quiz Section ------------------
@@ -392,7 +440,6 @@ out of 10 for each subject area, and a total score out of 50.
 
 def subjectQuiz(subject_scores):
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("We are now beginning the multiple choice test.\n")
     topic = "Science"
     amount = 10
     category = 17  # Category 17 is Science
@@ -516,14 +563,16 @@ def playQuiz(
     www.runthat.blog/quiz-app-using-api-data-python-project/.
     Accessed 24 Sept. 2023.
     """
+    
     question_pool = getTriviaQuestions(amount, category)  # Get the questions
     question_number = startQuestionNumber()  # Initialize question_number
     for question in question_pool:  # Loop through the questions
-        print(f"---------Section: {topic}---------")
+        cprint("STEAM Quiz", 'white', 'on_blue', attrs=['bold'])
+        print(f"\n---------Section: {topic}---------")
         print(f"---------Question {question_number} of 10---------\n")
         # Get the question text:
         question_text = html.unescape(question["question"])
-        print(question_text)  # Print the question
+        cprint(question_text, attrs=['bold']) # Print the question
         choices = question["incorrect_answers"]  # Get the incorrect answers
         # Add the correct answer to the choices list:
         choices.extend([question["correct_answer"]])
@@ -671,9 +720,7 @@ def dataHandling(username_str, trait_scores, subject_scores):
     This section retrieves Local data and stores it in local variables.
     """
     data_OCEAN = getLocalDataFromUser_OCEAN(username_str, trait_scores)
-    user_data_OCEAN = data_OCEAN
     data_STEAM = getLocalDataFromUser_STEAM(username_str, subject_scores)
-    user_data_STEAM = data_STEAM
     # call the pushToAPICloud function with formatted local variables ready:
     pushToAPICloud(data_STEAM, data_OCEAN)
     # call the get_high_score_leaderboard function
@@ -753,7 +800,7 @@ def pushToAPICloud(data_STEAM, data_OCEAN):
     worksheet_to_update.append_row(data_OCEAN)
 
 
-def get_high_score_leaderboard():
+def get_high_score_leaderboard(username_str):
     """
     Prints highscore leaderboard from worksheet.
     Collects columns of data_STEAM from score worksheet.
@@ -761,6 +808,7 @@ def get_high_score_leaderboard():
     “Prettytable.” PyPI, 11 Sept. 2023,
     pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
+    cprint("STEAM Quiz Leaderboard", 'white', 'on_blue', attrs=['bold'])
     worksheet = SHEET.worksheet('score')
     data_STEAM = worksheet.get_all_values()  # Get all the data.
     table = PrettyTable()
@@ -775,6 +823,7 @@ def get_high_score_leaderboard():
     # Reverse the order of the sort to descending order:
     table.reversesort = True
     print(table)  # Print the PrettyTable
+    print(f"your username is: {username_str}")
     print("Above is your subject score, sorted by total score.")
     print("Press any key to go back the Main Menu")
     input()
@@ -797,11 +846,12 @@ def personalityReport(username_str, trait_scores, subject_scores):
     5. Offer to Restart the programme.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("Welcome to your final personality report!")
+    cprint("Welcome to your final report!", 'white', 'on_blue', attrs=['bold'])
     print("We're going to look at your personality traits and recommend a")
     print("career path for you.\n")
     print("Press any key to continue")
     input()
+    os.system('cls' if os.name == 'nt' else 'clear')
     generate_comparison_data_main(username_str)
 
 
@@ -810,6 +860,7 @@ def generate_comparison_data_main(username_str):
     This main branch calls the functions to generate the comparison data for
     the user.
     """
+    cprint("Your Final Report", 'white', 'on_blue', attrs=['bold'])
     highest_category = calculateHighestSTEAMScore(username_str)
     calculateSTEAMRank(highest_category, username_str)
     highest_category = calculateHighestOCEANScore(username_str)
@@ -963,7 +1014,9 @@ def calculateSTEAMRank(highest_category, username_str):
     else:
         ordinal_suffix = ordinal_suffixes.get(user_rank % 10, 'th')
         # the second parameter is a default.
-    print(f"You came {user_rank}{ordinal_suffix} in {highest_category}")
+    cprint("First, let's look at your STEAM results:", 'yellow', attrs=['bold'])
+    print(f"Your highest STEAM category is {highest_category}")
+    print(f"You came {user_rank}{ordinal_suffix} in {highest_category}\n")
 
 
 def calculateOCEANPercentage(highest_category, username_str):
@@ -1002,6 +1055,8 @@ def calculateOCEANPercentage(highest_category, username_str):
     user_index = scores.index(user_score)
     # Calculate the user's percentage rank:
     percentage_rank = (1 - (user_index / len(scores))) * 100
+    cprint("Now let's look at your OCEAN results:", 'yellow', attrs=['bold'])
+    print(f"Your highest OCEAN category is {highest_category}")
     print(
         f"Our data suggests you were in the top "
         f"{percentage_rank:.2f}% of {highest_category}\n"
@@ -1025,8 +1080,8 @@ def assignOCEAN_STEAM_feedback(username_str):
         # Accessed 8 Oct. 2023.
     highest_STEAM_category = calculateHighestSTEAMScore(username_str)
     highest_OCEAN_category = calculateHighestOCEANScore(username_str)
-    print(f"Your highest STEAM category is {highest_STEAM_category}")
-    print(f"Your highest OCEAN category is {highest_OCEAN_category}")
+    
+    
     print(
         f"Based on your results, we suggest you consider a career in "
         f"{highest_STEAM_category}"
@@ -1043,11 +1098,12 @@ def assignOCEAN_STEAM_feedback(username_str):
     # Retrieve the relevant feedback from the database,
     # for .get see “Python Dictionary get() Method.” W3Schools,
     # www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
-    cprint(feedback, 'blue')  # Print the feedback or return it as needed
-    print("press any key to check your subject knowledge results")
-    print("on the leaderboard")
+    cprint(feedback, 'light_green', attrs=['bold'])  # Print the feedback
+    print("\npress any key to check your subject knowledge results on the ")
+    print("leaderboard")
     input()
-    get_high_score_leaderboard()
+    os.system('cls' if os.name == 'nt' else 'clear')
+    get_high_score_leaderboard(username_str)
 
 
 main()

@@ -47,7 +47,12 @@ Manual Testing with the UX Development Planes
 Full Table of Contents: <!-- omit in toc --></div>
 
 - [1. Outline of Features](#1-outline-of-features)
-  - [1.1. Feature 1](#11-feature-1)
+  - [Menu](#menu)
+  - [Peronality Quiz](#peronality-quiz)
+  - [Subject Quiz](#subject-quiz)
+  - [Personalised Report](#personalised-report)
+  - [Leaderboard](#leaderboard)
+  - [Accessibility Features](#accessibility-features)
 - [2. Manual Testing with the UX Development Planes](#2-manual-testing-with-the-ux-development-planes)
   - [2.1. Strategy Plane](#21-strategy-plane)
     - [2.1.1. Developer Research](#211-developer-research)
@@ -88,7 +93,24 @@ Full Table of Contents: <!-- omit in toc --></div>
 
 ![](assets/media/issues/2023-10-14-19-12-15.png)
 
-## 1.1. Feature 1
+The Page is presented with a logo and a hero image underneath the terminal. The colour scheme is themed blue with a Steam Motif to play on the idea of a Steam Report.
+
+At the beginning the user is asked to enter a username, and is asked to confirm that their input is not their real name. This is to protect the user's identity, as the user is asked to input sensitive data.
+
+## Menu
+
+## Peronality Quiz
+
+## Subject Quiz
+
+## Personalised Report
+
+## Leaderboard
+![](assets/media/issues/2023-10-15-11-35-11.png)
+
+## Accessibility Features
+
+
 </div>
 
 
