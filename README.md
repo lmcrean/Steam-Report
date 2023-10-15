@@ -4,25 +4,28 @@
 
 <img src="assets/media/logo.svg" width="700px">
 
-# Steam Test: a holistic test for young students that provides personalised career recommendations <!-- omit in toc -->
+# Steam Report: personalised insights and career recommendations for young students <!-- omit in toc -->
 
 ![Python](https://img.shields.io/badge/python-14354C?style=for-the-badge&logo=python) 
 
-![Google Sheets](https://img.shields.io/badge/Google_Sheets-14354C?style=for-the-badge&logo=googlesheets&color=black&logoColor=darkgreen) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=black&logoColor=darkgreen) ![JSON](https://img.shields.io/badge/JSON-14354C?style=for-the-badge&logo=json&color=black&logoColor=grey) ![Google Sheets](https://img.shields.io/badge/GSPread_API-14354C?style=for-the-badge&logo=googlesheets&color=navy&logoColor=darkgreen) ![OpenTrivaDB](https://img.shields.io/badge/OpenTriviaDB_API-14354C?style=for-the-badge&logo=opentriviadb&color=navy&logoColor=darkgreen) ![Heroku](https://img.shields.io/badge/Heroku-deployed-purple?style=for-the-badge&logo=heroku&logoColor=pink) ![[passed](http://www.shields.io)](https://img.shields.io/badge/CI_Python_Linter_(PEP8)-passed-green?style=for-the-badge&logo=python&color=green&logoColor=blue)
+![JSON](https://img.shields.io/badge/JSON_Database-14354C?style=for-the-badge&logo=json&color=yellow&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.JS-14354C?style=for-the-badge&logo=node.js&color=darkgreen&logoColor=white)  ![APIs](https://img.shields.io/badge/APIs-Google_Sheets,_OpenTriviaDB-blue?style=for-the-badge&logo=api&color=blue&logoColor=darkgreen) 
+
+![Heroku](https://img.shields.io/badge/Heroku-deployed-purple?style=for-the-badge&logo=heroku&logoColor=pink) ![[passed](http://www.shields.io)](https://img.shields.io/badge/CI_Python_Linter_(PEP8)-passed-green?style=for-the-badge&logo=python&color=brightgreen&logoColor=blue)
 
 </div>
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div><br>
 
 
-This readme introduces the key features of the project, using the framework of the 5 planes of User Experience. It summarises key challenges addressed along the way and also provides credits and acknowledgesments at the end.
+This readme introduces the key features of the project, while summarising key the most important processes addressed along the way. It also provides credits and acknowledgesments at the end.
 
-An [issues.md](https://github.com/lmcrean/Crocodile-Kingdom/blob/main/issues.md) file is dedicated to the most specific technical account of important issues and bugs that were researched and solved during the project.
+Manual Testing with the UX Development Planes
+
 
 <div align=center>
 
 ***Navigation Links:***<b>
-[🌐click here to view Deployed Site ](https://steam-test-e65e4d52d763.herokuapp.com/)
+[🌐click here to view Deployed Site ](https://steam-report-4c5b92c32ae5.herokuapp.com/)
 </b>
 </div>
 
@@ -255,7 +258,11 @@ This Structure plane summarises the structure of each feature by highlighting mo
 
 ***
 
-Leaderboard flowchart
+<img src="assets/media/documentation/project-flowchart.svg" width="1700">
+
+***
+
+Leaderboard flowchart (early draft)
 
 <div align=center><img src="assets/media/documentation/leaderboard_flowchart.svg" width="1700"></div>
 
@@ -337,6 +344,9 @@ testing on different browsers: there seems to be an issue with the logo falling 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
 ## 3.4. Deployment
+
+[🌐click here to view Deployed Site ](https://steam-report-4c5b92c32ae5.herokuapp.com/)
+
 
 </div> 
 

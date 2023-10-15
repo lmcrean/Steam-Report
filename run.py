@@ -136,17 +136,18 @@ def mainMenu():
     The main menu of the game
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    cprint("Welcome to Steam Test!", 'yellow', attrs=['bold'])
+    cprint("Welcome to Steam Report!", 'yellow', attrs=['bold'])
     print("We're going to test your personality and run a quiz to help with")
-    print("your career choices.At the end of the test you'll get a customized")
-    print("personality report.\n")
+    print("your career choices. To do this you will take an OCEAN Personality Test,")
+    print("and test your knowledge on the STEAM subjects.\n")
+    print("At the end of the test you'll get a customized personality report.\n")
 
     cprint("Please select an option from the menu below:", 'yellow')
-    cprint("1 - Begin Personality Quiz (Testing phase)", 'blue')
-    cprint("2 - View STEAM Leaderboard (Testing phase)", 'blue')
-    cprint("3 - How to Play", 'blue')
-    cprint("4 - About STEAM", 'blue')
-    cprint("5 - Exit", 'blue')
+    cprint("1 - Start", 'blue')
+    cprint("2 - About the OCEAN Personality Test", 'blue')
+    cprint("3 - About the STEAM Subjects", 'blue')
+    cprint("4 - How to Play", 'blue')
+    cprint("5 - How it works", 'blue')
 
 
 
@@ -155,14 +156,15 @@ def main():
     run all program functions, starting with the main menu. Plays the game.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-    cprint("Welcome to Steam Test!", 'yellow', attrs=['bold'])
+    cprint("Welcome to Steam Report!", 'yellow', attrs=['bold'])
     print("We're going to test your personality and run a quiz to help with")
-    print("your career choices.At the end of the test you'll get a customized")
-    print("personality report.\n")
+    print("your career choices. To do this you will take an OCEAN Personality Test,")
+    print("and test your knowledge on the STEAM subjects.\n")
+    print("At the end of the test you'll get a customized personality report.\n")
     print("Please note that your data will be collected from this test.")
-    print("To protect your privacy, please DO NOT provide your real name.")
-    print("instead provide an anonymous PSEUDONYM")
-    print("e.g. Birdy34, Koala25, Croc76 \n\n")
+    cprint("To protect your privacy, please DO NOT provide your real name.", 'red')
+    cprint("instead provide an anonymous PSEUDONYM", 'red')
+    cprint("e.g. Birdy34, Koala25, Croc76 \n\n", 'red')
     # ask the user for their username
     username_str = input("Enter your username here: ")
     if validate_name(username_str):
@@ -1002,7 +1004,7 @@ def calculateOCEANPercentage(highest_category, username_str):
     percentage_rank = (1 - (user_index / len(scores))) * 100
     print(
         f"Our data suggests you were in the top "
-        f"{percentage_rank:.2f}% of {highest_category}"
+        f"{percentage_rank:.2f}% of {highest_category}\n"
     )
 
 
@@ -1029,7 +1031,7 @@ def assignOCEAN_STEAM_feedback(username_str):
         f"Based on your results, we suggest you consider a career in "
         f"{highest_STEAM_category}"
     )
-    print("Here is some feedback based on your results:")
+    print("Here is some feedback based on your results:\n")
     combined_ID = (
         f"{highest_STEAM_category} and {highest_OCEAN_category}"
     )  # Combine the two categories to create a unique ID for the feedback.
