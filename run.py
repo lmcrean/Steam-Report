@@ -874,6 +874,7 @@ def get_high_score_leaderboard(username_str):
     “Prettytable.” PyPI, 11 Sept. 2023,
     pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
+    os.system('cls' if os.name == 'nt' else 'clear')
     cprint("STEAM Quiz Leaderboard", 'white', 'on_blue', attrs=['bold'])
     worksheet = SHEET.worksheet('score')
     data_STEAM = worksheet.get_all_values()  # Get all the data.

@@ -53,7 +53,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [1.5. Personalised Report](#15-personalised-report)
   - [1.6. Leaderboard](#16-leaderboard)
   - [1.7. Accessibility Features](#17-accessibility-features)
-  - [1.8. Delete Data](#18-delete-data)
+  - [1.8. Create, Read Update and Delete Data on Google Sheets API](#18-create-read-update-and-delete-data-on-google-sheets-api)
   - [1.9. Validation Loops](#19-validation-loops)
 - [2. Manual Testing with the UX Development Planes](#2-manual-testing-with-the-ux-development-planes)
   - [2.1. Strategy Plane](#21-strategy-plane)
@@ -69,6 +69,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [2.4. Skeleton Plane](#24-skeleton-plane)
     - [2.4.1. Code Structure](#241-code-structure)
   - [2.5. Surface Plane](#25-surface-plane)
+  - [2.6. Future Features to implement](#26-future-features-to-implement)
 - [3. Automatic Testing \& Deployment](#3-automatic-testing--deployment)
   - [3.1. Validator Testing](#31-validator-testing)
   - [3.2. Lighthouse Report](#32-lighthouse-report)
@@ -130,15 +131,16 @@ The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, a
 
 ## 1.5. Personalised Report
 
-![](assets/media/issues/2023-10-15-13-06-29.png)
+![](assets/media/issues/2023-10-16-22-27-53.png)
 
 Based on the results from the Personality and Subject Quizzes, a detailed report is generated. This report includes recommended career paths and environments that the user may excel in, tailored to their unique personality and skill set.
 
 
 ## 1.6. Leaderboard
-![](assets/media/issues/2023-10-15-13-07-29.png)
+![](assets/media/issues/2023-10-16-22-28-44.png)
 
-![](assets/media/issues/2023-10-15-13-08-02.png)
+![](assets/media/issues/2023-10-16-22-30-51.png)
+
 
 The leaderboard feature allows users to compare their scores with others. It adds a competitive element to the quizzes and encourages users to improve their scores.
 
@@ -155,11 +157,22 @@ The application is built with accessibility in mind, focusing on readability and
  - How To Play in the menu
  - color prompts with simple Red, Amber Green. For example the menu highlights start option, the personality quiz uses red, amber, green to indicate the user's options of disagree/neutral/agree, and the subject quiz uses red, amber, green to indicate the user's feedback of incorrect/correct.
 
-## 1.8. Delete Data
+## 1.8. Create, Read Update and Delete Data on Google Sheets API
+
+**Pushing results to Google Sheets API:**
+
+![](assets/media/documentation/APIPush.gif)
+
+- The user's data for both the subject quiz and personality test is stored in a Google Sheets API, which is accessed through a private key. The data is stored in a Google Sheet, which is then converted to a JSON file. The JSON file is then accessed by the application, and the data is used to generate the personalised report.
+
+**Deleting high score:**
 
 ![](assets/media/documentation/deleterow.gif)
 
 - at the end of the quiz, user has the option to delete their data from the database. This is to protect the user's privacy, and to ensure that the user's data is not stored unnecessarily.
+
+**Reading data from Google Sheets API:**
+The API is accesssed to compare high score results in the final report. The leaderboard is displayed using PrettyTable, which is a module that allows the data to be displayed in a table format.
 
 ## 1.9. Validation Loops
 
@@ -484,6 +497,13 @@ This surface plane describes the choice of typefaces, colors and style themes re
 - The color scheme is blue, with a steam motif.
 - The logo font used is ```Bloom Skirt``` and was designed by the developer using [Canva.](https://www.canva.com/)
 - The background is a blue cloud vector, acquired using [bgjar.com](https://bgjar.com/).
+
+## 2.6. Future Features to implement
+
+- an extra set of questions for the scenario where the user gets the same score in two subjects. (actually quite rare in practise)
+  - identify all subjects/ Traits with the same score
+  - generate 5 extra questions from the API, and add them to the subject quiz.
+  - continue as a loop until the user has a different score in each subject.
 
 [↑ Back to top](#Steam-Report)
 
@@ -1054,7 +1074,7 @@ The second was this quiz app walkthrough,
 
 **Programming Libraries**
 
-The following documentation isreferenced in the code. 
+The following documentation is referenced in the code. 
 - “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020,
 www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
 - “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
@@ -1070,8 +1090,8 @@ www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
 - [canva](https://www.canva.com/) was used for the vector graphics in the Readme, the logo and favicon
 - [bgjar](https://bgjar.com/) was used for the background image in the Readme
 
-**JSON database placeholders via AI Large Language Models**
-- [GPT-4](https://www.openai.com/blog/openai-api/) by OpenAI was specifically used to generate the JSON personality quiz and personality report, as a placeholder for content that would ideally be chartered by a professional psychologist.
+**JSON database generated via AI Large Language Models**
+- [GPT-4](https://www.openai.com/blog/openai-api/) by OpenAI was specifically used to generate the JSON personality quiz (```personality_statements.json```)(```finalreport_feedback_database.json```) and personality report. As a placeholder for content that would ideally be chartered by a professional psychologist.
 
 **documentation**
 - [shields.io](https://shields.io/) was used for Documentation Badges
