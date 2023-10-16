@@ -49,6 +49,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [1.2. Personality Quiz (OCEAN Big 5 Personality Traits)](#12-personality-quiz-ocean-big-5-personality-traits)
   - [1.3. Personality Quiz Results](#13-personality-quiz-results)
   - [1.4. Subject Quiz (STEAM = Science, Technology, English, Art, Math)](#14-subject-quiz-steam--science-technology-english-art-math)
+  - [1.5. Steam Quiz Results](#15-steam-quiz-results)
   - [1.5. Personalised Report](#15-personalised-report)
   - [1.6. Leaderboard](#16-leaderboard)
   - [1.7. Accessibility Features](#17-accessibility-features)
@@ -82,7 +83,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:](#44-series-of-error-messages-on-heroku-after-seperating-into-package-files-and-using-from-import-syntax)
   - [4.5. Heroku Terminal doesn't recognise PrettyTable or termcolor modules.](#45-heroku-terminal-doesnt-recognise-prettytable-or-termcolor-modules)
   - [4.6. Tracing Terminal issues on the VSCode terminal:](#46-tracing-terminal-issues-on-the-vscode-terminal)
-  - [4.7. 4.6 Finding correct parameters for functions](#47-46-finding-correct-parameters-for-functions)
+  - [4.7. Finding correct parameters for functions](#47-finding-correct-parameters-for-functions)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets from Love Sandwiches and Quiz App walkthroughs.](#52-code-snippets-from-love-sandwiches-and-quiz-app-walkthroughs)
@@ -115,13 +116,17 @@ The Personality Quiz is designed to measure the Big 5 personality traits: Openne
 
 ## 1.3. Personality Quiz Results
 
-![](assets/media/issues/2023-10-16-22-09-07.png)
+<img src="assets/media/issues/2023-10-16-22-09-07.png" width=600>
 
 ## 1.4. Subject Quiz (STEAM = Science, Technology, English, Art, Math)
 
 ![](assets/media/documentation/subjectquiz.gif)
 
 The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, and Math. This quiz aims to identify the user's strengths and weaknesses in these subjects, offering additional insights for career choices.
+
+## 1.5. Steam Quiz Results
+
+![](assets/media/issues/2023-10-16-22-17-31.png)
 
 ## 1.5. Personalised Report
 
@@ -836,7 +841,7 @@ Enter the number of your choice:
 
 </details>
 
-## 4.7. 4.6 Finding correct parameters for functions
+## 4.7. Finding correct parameters for functions
 
 After accumulating the multiple packages in to a run.py, as described in issue 4.4, the developer had to find the correct parameters to carry through the functions. 
 
@@ -1077,6 +1082,8 @@ www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
 Thank you to my mentor, Oluwaseun Owonikoko for providing me with helpful feedback and guidance throughout the project, especially with using a class to store the data for the personality quiz.
 
 Thank you to my family and friends for their support and encouragement throughout the project. Especially to my Mum who tested the deployed project first and helped me spot a small bug with the personality quiz asking an extra question.
+
+Thank you to the peers and tutors at Code Institute. Especially Joanna who suppported me with some challenging str() conversions.
 
 [↑ Back to top](#Steam-Report)
 

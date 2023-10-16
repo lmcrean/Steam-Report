@@ -957,8 +957,8 @@ def personalityReport(username_str, trait_scores, subject_scores):
     welcomemsg = "Welcome to your final report!"
     cprint(f"{welcomemsg}", 'white', 'on_blue', attrs=['bold'])
     print("\nWe're going to look at your strongest personality traits")
-    print("and subject scores. Based on this data we will career path")
-    print("for you.\n")
+    print("and subject scores. Based on this data we will choose a")
+    print("career path for you.\n")
     print("Press any key to continue")
     input()
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -1200,8 +1200,8 @@ def assignOCEAN_STEAM_feedback(username_str):
         combined_ID, {}
     ).get('environment', 'Environment not found')
     print(
-        f"Based on your results, we suggest you consider a career in"
-        f" {highest_STEAM_category} with a {environment} environment."
+        f"Based on your results, we suggest you consider a career in\n"
+        f"{highest_STEAM_category} with a {environment} environment."
     )
     print("\nHere is some feedback based on your results:\n")
     feedback = feedback_database.get(
