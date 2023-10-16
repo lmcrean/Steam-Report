@@ -614,6 +614,8 @@ The project was deployed on Heroku. The following steps were taken:
 
 <img src="assets/media/documentation/issues-icon.svg" width=200>
 
+There were many issues and bugs encountered during the development of the project. The following section documents the issues and bugs, and the solutions that were most challenging during the development process.
+
 </div>
 
 ## 4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.
