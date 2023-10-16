@@ -52,7 +52,8 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [1.5. Personalised Report](#15-personalised-report)
   - [1.6. Leaderboard](#16-leaderboard)
   - [1.7. Accessibility Features](#17-accessibility-features)
-  - [1.8. 1.8 Delete Data](#18-18-delete-data)
+  - [1.8. Delete Data](#18-delete-data)
+  - [1.9. Validation Loops](#19-validation-loops)
 - [2. Manual Testing with the UX Development Planes](#2-manual-testing-with-the-ux-development-planes)
   - [2.1. Strategy Plane](#21-strategy-plane)
     - [2.1.1. User Stories \& business goals](#211-user-stories--business-goals)
@@ -108,23 +109,21 @@ The main menu provides the user with several options, including taking the Perso
 
 ## 1.2. Personality Quiz (OCEAN Big 5 Personality Traits)
 
-![](assets/media/issues/2023-10-15-13-02-48.png)
+![](assets/media/documentation/personalityquiz.gif)
 
 The Personality Quiz is designed to measure the Big 5 personality traits: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism (OCEAN). The user's responses are used to generate a personalised report to provide career guidance.
 
 ## 1.3. Personality Quiz Results
 
-![](assets/media/issues/2023-10-15-13-04-25.png)
+![](assets/media/issues/2023-10-16-22-09-07.png)
 
 ## 1.4. Subject Quiz (STEAM = Science, Technology, English, Art, Math)
 
-![](assets/media/issues/2023-10-15-13-04-57.png)
+![](assets/media/documentation/subjectquiz.gif)
 
 The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, and Math. This quiz aims to identify the user's strengths and weaknesses in these subjects, offering additional insights for career choices.
 
 ## 1.5. Personalised Report
-
-![](assets/media/issues/2023-10-15-13-06-10.png)
 
 ![](assets/media/issues/2023-10-15-13-06-29.png)
 
@@ -151,11 +150,20 @@ The application is built with accessibility in mind, focusing on readability and
  - How To Play in the menu
  - color prompts with simple Red, Amber Green. For example the menu highlights start option, the personality quiz uses red, amber, green to indicate the user's options of disagree/neutral/agree, and the subject quiz uses red, amber, green to indicate the user's feedback of incorrect/correct.
 
-## 1.8. 1.8 Delete Data
+## 1.8. Delete Data
 
 ![](assets/media/documentation/deleterow.gif)
 
 - at the end of the quiz, user has the option to delete their data from the database. This is to protect the user's privacy, and to ensure that the user's data is not stored unnecessarily.
+
+## 1.9. Validation Loops
+
+Validation loops are used to check that the following are entered correctly throughout the programme:
+- username (3-9 characters)
+- menu selection (User enters number between 1-5)
+- personality quiz selection (User enters number between 1-9)
+- subject quiz selection (User enters number between 1-4)
+- delete data selection (User enters number between 1-2)
 
 [↑ Back to top](#Steam-Report)
 

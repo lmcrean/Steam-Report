@@ -1191,6 +1191,11 @@ def assignOCEAN_STEAM_feedback(username_str):
         # Accessed 8 Oct. 2023.
     highest_STEAM_category = calculateHighestSTEAMScore(username_str)
     highest_OCEAN_category = calculateHighestOCEANScore(username_str)
+    combined_ID = (
+        f"{highest_STEAM_category} and {highest_OCEAN_category}"
+    )  # Combine the two categories to create a unique ID for the feedback.
+    # This is because the feedback is stored in a dictionary, and the
+    # dictionary keys must be unique.
     environment = feedback_database.get(
         combined_ID, {}
     ).get('environment', 'Environment not found')
@@ -1199,11 +1204,6 @@ def assignOCEAN_STEAM_feedback(username_str):
         f" {highest_STEAM_category} with a {environment} environment."
     )
     print("\nHere is some feedback based on your results:\n")
-    combined_ID = (
-        f"{highest_STEAM_category} and {highest_OCEAN_category}"
-    )  # Combine the two categories to create a unique ID for the feedback.
-    # This is because the feedback is stored in a dictionary, and the
-    # dictionary keys must be unique.
     feedback = feedback_database.get(
         combined_ID, {}
     ).get('feedback', 'Feedback not found')
