@@ -889,15 +889,18 @@ def get_high_score_leaderboard(username_str):
     print("You can now either go back to the menu, or delete your score.")
     print("Press 1 to go back to the menu with a new username")
     print("Press 2 to delete your score")
-    
+
     while True:
         choice = input("Enter your choice: ")
         if choice == "1":
             main()
         elif choice == "2":
             deleteRow(username_str)
-            print("Your personality and subject score score has been")
-            print("deleted from our database.")
+            #clear
+            os.system('cls' if os.name == 'nt' else 'clear')
+            cprint("Delete Successful!", 'white', 'on_blue', attrs=['bold'])
+            print("\nYour personality and subject score score has been")
+            print("deleted from our database.\n")
             print("Press any key to go back to the menu with a new username")
             input()
             main()
@@ -918,14 +921,14 @@ def deleteRow(username_str):
     worksheet = SHEET.worksheet('score')
     try:
         cell = worksheet.find(username_str)
-        worksheet.delete_row(cell.row)
+        worksheet.delete_rows(cell.row)
     except gspread.exceptions.CellNotFound:
         print(f"Username {username_str} not found.")
 
     worksheet = SHEET.worksheet('personality')
     try:
         cell = worksheet.find(username_str)
-        worksheet.delete_row(cell.row)
+        worksheet.delete_rows(cell.row)
     except gspread.exceptions.CellNotFound:
         print(f"Username {username_str} not found.")
 

@@ -52,6 +52,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [1.5. Personalised Report](#15-personalised-report)
   - [1.6. Leaderboard](#16-leaderboard)
   - [1.7. Accessibility Features](#17-accessibility-features)
+  - [1.8 Delete Data](#18-delete-data)
 - [2. Manual Testing with the UX Development Planes](#2-manual-testing-with-the-ux-development-planes)
   - [2.1. Strategy Plane](#21-strategy-plane)
     - [2.1.1. User Stories \& business goals](#211-user-stories--business-goals)
@@ -146,6 +147,14 @@ The application is built with accessibility in mind, focusing on readability and
  - consistent headings for navigation
  - How To Play in the menu
  - color prompts with simple Red, Amber Green. For example the menu highlights start option, the personality quiz uses red, amber, green to indicate the user's options of disagree/neutral/agree, and the subject quiz uses red, amber, green to indicate the user's feedback of incorrect/correct.
+
+## 1.8 Delete Data
+
+![](assets/media/documentation/deleterow.gif)
+
+- at the end of the quiz, user has the option to delete their data from the database. This is to protect the user's privacy, and to ensure that the user's data is not stored unnecessarily.
+
+[↑ Back to top](#Steam-Report)
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800">
 
