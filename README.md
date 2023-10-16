@@ -31,11 +31,11 @@ Manual Testing with the UX Development Planes
 
 <b>
 
-[1. Outline of Features](#1-outline-of-features)<br>
-[2. Manual Testing with the UX Development Planes](#2-ux-development-planes--manual-testing)<br>
-[3. Automatic Testing & Deployment](#3-automatic-testing--deployment)<br>
-[4. Issues and Bugs](#5-issues-and-bugs)<br>
-[5. Credits & Acknowledgements](#6-credits--acknowledgements)
+- [1. Outline of Features](#1-outline-of-features)
+- [2. Manual Testing with the UX Development Planes](#2-ux-development-planes--manual-testing)
+- [3. Automatic Testing & Deployment](#3-automatic-testing--deployment)
+- [4. Issues and Bugs](#5-issues-and-bugs)
+- [5. Credits & Acknowledgements](#6-credits--acknowledgements)
 
 </br>
 </b>
@@ -52,7 +52,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [1.5. Personalised Report](#15-personalised-report)
   - [1.6. Leaderboard](#16-leaderboard)
   - [1.7. Accessibility Features](#17-accessibility-features)
-  - [1.8 Delete Data](#18-delete-data)
+  - [1.8. 1.8 Delete Data](#18-18-delete-data)
 - [2. Manual Testing with the UX Development Planes](#2-manual-testing-with-the-ux-development-planes)
   - [2.1. Strategy Plane](#21-strategy-plane)
     - [2.1.1. User Stories \& business goals](#211-user-stories--business-goals)
@@ -63,7 +63,7 @@ Full Table of Contents: <!-- omit in toc --></div>
     - [2.2.2. Unique Selling Point features](#222-unique-selling-point-features)
     - [2.2.3. Scope of Features](#223-scope-of-features)
   - [2.3. Structure Plane](#23-structure-plane)
-    - [2.3.1 Control Flow Diagram](#231-control-flow-diagram)
+    - [2.3.1. Control Flow Diagram](#231-control-flow-diagram)
   - [2.4. Skeleton Plane](#24-skeleton-plane)
     - [2.4.1. Code Structure](#241-code-structure)
   - [2.5. Surface Plane](#25-surface-plane)
@@ -72,16 +72,16 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [3.2. Lighthouse Report](#32-lighthouse-report)
   - [3.3. Browserstack Testing](#33-browserstack-testing)
   - [3.4. Deployment](#34-deployment)
-    - [3.5. Github](#35-github)
-    - [3.6. Heroku](#36-heroku)
+    - [3.4.1. Github](#341-github)
+    - [3.4.2. Heroku](#342-heroku)
 - [4. Python Issues and Bugs](#4-python-issues-and-bugs)
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
   - [4.2. Solution abandoned: Issue with Enter key resetting game automatically](#42-solution-abandoned-issue-with-enter-key-resetting-game-automatically)
   - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from previous issue 4.2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-previous-issue-42)
   - [4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:](#44-series-of-error-messages-on-heroku-after-seperating-into-package-files-and-using-from-import-syntax)
   - [4.5. Heroku Terminal doesn't recognise PrettyTable or termcolor modules.](#45-heroku-terminal-doesnt-recognise-prettytable-or-termcolor-modules)
-  - [4.5. Tracing Terminal issues on the VSCode terminal:](#45-tracing-terminal-issues-on-the-vscode-terminal)
-  - [4.6 Finding correct parameters for functions](#46-finding-correct-parameters-for-functions)
+  - [4.6. Tracing Terminal issues on the VSCode terminal:](#46-tracing-terminal-issues-on-the-vscode-terminal)
+  - [4.7. 4.6 Finding correct parameters for functions](#47-46-finding-correct-parameters-for-functions)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
   - [5.2. Code snippets from Love Sandwiches and Quiz App walkthroughs.](#52-code-snippets-from-love-sandwiches-and-quiz-app-walkthroughs)
@@ -151,7 +151,7 @@ The application is built with accessibility in mind, focusing on readability and
  - How To Play in the menu
  - color prompts with simple Red, Amber Green. For example the menu highlights start option, the personality quiz uses red, amber, green to indicate the user's options of disagree/neutral/agree, and the subject quiz uses red, amber, green to indicate the user's feedback of incorrect/correct.
 
-## 1.8 Delete Data
+## 1.8. 1.8 Delete Data
 
 ![](assets/media/documentation/deleterow.gif)
 
@@ -359,7 +359,7 @@ The full scope and function of features is discussed in the opening [Features](#
 
 This Structure plane summarises the structure of each feature by highlighting most essential HTML, CSS and JS functions for the feature to work. The developer also used this as a workflow for drafting in the features.
 
-### 2.3.1 Control Flow Diagram
+### 2.3.1. Control Flow Diagram
 
 This control flow diagram summarises the structure of the application, and the flow of the user's journey through the application.
 
@@ -552,13 +552,13 @@ This was fixed by adding a ```3em margin-top``` to the logo, and removing the pr
 
 </div> 
 
-### 3.5. Github 
+### 3.4.1. Github 
 [Code Institute template](https://github.com/Code-Institute-Org/python-essentials-template) was cloned to create the repository. I cloned repository to my local machine using GitHub Desktop and opened it in VSCode, where I developed the project with the git method.
 
 All libraries and packages were listed in ```requirements.txt```.
 
 
-### 3.6. Heroku
+### 3.4.2. Heroku
 
 The project was deployed on Heroku. The following steps were taken:
 
@@ -754,7 +754,7 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
 *David Muller. “How to Use Subprocess to Run External Programs in Python 3.” Digitalocean.com, DigitalOcean, 30 July 2020, www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3. Accessed 7 Oct. 2023.*
 
 
-## 4.5. Tracing Terminal issues on the VSCode terminal:
+## 4.6. Tracing Terminal issues on the VSCode terminal:
 
 The following code was used to trace the terminal issues on the VSCode terminal. This was useful for debugging, as it allowed the developer to see the output of the terminal, and to see where the code was breaking.
 
@@ -828,7 +828,7 @@ Enter the number of your choice:
 
 </details>
 
-## 4.6 Finding correct parameters for functions
+## 4.7. 4.6 Finding correct parameters for functions
 
 After accumulating the multiple packages in to a run.py, as described in issue 4.4, the developer had to find the correct parameters to carry through the functions. 
 

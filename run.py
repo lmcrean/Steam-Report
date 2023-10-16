@@ -396,7 +396,7 @@ def ask_question(question_index):
     os.system('cls' if os.name == 'nt' else 'clear')
     cprint("OCEAN Personality Test", 'white', 'on_blue', attrs=['bold'])
     question = quiz_data["questions"][question_index]
-    print(f"Question {question_index + 1}:")
+    print(f"\nQuestion {question_index + 1}:")
     cprint(question["statement"], attrs=['bold'])
 
     while True:
@@ -405,7 +405,7 @@ def ask_question(question_index):
         green_option = colored("9 = Strongly Agree", 'light_green')
 
         response = input(
-            f"Please enter a number from 1 to 9."
+            f"\nPlease enter a number from 1 to 9."
             f"\n({red_option}, {amber_option}, {green_option}):\n"
         )
         try:
