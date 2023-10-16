@@ -885,10 +885,49 @@ def get_high_score_leaderboard(username_str):
     table.reversesort = True
     print(table)  # Print the PrettyTable
     print(f"your username is: {username_str}")
-    print("Above is your subject score, sorted by total score.")
-    print("Press any key to go back the Main Menu")
-    input()
+    print("Above is your subject score, sorted by total score.\n")
+    print("You can now either go back to the menu, or delete your score.")
+    print("Press 1 to go back to the menu with a new username")
+    print("Press 2 to delete your score")
+    
+    while True:
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            main()
+        elif choice == "2":
+            deleteRow(username_str)
+            print("Your personality and subject score score has been")
+            print("deleted from our database.")
+            print("Press any key to go back to the menu with a new username")
+            input()
+            main()
+        else:
+            print("Invalid choice. Please enter 1 or 2")
+            continue
+
     return
+
+def deleteRow(username_str):
+    """
+    Locates the row with the username and deletes entire row
+
+    "gspread API Documentation," gspread, Read the Docs,
+    https://gspread.readthedocs.io/en/latest/
+    Accessed 16 Oct. 2023.
+    """
+    worksheet = SHEET.worksheet('score')
+    try:
+        cell = worksheet.find(username_str)
+        worksheet.delete_row(cell.row)
+    except gspread.exceptions.CellNotFound:
+        print(f"Username {username_str} not found.")
+
+    worksheet = SHEET.worksheet('personality')
+    try:
+        cell = worksheet.find(username_str)
+        worksheet.delete_row(cell.row)
+    except gspread.exceptions.CellNotFound:
+        print(f"Username {username_str} not found.")
 
 
 def personalityReport(username_str, trait_scores, subject_scores):
