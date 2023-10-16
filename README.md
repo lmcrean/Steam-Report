@@ -119,6 +119,8 @@ The Personality Quiz is designed to measure the Big 5 personality traits: Openne
 
 <img src="assets/media/issues/2023-10-16-22-09-07.png" width=600>
 
+lists the user's scores in each personality trait and further identifies the user's strongest trait
+
 ## 1.4. Subject Quiz (STEAM = Science, Technology, English, Art, Math)
 
 ![](assets/media/documentation/subjectquiz.gif)
@@ -129,11 +131,15 @@ The Subject Quiz focuses on STEAM subjects: Science, Technology, English, Art, a
 
 ![](assets/media/issues/2023-10-16-22-17-31.png)
 
+lists the user's scores in each subject and further identifies the user's strongest subject
+
 ## 1.5. Personalised Report
 
 ![](assets/media/issues/2023-10-16-22-27-53.png)
 
 Based on the results from the Personality and Subject Quizzes, a detailed report is generated. This report includes recommended career paths and environments that the user may excel in, tailored to their unique personality and skill set.
+
+This feature adds an insightful and informative element to the quiz, and provides the student with a personalised report that they can act on.
 
 
 ## 1.6. Leaderboard
@@ -142,7 +148,7 @@ Based on the results from the Personality and Subject Quizzes, a detailed report
 ![](assets/media/issues/2023-10-16-22-30-51.png)
 
 
-The leaderboard feature allows users to compare their scores with others. It adds a competitive element to the quizzes and encourages users to improve their scores.
+The leaderboard feature allows users to compare their scores with others. It adds a fun competitive element to the quizzes and encourages users to improve their scores.
 
 ## 1.7. Accessibility Features
 The application is built with accessibility in mind, focusing on readability and color prompts.
@@ -172,7 +178,8 @@ The application is built with accessibility in mind, focusing on readability and
 - at the end of the quiz, user has the option to delete their data from the database. This is to protect the user's privacy, and to ensure that the user's data is not stored unnecessarily.
 
 **Reading data from Google Sheets API:**
-The API is accesssed to compare high score results in the final report. The leaderboard is displayed using PrettyTable, which is a module that allows the data to be displayed in a table format.
+- The API is also accesssed to compare high score results in the final report.
+- The leaderboard is displayed from the API using PrettyTable, which is a module that allows the data to be displayed in a table format.
 
 ## 1.9. Validation Loops
 
