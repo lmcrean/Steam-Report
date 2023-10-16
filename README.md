@@ -65,6 +65,7 @@ Full Table of Contents: <!-- omit in toc --></div>
   - [2.3. Structure Plane](#23-structure-plane)
     - [2.3.1 Control Flow Diagram](#231-control-flow-diagram)
   - [2.4. Skeleton Plane](#24-skeleton-plane)
+    - [2.4.1. Code Structure](#241-code-structure)
   - [2.5. Surface Plane](#25-surface-plane)
 - [3. Automatic Testing \& Deployment](#3-automatic-testing--deployment)
   - [3.1. Validator Testing](#31-validator-testing)
@@ -75,13 +76,15 @@ Full Table of Contents: <!-- omit in toc --></div>
     - [3.6. Heroku](#36-heroku)
 - [4. Python Issues and Bugs](#4-python-issues-and-bugs)
   - [4.1. Cannot access OpenTrivia DB for Tech, Art and Maths.](#41-cannot-access-opentrivia-db-for-tech-art-and-maths)
-  - [4.2. Issue with Enter key resetting game automatically](#42-issue-with-enter-key-resetting-game-automatically)
-  - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-issue-2)
+  - [4.2. Solution abandoned: Issue with Enter key resetting game automatically](#42-solution-abandoned-issue-with-enter-key-resetting-game-automatically)
+  - [4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from previous issue 4.2.](#43-deployed-heroku-does-not-recognise-windows-only-msvcrtgetch-module-from-previous-issue-42)
   - [4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:](#44-series-of-error-messages-on-heroku-after-seperating-into-package-files-and-using-from-import-syntax)
-  - [4.5. Tracing Terminal issues on the](#45-tracing-terminal-issues-on-the)
+  - [4.5. Heroku Terminal doesn't recognise PrettyTable or termcolor modules.](#45-heroku-terminal-doesnt-recognise-prettytable-or-termcolor-modules)
+  - [4.5. Tracing Terminal issues on the VSCode terminal:](#45-tracing-terminal-issues-on-the-vscode-terminal)
+  - [4.6 Finding correct parameters for functions](#46-finding-correct-parameters-for-functions)
 - [5. Credits \& Acknowledgements](#5-credits--acknowledgements)
   - [5.1. Initial Resources Research](#51-initial-resources-research)
-  - [5.2. Code snippets](#52-code-snippets)
+  - [5.2. Code snippets from Love Sandwiches and Quiz App walkthroughs.](#52-code-snippets-from-love-sandwiches-and-quiz-app-walkthroughs)
   - [5.3. Technologies Used](#53-technologies-used)
   - [5.4. Libraries Used](#54-libraries-used)
   - [5.5. Acknowledgements](#55-acknowledgements)
@@ -182,79 +185,93 @@ The Strategy plane set the intention of a dynamic quiz that would be developed o
 
 The business goals were to provide users with a fun and engaging quiz that would promote careers in STEAM. The user stories were developed to meet the business goals.
 
+The users would be young students, who would be interested in learning about their personality and career options. These users were generally intended to be new users, who would use the platform once during a careers session at their school. 
+
 <div align="center"><h3> User Stories testing</h3>
 
 <img src="assets/media/userimg.png" width="800">
 
  </div>
 
-**Business stories**
-I need to promote Careers in STEAM
+**Business goals**
 
-I need to use CRUD logic
+> **As the business, I need to promote Careers in STEAM**
+- The quiz provides a fun and engaging way to learn about STEAM subjects, including personalised career suggestions based on the user's personality and skill set.
+- The quiz explains the OCEAN Personality Test and STEAM subjects in an easy-to-understand way.
 
-I need footers at the bottom to promote my brand
+> **As the business, I need to promote my brand**
+- The logo is displayed on the home page above the terminal, as well as in the favicon.
+- The footer includes links to the developer's Github and LinkedIn profiles.
 
-**User Stories Scope**
+> **As the software developer, I need to use CRUD logic (Create, Read, Update, Delete) to manage the user's data.**
+- The user can Create a new username and high score
+- The user can Read the quiz questions and feedback efficiently with a clean design
+- The score logic updates as the user progresses through the quiz
+- The user has an option to Delete their data from the database at the end of the quiz.
 
-**I need a quiz that provides me with personal feedback on a certain holistic level.**
+**User Stories -- Scope**
+
+> **As a new user, I need a quiz that provides me with personal feedback on a certain holistic level.**
  - the user takes a personality quiz at the beginning of the session.
  - the user takes a quiz on STEAM subjects.
  - the user receives a personal report at the end of the session, summarising their personality, academic knowledge and suggesting what qualities they might have for a career in STEAM.
 
-**I need a quiz that provides me with broader feedback that relates to other users.**
+> **As a new user, I need a quiz that provides me with broader feedback that relates to other users.**
  - the user is given a rank in the leaderboard, and is shown how many users have completed the quiz.
  - the user is told what rank they came in their most knowledgeable subject, in relation to other users. E.g. ```You came 5th in Science.```
  - the user is told what percentage they came in their strongest personality trait, in relation to other users. E.g. ```You scored in the top 20% for Openness.```
 
-**I want option to retake the quiz**
+> **As a new user, I want option to retake the quiz**
 - the user can easily navigate back to the menu
 
-**I need to feel comfortable about my personality data being handled.**
+> **As a new user, I need to feel comfortable about my personality data being handled.**
  - the user is prompted to use an anonymous Moniker, and is double checked to confirm that their input is not their real name.
  - the purpose is clearly stated that the data is used to provide career feedback.
 
-**Structure**
-**I need all the controls to navigate the test successfully**
+**User Stories -- Structure**
+
+> **As a new user, I need all the controls to navigate the test successfully**
+
  - There are validation loops infused throughout the application, to ensure that the computer collects the correct data from the user.
  - The user is prompted to enter a username, which is validated to confirm it is 3-9 characters long. Rationale for this is the leaderboard display.
  - The user is prompted to enter a number from 1 to 5 to navigate the Menu
  - The user is prompted to enter a number from 1 to 9 on a scale of Strongly Disagree to Strongly Agree
  - The user is prompted to enter a number from 1 to 4 to complete the test
 
-**I need the quiz to provide ongoing feedback, in order to keep me engaged.**
+> **As a new user, I need the quiz to provide ongoing feedback, in order to keep me engaged.**
  - The user gets feedback on their overall personality traits at the end of the quiz.
  - The user can see their running score during the STEAM Quiz.
  - The user can see their overall results as describedin User Story ```I need a quiz that provides me with personal feedback on a certain holistic level.```
 
-**I need the quiz to be dynamic, in order to keep me engaged.**
+> **As a new user, I need the quiz to be dynamic, in order to keep me engaged.**
 - the OCEAN Personality Test randomises the questions from a database of 25 questions
 - the STEAM quiz select 10 random MCQs from a large API database
 
-**Skeleton needs**
-I need to see simple branding consistently throughout the application.
+ **User Stories -- Skeleton**
+> **As a new user, I need to see simple branding consistently throughout the application.**
 - the logo is displayed on the home page above the terminal
 - white on blue headings are used throughout the application
 
-**I need the all the text to fit in the terminal box**
+> **As a new user, I need the all the text to fit in the terminal box**
 - the python code is never more than 79 characters long per line.
 - line breaks are used where appropriate
 
-**Where appropriate, I want to get an idea of my progress through the subject quiz.**
+> **As a new user, I want to get an idea of my progress through the subject quiz.**
 - For the OCEAN Personality quiz, there is no "score" fed back until the end, so as not to influence the user's answers with a "right answer".
 - For the STEAM quiz the user is told what question they are on, and their running score.
 
-**Surface needs**
-I would like to have the overall website design to evoke a positive emotional response.
+**User Stories -- Surface**
+
+> **As a new user, I need the text to be readable and clear.**
+- the white on blue heading at the top of the terminal ensures the user always knows where they are in the application.
+- where appropriate the text is highlighted with color prompts, such as red, amber, green.
+
+> **As a new user, I need to have the overall website design evoke a positive emotional response.**
 - terminal is centered on the page
 - the background is a blue cloud vector, playing with the steam motif.
 - the logo is a steam motif, with bright colors and friendly cursive font
 - the favicon is a globe, to represent the the global nature of STEAM careers, as well as a positive representation of education.
 - the hero image below the terminal is a group of happy students, to represent the target audience of the application.
-
-I need the text to be readable and clear.
-- the white on blue heading at the top of the terminal ensures the user always knows where they are in the application.
-- where appropriate the text is highlighted with color prompts, such as red, amber, green.
 
 
 ### 2.1.2. Initial Product Research
@@ -266,7 +283,7 @@ Initial Product research is credited in the [Credits and Acknowledgements sectio
 
 ### 2.1.3. Project Timeline
 
-The 6 week timeline used the Agile method of interations and priorities. Todoist was chosen as the project management tool for it's simplicity and efficiency.
+The 6 week timeline used the Agile method of iterations and priorities. Todoist was chosen as the project management tool for it's simplicity and efficiency.
 
 ![](assets/media/issues/2023-10-15-15-22-27.png)
 
@@ -284,7 +301,7 @@ It was important to choose a project that was achievable in the time frame, and 
 
 The project was researched, conceived and designed in 6 weeks. Important limitations of the project had to be set from the outset such as
 
-- **Developing the Mininum Viable Product and Unique Selling Point simultaeneously.** This way, the essential product would be met in time with the deadline, and the unique features would keep me motivated.
+- **Developing the Mininum Viable Product and Unique Selling Point simultaeneously.** This way, the essential product would be met in time with the deadline, and the unique features would keep me motivated. For the user, this strategy seemed the best option to guarantee a balance of both reliability and enjoyment.
 
 [↑ Back to top](#Steam-Report)
 
@@ -344,6 +361,10 @@ This Structure plane summarises the structure of each feature by highlighting mo
 
 ### 2.3.1 Control Flow Diagram
 
+This control flow diagram summarises the structure of the application, and the flow of the user's journey through the application.
+
+For a more accurate breakdown of the code, please refer to the inline documentation in ```run.py```.
+
 ***
 
 <img src="assets/media/documentation/project-flowchart.svg" width="1700">
@@ -375,15 +396,81 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 <div align=center><img src="assets/media/documentation/color-line-break.png" width="800"></div>
 
+### 2.4.1. Code Structure
+
+Once the Quiz starts, the user is taken through the personality quiz, the subject quiz, the leaderboard, and finally the personality report, as illustrated in these functions.
+
+Note how the username_str, trait_scores and subject_scores are carried through the parameters, towards the final report.
+
+```python
+
+# ------------------ Overall Structure of Quiz ------------------
+
+
+"""
+The user goes through the personality quiz,
+the subject quiz and leaderboard,
+then finally onto a personality report.
+"""
+
+
+def start_personality_quiz(username_str):
+    """
+    This function starts the personality quiz.
+    username_str is carried through the function to the end.
+    results are stored in trait_scores.
+    At the end it is redirected to the subject quiz.
+    """
+    personality_quiz()  # start the personality quiz
+    personalityResults(trait_scores)  # display the user's answers
+    start_subject_quiz(username_str, trait_scores)
+
+
+def start_subject_quiz(username_str, trait_scores):
+    """
+    This function starts the subject quiz.
+    username_str and trait_scores are carried through
+    the function to the end.
+    results of quiz are stored in subject_scores.
+    At the end it is redirected to the data handling section.
+    """
+    # initialize subject scores
+    subject_scores = SubjectScore(0, 0, 0, 0, 0, 0)
+    subjectQuiz(subject_scores)  # start the subject quiz
+    start_data_handling(username_str, trait_scores, subject_scores)
+
+
+def start_data_handling(username_str, trait_scores, subject_scores):
+    """
+    begins data handling section.
+    username_str, trait_scores and subject_scores are carried
+    through the parameters. The data is stored in the google sheet API.
+    At the end it is redirected to the personality report.
+    """
+    dataHandling(username_str, trait_scores, subject_scores)
+    start_personality_report(username_str, trait_scores, subject_scores)
+
+
+def start_personality_report(username_str, trait_scores, subject_scores):
+    """
+    displays a final report, indicating best option.
+    username_str, trait_scores and subject_scores are carried through.
+    the final report
+    """
+    personalityReport(username_str, trait_scores, subject_scores)
+    # Display the user's answers
+```
+  
+  [↑ Back to top](#Steam-Report)
+
+
 ## 2.5. Surface Plane
 This surface plane describes the choice of typefaces, colors and style themes relevant to the project's desired tone and practical needs.
 
 - The HTML/CSS Design choices are displayed in the [Features](#1-outline-of-features) section. 
 - The color scheme is blue, with a steam motif.
-- The font used is ```Bloom Skirt``` and was designed by the developer using Canva.
+- The logo font used is ```Bloom Skirt``` and was designed by the developer using [Canva.](https://www.canva.com/)
 - The background is a blue cloud vector, acquired using [bgjar.com](https://bgjar.com/).
-
-[↑ Back to top](#Steam-Report)
 
 [↑ Back to top](#Steam-Report)
 
@@ -395,8 +482,6 @@ This surface plane describes the choice of typefaces, colors and style themes re
 </div>
 
 The Automatic Testing refered to the automated testing of the code, and the deployment of the code to Heroku.
-
-Deployment was done on Heroku.
 
 [↑ Back to top](#Steam-Report)
 
@@ -426,8 +511,14 @@ To check the lighthouse report on a chrome browser, right click inspect and clic
 
 | | Home Page |
 |---|---|
-| Desktop | ![](assets/media/issues/2023-10-14-18-53-12.png) | 
+| Desktop | ![](assets/media/issues/2023-10-16-18-55-49.png) | 
 |Timestamp| 14/10/23 |
+
+<details><summary> click here to view suggestions for further improvement</summary>
+
+![](assets/media/issues/2023-10-16-18-57-08.png)
+
+</details>
 
 [↑ Back to top](#Steam-Report)
 
@@ -440,7 +531,11 @@ https://www.browserstack.com/
 
 testing on different browsers: there seems to be an issue with the logo falling above the navigation bar on the home page in Safari/iOS
 
-![](assets/media/issues/browserstack1.png)
+|Before|After|
+|---|---|
+|![](assets/media/issues/browserstack1.png)| ![](assets/media/issues/2023-10-16-18-59-53.png) |
+
+This was fixed by adding a ```3em margin-top``` to the logo, and removing the problematic ```justify-items: center``` from the ```body``` selector.
 
 [↑ Back to top](#Steam-Report)
 
@@ -448,7 +543,11 @@ testing on different browsers: there seems to be an issue with the logo falling 
 
 ## 3.4. Deployment
 
+<b>
+
 [🌐click here to view Deployed Site ](https://steam-report-4c5b92c32ae5.herokuapp.com/)
+
+</b>
 
 
 </div> 
@@ -518,7 +617,7 @@ here's the second attempt: we can see that the quiz is shuffling questions,makin
 
 In long term, best solution would be to migrate to local JSON database, as json files are saved.
 
-## 4.2. Issue with Enter key resetting game automatically
+## 4.2. Solution abandoned: Issue with Enter key resetting game automatically
 <div align=center><details><summary><b> click here to view the issue output</summary></b>
 
 ![](assets/media/issues/2023-09-28-09-45-31.png)
@@ -549,11 +648,11 @@ GIF:
 
 Programme ignores user pressing enter, and responds immediately to user input.
 
-## 4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from issue 2. 
+## 4.3. Deployed Heroku does not recognise Windows-only ```msvcrt.getch()``` module from previous issue 4.2. 
 
 ![](assets/media/issues/2023-09-28-10-24-46.png)
 
-likely
+Heroku's Linux server does not recognise ```msvcrt.getch()``` module, as it is Windows only.
 
 Tried this solution:
 - “Getch()-like Unbuffered Character Reading from Stdin on Both Windows and Unix «Python Recipes «ActiveState Code.” Activestate.com, 2023, code.activestate.com/recipes/134892-getch-like-unbuffered-character-reading-from-stdin/. Accessed 28 Sept. 2023.
@@ -573,7 +672,13 @@ Tried this solution:
 The code now runs without error on Heroku, and although UX is a little unnessesary, enter key issue is resolved.
 
 ## 4.4. Series of Error messages on Heroku after seperating into package files and using from... import... syntax:
+
+These error messages started appearing once ```from import``` language was introduced across packages. This was a particularly challenging issue, as the error messages were numerous and difficult to trace. The issue was always that the code was referencing the wrong file, and the code was not structured correctly. <b>Eventually the code was converted to a single file, and the issue was resolved after carrying the variables through the parameters. As described earlier in the [Structure Plane](#24-structure-plane) section. </b>
+
+<details><summary> click here to view notes on the issue</summary>
+
 ![](assets/media/issues/2023-10-07-11-20-46.png)
+
 ```
 Running startup command: python3 run.py
 
@@ -615,20 +720,6 @@ Sources consulted:
 “The Import Statements in Python.” Tutorialspoint.com, 2020, www.tutorialspoint.com/the-import-statements-in-python#:~:text=Python%27s%20from%20statement%20lets%20you,from%20fib%20import%20fibonacci. Accessed 7 Oct. 2023.
 “Python Packages (with Examples).” Programiz.com, 2023, www.programiz.com/python-programming/package. Accessed 7 Oct. 2023.
 
-1. currently displaying error with Prettytable
-Heroku:
-```console
-Traceback (most recent call last):
-  File "/app/run.py", line 12, in <module>
-    from prettytable import PrettyTable
-ModuleNotFoundError: No module named 'prettytable'
-```
-solved initially with subprocess:
-DavidMuller. “How to Use Subprocess to Run External Programs in Python 3.” Digitalocean.com, DigitalOcean, 30 July 2020, www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3. Accessed 7 Oct. 2023.
-
-```‌python
-subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
-```
 ‌
 4. doesn't transition to next section
 ‌
@@ -638,9 +729,58 @@ solution: removed package and converted to single file on run.py
 
 ![](assets/media/issues/2023-10-08-11-06-12.png)
 
-## 4.5. Tracing Terminal issues on the 
-VSCode terminal:
-![](assets/media/issues/2023-10-07-18-32-39.png)
+</details>
+
+## 4.5. Heroku Terminal doesn't recognise PrettyTable or termcolor modules.
+
+Although PrettyTable and termcolor modules were recognised in VSCode, they were not recognised in the Heroku terminal. This was solved by using subprocess to install the modules in the Heroku terminal.
+
+Heroku:
+```console
+Traceback (most recent call last):
+  File "/app/run.py", line 12, in <module>
+    from prettytable import PrettyTable
+ModuleNotFoundError: No module named 'prettytable'
+```
+Solved with subprocess as demonstrated by David Muller.
+
+
+```‌python
+subprocess.check_call([sys.executable, "-m", "pip", "install", "prettytable"])
+```
+
+***
+
+*David Muller. “How to Use Subprocess to Run External Programs in Python 3.” Digitalocean.com, DigitalOcean, 30 July 2020, www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3. Accessed 7 Oct. 2023.*
+
+
+## 4.5. Tracing Terminal issues on the VSCode terminal:
+
+The following code was used to trace the terminal issues on the VSCode terminal. This was useful for debugging, as it allowed the developer to see the output of the terminal, and to see where the code was breaking.
+
+The solution was for issues with the user_data_string was to use the str() function to convert the integer to a string.
+
+<details>
+<summary>click here to see terminal issues</summary>
+
+```python
+    trait_scores_Openness_string = str(trait_scores["Openness"])
+    trait_scores_Conscientiousness_string = str(
+        trait_scores["Conscientiousness"]
+    )  # convert the trait_scores["Conscientiousness"] value to a string
+    trait_scores_Extraversion_string = str(
+        trait_scores["Extraversion"]
+    )  # convert the trait_scores["Extraversion"] value to a string
+    trait_scores_Agreeableness_string = str(
+        trait_scores["Agreeableness"]
+    )  # convert the trait_scores["Agreeableness"] value to a string
+    trait_scores_Neuroticism_string = str(
+        trait_scores["Neuroticism"]
+    )  # convert the trait_scores["Neuroticism"] value to a string
+    while True:  # loop until valid data is provided
+```
+
+
 
 ![](assets/media/issues/2023-10-08-18-51-13.png)
 
@@ -686,6 +826,17 @@ What is the derivative of Acceleration with respect to time?
 Enter the number of your choice: 
 ```
 
+</details>
+
+## 4.6 Finding correct parameters for functions
+
+After accumulating the multiple packages in to a run.py, as described in issue 4.4, the developer had to find the correct parameters to carry through the functions. 
+
+This was done by trial and error, and by using the ```print()``` function to see what the code was outputting.
+
+<details>
+<summary>click here to see terminal issues</summary>
+
 ```
 Traceback (most recent call last):
   File "C:\Users\lmcre\OneDrive\Documents\GitHub\Project-3-Working-Title\run.py", line 827, in <module>
@@ -707,6 +858,8 @@ Traceback (most recent call last):
                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'str' object has no attribute 'scoreTotal'
 ```
+
+</details>
 
 
 [↑ Back to top](#Steam-Report)
@@ -821,9 +974,27 @@ In early stages of development, the following python projects were tested and re
 
 ‌</details>
 
-## 5.2. Code snippets
+## 5.2. Code snippets from Love Sandwiches and Quiz App walkthroughs.
+
+Two key walkthrough's were consulted to develop the code. The first was the Love Sandwiches project.
+
+**“Code-Institute-Solutions/Love-Sandwiches-P5-Sourcecode.” GitHub, 25 Mar. 2021, github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode. Accessed 17 Sept. 2023.** 
+
+  - Shows how to connect to a Google Sheet
+  - Creates a formula for calculating the data on different sheets
+  - Shows how to deny invalid input
+  - How to structure code with Main() function and other functions
+  - Experimented with the code to see how python could recognise the data in the Google Sheet, regardless of whether it was a calculated formula or not.
 
 
+The second was this quiz app walkthrough,
+
+**Run That. “Quiz App Using API Data - Python Project 💥 Make a Python Quiz App.” YouTube, YouTube Video, 16 May 2023, www.youtube.com/watch?v=kW2f1Hwgals. Accessed 17 Sept. 2023.**
+
+- formed the base of the STEM subject quiz
+- how to use OpenTriviaDB API
+- how to track questions answered and score
+- once confidence was deveoped, the personality quiz provided a much looser interpetation of what was learnt.
 
 [↑ Back to top](#Steam-Report)
 
@@ -832,16 +1003,34 @@ In early stages of development, the following python projects were tested and re
 
 **Languages**
 - [Python](https://www.python.org/) was used as the backend programming language
+- [JSON](https://www.json.org/json-en.html) was used to store the data for the personality quiz and final report.
+
+**Python Modules**
+
+- [OAuth2](https://oauth.net/2/) was used to connect to Google Sheets API
+- [gspread](https://docs.gspread.org/en/latest/) was used to connect to Google Sheets API
+- [prettytable](https://pypi.org/project/prettytable/) was used to display the data in a table
+- [termcolor](https://pypi.org/project/termcolor/) was used to display the data in color
+- [json](https://docs.python.org/3/library/json.html) was used to store the data for the personality quiz and final report.
+- [os](https://docs.python.org/3/library/os.html) and [sys](https://docs.python.org/3/library/sys.html) was used to clear the terminal
+- [subprocess](https://docs.python.org/3/library/subprocess.html) was used to install the prettytable and termcolor modules in the Heroku terminal
+- [html](https://docs.python.org/3/library/html.html) was used to convert the HTML entities in the OpenTriviaDB API to text
+- [random](https://docs.python.org/3/library/random.html) was used to shuffle the questions in the STEM subject quiz
+- [requests](https://docs.python-requests.org/en/latest/) was used to connect to the OpenTriviaDB API
+
+**APIS**
+- [OpenTriviaDB](https://opentdb.com/) was used for the STEM subject quiz
+- [Google Sheets API](https://developers.google.com/sheets/api) was used to store the data for the personality quiz and subject quiz.
 
 **Programming Software**
 - [VSCode](https://code.visualstudio.com/) was used as my code editor
 - [Gitpod](https://www.gitpod.io/) was used as my secondary code editor
 - [Github](https://www.github.com/) was used for Version control
 
-**General Software**
-
-
 **Tools**
+- [browserstack](https://www.browserstack.com/) was used for checking website on firefox, opera, edge, safari and chrome
+- [Python Tutor](https://www.pythontutor.com) was used for debugging the Javascript, as well as a research tool early on in the project to understand the flow of the code.
+- [Fancy Screen](http://fancyapps.com/) by Janis Skarnelis was used to document GIFs and videos of the project
 
 
 [↑ Back to top](#Steam-Report)
@@ -852,25 +1041,34 @@ In early stages of development, the following python projects were tested and re
 
 **Programming Libraries**
 
+The following documentation isreferenced in the code. 
+- “Json.load in Python.” GeeksforGeeks, GeeksforGeeks, 12 Mar. 2020,
+www.geeksforgeeks.org/json-load-in-python/. Accessed 5 Oct. 2023.
+- “Python Dictionary get() Method.” W3Schools, www.w3schools.com/python/ref_dictionary_get.asp. Accessed 8 Oct. 2023.
+- “Sort a List of Objects in Python | FavTutor.” FavTutor, 2022,favtutor.com/blogs/sort-list-of-objects-python. Accessed 5 Oct. 2023.
+- “How to Sort a List of Dictionaries by a Value of the Dictionary in Python?” Stack Overflow, 2023, stackoverflow.com/questions/72899/
+- “Python Round() Function.”, W3schools.com, 2023, www.w3schools.com/python/ref_func_round.asp.Accessed 5 Oct. 2023.
+- “Python Function Arguments.” W3schools.com, 2023, www.w3schools.com/python/gloss_python_function_arguments. asp#:~:text=A%20parameter%20is%20the%20variablefunction%20when%20it%20is%20called. Accessed 5 Oct. 2023.
+- “Python Increment and Decrement Operators.” W3schools.com, 2023, www.w3schools.com/python/python_operators.asp. Accessed 5 Oct. 2023.
+- “Python Len() Function.” W3schools.com, 2023, www.w3schools.com/python/ref_func_len.asp.
+- “Python Random Shuffle() Method.” W3schools.com, 2023, www.w3schools.com/python/ref_random_shuffle.asp.
 
 **Media libraries**
 - [canva](https://www.canva.com/) was used for the vector graphics in the Readme, the logo and favicon
 - [bgjar](https://bgjar.com/) was used for the background image in the Readme
 
-**Fonts**
+**JSON database placeholders via AI Large Language Models**
+- [GPT-4](https://www.openai.com/blog/openai-api/) by OpenAI was specifically used to generate the JSON personality quiz and personality report, as a placeholder for content that would ideally be chartered by a professional psychologist.
 
-
-***
-
-
-
-‌
-
-‌
+**documentation**
+- [shields.io](https://shields.io/) was used for Documentation Badges
 
 
 ## 5.5. Acknowledgements
 
+Thank you to my mentor, Oluwaseun Owonikoko for providing me with helpful feedback and guidance throughout the project, especially with using a class to store the data for the personality quiz.
+
+Thank you to my family and friends for their support and encouragement throughout the project. Especially to my Mum who tested the deployed project first and helped me spot a small bug with the personality quiz asking an extra question.
 
 [↑ Back to top](#Steam-Report)
 

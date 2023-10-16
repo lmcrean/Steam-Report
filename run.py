@@ -1,5 +1,4 @@
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 import os
 import sys
 import subprocess
@@ -285,7 +284,7 @@ def validate_name(username_str):
 
 
 """
-The user to go through the personality quiz,
+The user goes through the personality quiz,
 the subject quiz and leaderboard,
 then finally onto a personality report.
 """
@@ -387,7 +386,7 @@ def ask_question(question_index):
 
     “Python Function Arguments.” W3schools.com, 2023,
     www.w3schools.com/python/gloss_python_function_arguments.
-    asp#:~:text=A%20parameter%20is%20the%20variable,
+    asp#:~:text=A%20parameter%20is%20the%20variable
     function%20when%20it%20is%20called. Accessed 5 Oct. 2023.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
