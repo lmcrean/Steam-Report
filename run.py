@@ -1191,11 +1191,14 @@ def assignOCEAN_STEAM_feedback(username_str):
         # Accessed 8 Oct. 2023.
     highest_STEAM_category = calculateHighestSTEAMScore(username_str)
     highest_OCEAN_category = calculateHighestOCEANScore(username_str)
+    environment = feedback_database.get(
+        combined_ID, {}
+    ).get('environment', 'Environment not found')
     print(
-        f"Based on your results, we suggest you consider a career in "
-        f"{highest_STEAM_category}"
+        f"Based on your results, we suggest you consider a career in"
+        f" {highest_STEAM_category} with a {environment} environment."
     )
-    print("Here is some feedback based on your results:\n")
+    print("\nHere is some feedback based on your results:\n")
     combined_ID = (
         f"{highest_STEAM_category} and {highest_OCEAN_category}"
     )  # Combine the two categories to create a unique ID for the feedback.
