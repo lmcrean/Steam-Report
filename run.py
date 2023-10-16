@@ -874,8 +874,6 @@ def get_high_score_leaderboard(username_str):
     “Prettytable.” PyPI, 11 Sept. 2023,
     pypi.org/project/prettytable/. Accessed 1 Oct. 2023.
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
-    cprint("STEAM Quiz Leaderboard", 'white', 'on_blue', attrs=['bold'])
     worksheet = SHEET.worksheet('score')
     data_STEAM = worksheet.get_all_values()  # Get all the data.
     table = PrettyTable()
@@ -889,8 +887,10 @@ def get_high_score_leaderboard(username_str):
     table.sortby = "Score"  # Sort the table by the Total column
     # Reverse the order of the sort to descending order:
     table.reversesort = True
+    os.system('cls' if os.name == 'nt' else 'clear')
+    cprint("STEAM Quiz Leaderboard\n", 'white', 'on_blue', attrs=['bold'])
     print(table)  # Print the PrettyTable
-    print(f"your username is: {username_str}")
+    print(f"\nyour username is: {username_str}\n")
     print("Above is your subject score, sorted by total score.\n")
     print("You can now either go back to the menu, or delete your score.")
     print("Press 1 to go back to the menu with a new username")
