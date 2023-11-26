@@ -265,6 +265,16 @@ def validate_name(username_str):
         )
         input()
         main()
+    elif username_str.isalnum() is False:
+        print(
+            f"Invalid name: {username_str}.\n"
+            "The name must only contain letters and numbers.\n"
+            "Please enter a name that only contains letters.\n"
+            "For example, Birdy34, Koala25, Croc76\n"
+            "press any key to try again\n"
+        )
+        input()
+        main()
     elif len(username_str) < 3:
         print(
             f"Invalid name: {username_str}.\n"
